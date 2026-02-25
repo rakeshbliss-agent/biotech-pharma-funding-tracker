@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -16,7 +17,25 @@ REPO_ROOT = APP_DIR.parent
 DATA_FILE = APP_DIR / "funding_data.json"
 WEB_DIR = REPO_ROOT / "web"
 
-app = FastAPI(title="Biotech/Pharma Funding Tracker", version="1.0.0")
+app = FastAPI(title="Biotech/Pharma Funding Tracker", version="1.0.1")
+
+
+def _clean_json(obj: Any) -> Any:
+    """
+    Recursively clean JSON-loaded objects so they can be safely returned
+    via FastAPI/Starlette JSON responses.
+
+    Converts NaN / Infinity / -Infinity floats to None (JSON null).
+    """
+    if isinstance(obj, float):
+        if math.isnan(obj) or math.isinf(obj):
+            return None
+        return obj
+    if isinstance(obj, dict):
+        return {k: _clean_json(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_clean_json(v) for v in obj]
+    return obj
 
 
 def load_data() -> List[Dict[str, Any]]:
@@ -24,10 +43,13 @@ def load_data() -> List[Dict[str, Any]]:
         return []
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
+
+    data = _clean_json(data)
     return data if isinstance(data, list) else []
 
 
 def sort_data(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    # Expect "Funding date" in YYYY-MM-DD format; sort newest first
     return sorted(rows, key=lambda r: (r.get("Funding date") or ""), reverse=True)
 
 
@@ -71,10 +93,16 @@ def chat(req: ChatRequest):
     plan = interpret_query(req.query)
     filtered = filter_rows(rows, plan.get("filters", {}))
     answer = summarize_answer(req.query, plan, filtered)
-    return {"query": req.query, "plan": plan, "answer": answer, "count": len(filtered), "rows": filtered[:500]}
+    return {
+        "query": req.query,
+        "plan": plan,
+        "answer": answer,
+        "count": len(filtered),
+        "rows": filtered[:500],
+    }
 
 
-# Serve front-end
+# Serve the front-end (static)
 app.mount("/", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
 
 
