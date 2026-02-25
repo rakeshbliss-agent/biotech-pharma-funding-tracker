@@ -38,6 +38,12 @@ def interpret_query(query: str) -> Dict[str, Any]:
     filters: Dict[str, Any] = {}
     action: Dict[str, Any] = {"type": "filter"}
 
+    if any(x in q for x in ["current week", "this week"]):
+        to_d = _today()
+        from_d = to_d - timedelta(days=to_d.weekday())  # Monday -> today
+        filters["from_date"] = from_d.isoformat()
+        filters["to_date"] = to_d.isoformat()
+
     if any(x in q for x in ["last week", "past week", "last 1 week", "past 7 days", "last 7 days"]):
         to_d = _today()
         from_d = to_d - timedelta(days=7)
