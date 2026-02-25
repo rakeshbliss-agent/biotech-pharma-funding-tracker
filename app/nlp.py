@@ -66,7 +66,7 @@ def interpret_query(query: str) -> Dict[str, Any]:
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
 
-    if any(x in q for x in ["last month", "past month", "past 30 days"]):
+    if any(x in q for x in ["this month", "last month", "past month", "past 30 days"]):
         to_d = _today()
         from_d = to_d - timedelta(days=30)
         filters["from_date"] = from_d.isoformat()
