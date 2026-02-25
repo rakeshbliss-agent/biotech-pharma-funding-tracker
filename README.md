@@ -1,1 +1,0 @@
-# biotech-pharma-funding-tracker
