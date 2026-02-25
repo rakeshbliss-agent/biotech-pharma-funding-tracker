@@ -1,0 +1,16 @@
+[
+  {
+    "Company": "Example Bio",
+    "Funding date": "2026-01-01",
+    "Funding round": "Series A",
+    "Funding amount": "$50M",
+    "Investors": "Example Ventures",
+    "Description": "Replace this file with your full dataset.",
+    "Therapeutic Area": "Oncology",
+    "Therapeutic Modality": "Small molecule",
+    "Lead Clinical Stage": "Discovery",
+    "Small molecule modality?": "Yes",
+    "HQ City": "Boston",
+    "HQ State/Region": "MA"
+  }
+]

@@ -1,0 +1,7 @@
+sources:
+  - https://www.fiercebiotech.com/rss/xml
+  - https://www.fiercebiotech.com/rss/biotech/xml
+  - https://www.biopharmadive.com/feeds/news/
+  - https://www.bioworld.com/rss/topic/292-financings
+  # Optional (broader, more noise):
+  # - https://www.biospace.com/all-news.rss
