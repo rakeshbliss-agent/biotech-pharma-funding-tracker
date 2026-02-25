@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biotech/Pharma Funding Tracker</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <div>
+        <h1>Biotech/Pharma Funding Tracker</h1>
+        <p class="sub">Each funding round is a separate entry (newest first).</p>
+      </div>
+      <div class="header-actions">
+        <button id="refreshBtn" class="btn">Refresh data</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="panel-title">Ask the tracker</div>
+      <div class="chat">
+        <div class="chat-row">
+          <input id="chatInput" class="chat-input" placeholder="e.g., Which companies received funding in the last 1 week?" />
+          <button id="chatSend" class="btn primary">Ask</button>
+        </div>
+        <div id="chatAnswer" class="chat-answer"></div>
+        <div class="hint">
+          Examples: “last week”, “past 30 days”, “Feb 2026”, “Series A in last 90 days”, “largest rounds”.
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">Funding rounds</div>
+        <div class="meta">
+          <span id="countLabel">—</span>
+          <span class="dot">•</span>
+          <span id="updatedLabel">—</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="fundingTable">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Date</th>
+              <th>Round</th>
+              <th>Amount</th>
+              <th>Investors</th>
+              <th>Description</th>
+              <th>Therapeutic Area</th>
+              <th>Modality</th>
+              <th>Stage</th>
+              <th>Small molecule?</th>
+              <th>HQ City</th>
+              <th>HQ State/Region</th>
+            </tr>
+          </thead>
+          <tbody id="fundingTbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>API: <span class="mono">/api/funding</span> • <span class="mono">/api/chat</span></div>
+      <div class="mono">Deploy-ready for Render</div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
