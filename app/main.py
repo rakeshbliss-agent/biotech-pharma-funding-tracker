@@ -17,16 +17,11 @@ REPO_ROOT = APP_DIR.parent
 DATA_FILE = APP_DIR / "funding_data.json"
 WEB_DIR = REPO_ROOT / "web"
 
-app = FastAPI(title="Biotech/Pharma Funding Tracker", version="1.0.1")
+app = FastAPI(title="Biotech/Pharma Funding Tracker", version="1.0.2")
 
 
 def _clean_json(obj: Any) -> Any:
-    """
-    Recursively clean JSON-loaded objects so they can be safely returned
-    via FastAPI/Starlette JSON responses.
-
-    Converts NaN / Infinity / -Infinity floats to None (JSON null).
-    """
+    """Convert NaN/Inf floats to None (JSON null) recursively."""
     if isinstance(obj, float):
         if math.isnan(obj) or math.isinf(obj):
             return None
@@ -41,15 +36,21 @@ def _clean_json(obj: Any) -> Any:
 def load_data() -> List[Dict[str, Any]]:
     if not DATA_FILE.exists():
         return []
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
-        data = json.load(f)
+
+    try:
+        with open(DATA_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError as e:
+        # Give a very actionable error for debugging in Render logs
+        raise RuntimeError(
+            f"Invalid JSON in app/funding_data.json at line {e.lineno}, column {e.colno}: {e.msg}"
+        ) from e
 
     data = _clean_json(data)
     return data if isinstance(data, list) else []
 
 
 def sort_data(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    # Expect "Funding date" in YYYY-MM-DD format; sort newest first
     return sorted(rows, key=lambda r: (r.get("Funding date") or ""), reverse=True)
 
 
@@ -80,7 +81,8 @@ def get_funding(
         "small_molecule": small_molecule,
     }
     filtered = filter_rows(rows, filters)
-    return {"count": len(filtered), "rows": filtered[: max(1, min(limit, 50000))]}
+    result = {"count": len(filtered), "rows": filtered[: max(1, min(limit, 50000))]}
+    return _clean_json(result)
 
 
 class ChatRequest(BaseModel):
@@ -93,16 +95,17 @@ def chat(req: ChatRequest):
     plan = interpret_query(req.query)
     filtered = filter_rows(rows, plan.get("filters", {}))
     answer = summarize_answer(req.query, plan, filtered)
-    return {
+    result = {
         "query": req.query,
         "plan": plan,
         "answer": answer,
         "count": len(filtered),
         "rows": filtered[:500],
     }
+    return _clean_json(result)
 
 
-# Serve the front-end (static)
+# Serve front-end
 app.mount("/", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
 
 
