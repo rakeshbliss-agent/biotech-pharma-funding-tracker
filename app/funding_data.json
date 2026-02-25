@@ -130,29 +130,29 @@
     "Therapeutic Modality": "Small-molecule eye drops (topical combination)",
     "Lead Clinical Stage": "Clinical Phase 3 (approved; post-Phase 3)",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Breakthru Medicine",
     "Funding date": "2026-01-29",
     "Funding round": "A",
     "Funding amount": "$60M",
-    "Investors": NaN,
+    "Investors": Null,
     "Description": "Breakthru has emerged from stealth with $60 million, a molecular glue platform, and a pipeline of small molecules and antibody-drug conjugate payloads. The biotech was formed by Steve Potts, Ph.D.; Mark Mulvihill, Ph.D.; and Brian Barnett, M.D., in efforts to develop \"disruptive therapeutic modalities\" for cancer patients with high unmet need.",
     "Therapeutic Area": "Oncology (aggressive solid tumors; treatment-resistant cancers)",
     "Therapeutic Modality": "Small molecules (incl. molecular glues) and ADC payloads",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "TRexBio",
     "Funding date": "2026-01-27",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$50M",
     "Investors": "Janus Henderson Investors, Balyasny Asset Management, Affinity Asset Advisors, Alexandria Venture Investments, Avego BioScience Capital, Delos Capital, Eli Lilly, Johnson & Johnson Innovation – JJDC, Pfizer Ventures, Polaris Partners and SV Health Investors.",
     "Description": "TRexBio has raised $50 million to support its Treg platform, which is designed to develop treatments for autoimmune and inflammatory diseases. These include TRB-061, a TNFR2 agonist currently being tested in a phase 1a/b trial for atopic dermatitis. The new cash will also go toward TRB-071 and TRB-081, which are both expected to launch in separate phase 1 trials in 2027.",
@@ -160,9 +160,9 @@
     "Therapeutic Modality": "Biologics (large-molecule Treg-targeted antibodies/agonists)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Likely",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Corxel Pharmaceuticals",
@@ -176,8 +176,8 @@
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes",
     "HQ City": "Shanghai",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Mendra",
@@ -206,8 +206,8 @@
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
     "HQ City": "The Colorado",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Exciva",
@@ -220,9 +220,9 @@
     "Therapeutic Modality": "Small-molecule combination therapy (dextromethorphan-based)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Likely",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Cytotheryx",
@@ -235,9 +235,9 @@
     "Therapeutic Modality": "Cell therapy (hepatocyte-based) and bioartificial liver support",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Proxima",
@@ -250,14 +250,14 @@
     "Therapeutic Modality": "Small-molecule proximity therapeutics / molecular glues",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Vibrant Therapeutics",
     "Funding date": "2026-01-12",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$61M",
     "Investors": "Pfizer Ventures, Apricot Capital, Bayland Capital, HSG, Northern Light Venture Capital and First Principle Venture",
     "Description": "China and U.S.-based Vibrant will use the cash to advance a pipeline led by VIB305, a masked T-cell engager prodrug designed to treat EGFR-expressing solid tumors.",
@@ -265,9 +265,9 @@
     "Therapeutic Modality": "Bispecific / masked T-cell engager (TCE) antibody prodrug",
     "Lead Clinical Stage": "Clinical Phase 1 (IND-cleared, first-in-human starting)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Kinaset Therapeutics",
@@ -280,9 +280,9 @@
     "Therapeutic Modality": "Inhaled small‑molecule pan‑JAK inhibitor (dry powder)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Likely",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "AirNexis Therapeutics",
@@ -295,14 +295,14 @@
     "Therapeutic Modality": "Small‑molecule dual PDE3/4 inhibitor",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Likely",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Medipost",
     "Funding date": "2026-01-09",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$140M",
     "Investors": "Skylake Equity Partners, Crescendo Equity Partners and a Korean growth equity fund.",
     "Description": "Stem cell therapy-focused Medipost's parent company, also called Medipost, has raised $140 million to launch a phase 3 trial for its investigational mesenchymal stem cell (MSC) therapy.",
@@ -310,9 +310,9 @@
     "Therapeutic Modality": "Allogeneic mesenchymal stem cell therapy",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Parabilis Medicines",
@@ -325,9 +325,9 @@
     "Therapeutic Modality": "Small‑molecule β‑catenin/TCF PPI inhibitor",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Alveus Therapeutics",
@@ -340,9 +340,9 @@
     "Therapeutic Modality": "Peptide hormone therapies (bifunctional GIPR antagonist / GLP‑1R agonist; amylin‑based peptides)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Diagonal Therapeutics",
@@ -355,9 +355,9 @@
     "Therapeutic Modality": "Clustering monoclonal antibodies",
     "Lead Clinical Stage": "Preclinical (FIH planned)",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "EpiBiologics",
@@ -371,8 +371,8 @@
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
     "HQ City": "The San Francisco Bay Area",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Beacon Therapeutics",
@@ -385,9 +385,9 @@
     "Therapeutic Modality": "AAV gene therapy",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Soley Therapeutics",
@@ -401,8 +401,8 @@
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
     "HQ City": "The South San Francisco",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Rakuten Medical",
@@ -416,8 +416,8 @@
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "Unclear",
     "HQ City": "San Diego",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Corsera Health",
@@ -430,9 +430,9 @@
     "Therapeutic Modality": "RNA therapy (subcutaneously administered siRNA / RNAi medicine)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Poplar Therapeutics",
@@ -445,9 +445,9 @@
     "Therapeutic Modality": "Biologics (next-generation anti-IgE monoclonal antibody)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Syneron Bio",
@@ -460,9 +460,9 @@
     "Therapeutic Modality": "Macrocyclic peptide therapeutics (Synova platform)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Syremis Therapeutics",
@@ -475,9 +475,9 @@
     "Therapeutic Modality": "Small-molecule dual M1/M4 muscarinic agonist",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes (muscarinic agonist; likely small molecule)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Addition Therapeutics",
@@ -505,9 +505,9 @@
     "Therapeutic Modality": "Small-molecule CNS-penetrant selective mTORC1 inhibitor",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Ambros Therapeutics",
@@ -520,9 +520,9 @@
     "Therapeutic Modality": "Small-molecule bisphosphonate (neridronate)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "No (neridronate is a small molecule? actually bisphosphonate)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Chai Discovery",
@@ -535,9 +535,9 @@
     "Therapeutic Modality": "AI / computational antibody & protein design (no lead therapeutic yet)",
     "Lead Clinical Stage": "Preclinical (discovery-stage platform)",
     "Small molecule modality?": "Unclear (platform)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Prolynx",
@@ -550,9 +550,9 @@
     "Therapeutic Modality": "Long-acting peptide therapies for obesity (GLP-1, amylin etc.)",
     "Lead Clinical Stage": "Preclinical / early clinical (long-acting obesity candidates)",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "D3 Bio",
@@ -565,8 +565,8 @@
     "Therapeutic Modality": "Small-molecule KRAS G12C inhibitor (elisrasib / D3S-001)",
     "Lead Clinical Stage": "Clinical Phase 3 (global pivotal program planned)",
     "Small molecule modality?": "Yes (KRAS inhibitor)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "China"
   },
   {
@@ -580,9 +580,9 @@
     "Therapeutic Modality": "RNA therapy (siRNA / RNAi-based therapeutics)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No (RNAi)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "OTR Therapeutics",
@@ -596,13 +596,13 @@
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
     "HQ City": "Shanghai",
-    "HQ State/Region": NaN,
+    "HQ State/Region": Null,
     "HQ Country": "China"
   },
   {
     "Company": "SciNeuro Pharmaceuticals",
     "Funding date": "2025-12-04",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$53M",
     "Investors": "LAV; ARCH Venture Partners; plus new and existing investors",
     "Description": "Neurodegenerative disease pipeline targeting Lp-PLA2, beta amyloid and LRRK2 pathways; also received Michael J. Fox Foundation grant for Parkinson's work.",
@@ -610,9 +610,9 @@
     "Therapeutic Modality": "Small-molecule therapeutics targeting Lp-PLA2, beta-amyloid, LRRK2 and other CNS pathways",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Triana Biomedicines",
@@ -625,9 +625,9 @@
     "Therapeutic Modality": "Small-molecule molecular glue degrader (ALK-targeted)",
     "Lead Clinical Stage": "Preclinical (FIH planned)",
     "Small molecule modality?": "Yes (molecular glue degrader)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Protego Biopharma",
@@ -640,9 +640,9 @@
     "Therapeutic Modality": "Small-molecule protein stabilizer (light-chain folding corrector)",
     "Lead Clinical Stage": "Clinical Phase 3 (pivotal trial planned)",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Aspen Neuroscience",
@@ -655,14 +655,14 @@
     "Therapeutic Modality": "Autologous iPSC-derived neuron replacement cell therapy",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No (cell therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Solve Therapeutics",
     "Funding date": "2025-11-17",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$120M",
     "Investors": "Yosemite; Abingworth; Ally Bridge; B Capital; Balyasny; Merck & Co.; SymBiosis; Alexandria; AyurMaya; DC Global; General Atlantic; Citadel Surveyor",
     "Description": "Round to support two clinical ADCs and expansion of CloakLink linker platform for ADC stability / payload properties; total capital $321M.",
@@ -670,9 +670,9 @@
     "Therapeutic Modality": "Antibody-drug conjugates (ADCs) using CloakLink linker platform",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No (ADCs)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Artios Pharma",
@@ -685,8 +685,8 @@
     "Therapeutic Modality": "Small-molecule DNA damage response inhibitors (ATR inhibitor alnodesertib)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes (alnodesertib is a small-molecule DDR inhibitor)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "UK"
   },
   {
@@ -700,9 +700,9 @@
     "Therapeutic Modality": "Small-molecule protein elimination (Molecular Gates targeting extracellular proteins)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Braveheart Bio",
@@ -715,9 +715,9 @@
     "Therapeutic Modality": "Small-molecule selective cardiac myosin inhibitor",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "Yes (myosin inhibitor)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Azalea Therapeutics",
@@ -730,9 +730,9 @@
     "Therapeutic Modality": "In vivo CAR‑T and other in vivo cell therapies via dual‑vector genome editing",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (gene/cell therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Neok Bio",
@@ -745,7 +745,7 @@
     "Therapeutic Modality": "Bispecific antibody‑drug conjugates (ADCs)",
     "Lead Clinical Stage": "Preclinical (FIH planned)",
     "Small molecule modality?": "No (ADCs)",
-    "HQ City": NaN,
+    "HQ City": Null,
     "HQ State/Region": "CA",
     "HQ Country": "USA"
   },
@@ -760,8 +760,8 @@
     "Therapeutic Modality": "Dual‑vector AAV gene therapy",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No (gene therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Italy"
   },
   {
@@ -775,9 +775,9 @@
     "Therapeutic Modality": "Monoclonal antibody prophylactic therapy (sutacimig)",
     "Lead Clinical Stage": "Clinical Phase 2 (pivotal Phase 3 planned)",
     "Small molecule modality?": "No (midstage biologic)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Electra Therapeutics",
@@ -805,8 +805,8 @@
     "Therapeutic Modality": "Oral small‑molecule CDK4/6 inhibitor",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes (oral CDK4/6 inhibitor)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "UK"
   },
   {
@@ -820,8 +820,8 @@
     "Therapeutic Modality": "Antibody‑drug conjugates (ADCs; lead candidate ADCX‑020)",
     "Lead Clinical Stage": "Clinical Phase 1 (FIH starting)",
     "Small molecule modality?": "No (ADCs)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "France"
   },
   {
@@ -850,8 +850,8 @@
     "Therapeutic Modality": "Antibody‑drug conjugate (NaPi2b‑targeting exatecan ADC, TUB‑040)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No (ADCs)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Germany"
   },
   {
@@ -865,7 +865,7 @@
     "Therapeutic Modality": "Oral small‑molecule corrector and potentiator therapies",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
+    "HQ City": Null,
     "HQ State/Region": "CA",
     "HQ Country": "USA"
   },
@@ -880,8 +880,8 @@
     "Therapeutic Modality": "Radiopharmaceutical (copper‑based radiotheranostics)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No (radiopharma)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Switzerland/Germany"
   },
   {
@@ -925,8 +925,8 @@
     "Therapeutic Modality": "Small‑molecule AMPA receptor modulator",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear (likely small molecule)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "UK (Wales)"
   },
   {
@@ -940,8 +940,8 @@
     "Therapeutic Modality": "AAV gene therapy",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No (gene therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Spain"
   },
   {
@@ -955,9 +955,9 @@
     "Therapeutic Modality": "Small‑molecule targeted therapies",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Mosanna Therapeutics",
@@ -970,9 +970,9 @@
     "Therapeutic Modality": "Small‑molecule nasal spray (MOS118)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Allay Therapeutics",
@@ -985,9 +985,9 @@
     "Therapeutic Modality": "Small‑molecule analgesic (ATX101)",
     "Lead Clinical Stage": "Clinical Phase 2b",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "SpyGlass Pharma",
@@ -1000,9 +1000,9 @@
     "Therapeutic Modality": "Small‑molecule ocular therapies (incl. bimatoprost implant)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "Yes (bimatoprost)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Vima Therapeutics",
@@ -1015,9 +1015,9 @@
     "Therapeutic Modality": "Oral small‑molecule therapy",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes (oral)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "AusperBio",
@@ -1030,9 +1030,9 @@
     "Therapeutic Modality": "Antisense oligonucleotide (ASO) therapy",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "No (ASO)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Grin Therapeutics",
@@ -1045,14 +1045,14 @@
     "Therapeutic Modality": "Small‑molecule NMDA‑NR2B modulator (radiprodil)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "Yes (radiprodil is small molecule)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Syndeio Biosciences",
     "Funding date": "2025-05-27",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$90M",
     "Investors": "Catalio; Innoviva; Tenmile; Luson; Palo Santo; AbbVie and Eli Lilly as strategic shareholders",
     "Description": "Debuting to create precision neurotherapeutics to repair synaptic function; lead candidate zelquistinel in Phase 2 for MDD; expected Alzheimer's study.",
@@ -1060,9 +1060,9 @@
     "Therapeutic Modality": "Small‑molecule synapse‑targeting neurotherapeutic (zelquistinel)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes (zelquistinel is small molecule)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Juvenescence",
@@ -1075,8 +1075,8 @@
     "Therapeutic Modality": "Oral small‑molecule PAI‑1 inhibitor",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes (PAI-1 inhibitor likely small molecule)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "UK"
   },
   {
@@ -1090,8 +1090,8 @@
     "Therapeutic Modality": "Oral small‑molecule aromatase inhibitor (leflutrozole / RPN‑001)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Switzerland"
   },
   {
@@ -1105,8 +1105,8 @@
     "Therapeutic Modality": "Oral small‑molecule p300/CBP inhibitor (inobrodib)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes (oral inhibitor)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "UK"
   },
   {
@@ -1120,8 +1120,8 @@
     "Therapeutic Modality": "Oral small‑molecule azasugar (nizubaglustat)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "Yes (azasugar)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Netherlands"
   },
   {
@@ -1135,9 +1135,9 @@
     "Therapeutic Modality": "In vivo genetic medicine using engineered recombinases + LNP delivery",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (genetic medicine)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Haya Therapeutics",
@@ -1150,9 +1150,9 @@
     "Therapeutic Modality": "RNA‑guided therapeutic targeting regulatory genome (lncRNA)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (RNA/regulatory genome targeting)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "NewLimit",
@@ -1165,9 +1165,9 @@
     "Therapeutic Modality": "LNP‑delivered mRNA encoding rejuvenating transcription factors",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (mRNA)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Granite Bio",
@@ -1180,14 +1180,14 @@
     "Therapeutic Modality": "Monoclonal antibody depleting pro‑inflammatory monocytes (GRT‑001)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No (antibodies)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Etiome",
     "Funding date": "2025-04-24",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$50M",
     "Investors": "Flagship Pioneering",
     "Description": "Platform mapping disease progression over time to identify targets and timing; developing 'preemptive medicines' initially for metabolic, neurodegenerative, autoimmune diseases and cancers.",
@@ -1195,9 +1195,9 @@
     "Therapeutic Modality": "AI‑enabled preemptive medicines platform (Temporal Biodynamics; Biostaged Medicines)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear (platform)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Glycomine",
@@ -1225,9 +1225,9 @@
     "Therapeutic Modality": "Biologic (half‑life‑extended anti‑IL‑31 antibody – ATTOBODY)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No (biologics)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Imbria Pharmaceuticals",
@@ -1240,14 +1240,14 @@
     "Therapeutic Modality": "Oral small‑molecule partial fatty acid oxidation (pFOX) inhibitor",
     "Lead Clinical Stage": "Clinical Phase 2b",
     "Small molecule modality?": "Yes (inhibitor)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Neurona Therapeutics",
     "Funding date": "2025-04-03",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$102M",
     "Investors": "Fidelity; The Column Group; Soleus; Viking; Cormorant; Schroders; LYFE; Euclidean; UCB Ventures; Willett; UC Investments; YK Bioventures; Berkeley Frontier Fund; Ysios; Alexandria; Spur Capital",
     "Description": "Allogeneic cell therapy NRTX-1001 for epilepsy; funding to advance through Phase 3; ongoing Phase 1/2 trials in MTLE.",
@@ -1255,9 +1255,9 @@
     "Therapeutic Modality": "Allogeneic inhibitory neuron cell therapy (GABAergic interneuron; NRTX‑1001)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No (cell therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Atsena Therapeutics",
@@ -1270,9 +1270,9 @@
     "Therapeutic Modality": "AAV gene therapy (subretinal ATSN‑201)",
     "Lead Clinical Stage": "Clinical Phase 1/2/3 (LIGHTHOUSE adaptive trial)",
     "Small molecule modality?": "No (gene therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Isomorphic Labs",
@@ -1285,9 +1285,9 @@
     "Therapeutic Modality": "AI‑enabled drug discovery platform (modality‑agnostic; primarily small molecules)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear (platform)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Epicrispr Biotechnologies",
@@ -1315,9 +1315,9 @@
     "Therapeutic Modality": "Small‑molecule / precision therapies targeting retinal cell death (CTX203, CTX114)",
     "Lead Clinical Stage": "Preclinical (entering Phase 1/2)",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Hillstar Bio",
@@ -1345,8 +1345,8 @@
     "Therapeutic Modality": "Oral small‑molecule HDAC6 inhibitor",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes (HDAC6 inhibitor)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "France"
   },
   {
@@ -1360,7 +1360,7 @@
     "Therapeutic Modality": "Oral small‑molecule mGluR5 negative allosteric modulator (TMP‑301)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes (NAM)",
-    "HQ City": NaN,
+    "HQ City": Null,
     "HQ State/Region": "CA",
     "HQ Country": "USA"
   },
@@ -1375,9 +1375,9 @@
     "Therapeutic Modality": "Biologic AND‑Body™ programmable antibodies (computationally designed)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (biologics)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Arbor Biotechnologies",
@@ -1390,9 +1390,9 @@
     "Therapeutic Modality": "LNP‑delivered CRISPR gene editing therapy (ABO‑101)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No (gene editing)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Maxion Therapeutics",
@@ -1405,8 +1405,8 @@
     "Therapeutic Modality": "Antibody‑based KnotBody® biologics",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (antibody platform)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "UK"
   },
   {
@@ -1420,9 +1420,9 @@
     "Therapeutic Modality": "Oral small‑molecule Nav1.8 inhibitors (LTG‑001, LTG‑305)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Curevo Vaccine",
@@ -1450,9 +1450,9 @@
     "Therapeutic Modality": "AI / autonomous lab platform (no lead therapeutic; supports genetic medicines & antibodies)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear (platform)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Garuda Therapeutics",
@@ -1465,9 +1465,9 @@
     "Therapeutic Modality": "Off‑the‑shelf hematopoietic stem cell (HSC) therapies",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (cell therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Callio Therapeutics",
@@ -1480,9 +1480,9 @@
     "Therapeutic Modality": "Antibody‑drug conjugate (HER2‑targeted dual‑payload ADC)",
     "Lead Clinical Stage": "Clinical Phase 1 (entering first‑in‑human)",
     "Small molecule modality?": "No (ADC)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Eikon Therapeutics",
@@ -1495,9 +1495,9 @@
     "Therapeutic Modality": "Small‑molecule TLR7/8 agonist immune modulator (EIK1001)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "Unclear (immune modulator)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Bambusa Therapeutics",
@@ -1540,9 +1540,9 @@
     "Therapeutic Modality": "Monoclonal antibody targeting KLRG1 (ulviprubart / ABC008)",
     "Lead Clinical Stage": "Clinical Phase 2/3",
     "Small molecule modality?": "No (antibody)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "AdvanCell",
@@ -1555,8 +1555,8 @@
     "Therapeutic Modality": "Targeted alpha radiopharmaceutical therapy (Pb‑212–labeled ADVC001)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No (radiopharma)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Australia"
   },
   {
@@ -1570,9 +1570,9 @@
     "Therapeutic Modality": "RNA therapy (siRNA / RNAi therapeutics delivered to CNS)",
     "Lead Clinical Stage": "Preclinical (advancing to Clinical Phase 1)",
     "Small molecule modality?": "No (siRNA)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Helicore Biopharma",
@@ -1585,7 +1585,7 @@
     "Therapeutic Modality": "Monoclonal antibody GIP ligand antagonist (HCR‑188)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No (mAb/conjugate)",
-    "HQ City": NaN,
+    "HQ City": Null,
     "HQ State/Region": "CA",
     "HQ Country": "USA"
   },
@@ -1615,9 +1615,9 @@
     "Therapeutic Modality": "Engineered B‑cell medicine (BE‑101)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No (cell therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Umoja Biopharma",
@@ -1630,9 +1630,9 @@
     "Therapeutic Modality": "In vivo CAR‑T and cell therapy platform (viral + non‑viral gene delivery)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (cell/gene)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Normunity",
@@ -1645,9 +1645,9 @@
     "Therapeutic Modality": "Monoclonal antibodies blocking immuno‑suppressive pathways (e.g., endothelial immuno‑checkpoints)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (biologics/TCE)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Kardigan",
@@ -1660,9 +1660,9 @@
     "Therapeutic Modality": "Small‑molecule covalent inhibitors (various oncology targets)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Windward Bio",
@@ -1675,8 +1675,8 @@
     "Therapeutic Modality": "Small‑molecule incretin‑enhancing therapies (oral GLP‑1/dual mechanisms)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (mAbs/bispecifics)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Switzerland"
   },
   {
@@ -1690,9 +1690,9 @@
     "Therapeutic Modality": "RNA‑editing small‑molecule platform (site‑directed RNA repair)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (bispecific)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Numab Therapeutics",
@@ -1705,8 +1705,8 @@
     "Therapeutic Modality": "Multi‑specific antibody therapeutics (e.g., ND series programs)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No (antibodies)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Switzerland"
   },
   {
@@ -1720,8 +1720,8 @@
     "Therapeutic Modality": "Small‑molecule immune‑modulating therapies",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (mAb)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "USA/China"
   },
   {
@@ -1735,14 +1735,14 @@
     "Therapeutic Modality": "Mitochondrial‑targeted small‑molecule therapeutics",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes (small-molecule discovery focus)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Leyden Labs",
     "Funding date": "2025-01-09",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$70M",
     "Investors": "ClavystBio; Polaris; Qiming; existing investors",
     "Description": "Dutch biotech; mucosal protection nasal spray platform against respiratory viruses; funds human efficacy studies for PanFlu and platform research.",
@@ -1750,8 +1750,8 @@
     "Therapeutic Modality": "Intranasal antibodies / intranasal biologics",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No (biologic/antiviral nasal approach unclear)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Netherlands"
   },
   {
@@ -1765,8 +1765,8 @@
     "Therapeutic Modality": "Targeted radiotherapeutics (radiopharmaceutical platform)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes (oral GLP-1)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "UK"
   },
   {
@@ -1780,14 +1780,14 @@
     "Therapeutic Modality": "Autologous logic‑gated CAR‑T cell therapy (Tmod™ platform)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No (cell therapy)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Tenvie Therapeutics",
     "Funding date": "2025-01-08",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$200M",
     "Investors": "Arch Venture Partners; F-Prime; Mubadala; other unnamed investors",
     "Description": "South San Francisco-based neurology company; houses several small-molecule assets (some from Denali); most advanced: NLRP3 inhibitor and allosteric SARM1 inhibitor in IND-enabling stage.",
@@ -1810,9 +1810,9 @@
     "Therapeutic Modality": "Bioprinted tissue therapeutics (cell‑based, 3D‑bioprinted implants)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No (cellular/tissue)",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Alesta Therapeutics",
@@ -1825,8 +1825,8 @@
     "Therapeutic Modality": "Oral small‑molecule therapies (ALE1, ALE2)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
+    "HQ City": Null,
+    "HQ State/Region": Null,
     "HQ Country": "Netherlands"
   },
   {
@@ -1840,9 +1840,9 @@
     "Therapeutic Modality": "Antisense oligonucleotide therapy (AHB‑137)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Ottimo Pharma",
@@ -1855,9 +1855,9 @@
     "Therapeutic Modality": "Bi‑functional monoclonal antibody (PD‑1 x VEGFR2 IgG; jankistomig)",
     "Lead Clinical Stage": "Preclinical (clinic‑ready)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Angitia Biopharmaceuticals",
@@ -1870,9 +1870,9 @@
     "Therapeutic Modality": "Biologics (rhBMP6 fusion therapy AGA111; bone‑building bispecific antibodies targeting sclerostin & DKK1)",
     "Lead Clinical Stage": "Clinical Phase 3 (AGA111 registrational)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Tasca Therapeutics",
@@ -1886,8 +1886,8 @@
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
     "HQ City": "Boston",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Citryll",
@@ -1900,9 +1900,9 @@
     "Therapeutic Modality": "Monoclonal antibody NETosis inhibitor (CIT‑013 targeting citrullinated histones / NETs)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Nuvig Therapeutics",
@@ -1915,9 +1915,9 @@
     "Therapeutic Modality": "Biologic immunomodulator (engineered Fc‑based antibody‑like therapy; NVG‑2089)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Antag Therapeutics",
@@ -1930,9 +1930,9 @@
     "Therapeutic Modality": "Oral small‑molecule GIPR antagonist (AT‑7687)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Maze Therapeutics",
@@ -1945,9 +1945,9 @@
     "Therapeutic Modality": "Oral small‑molecule APOL1 inhibitor (MZE829)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Adcendo",
@@ -1960,9 +1960,9 @@
     "Therapeutic Modality": "Antibody‑drug conjugates (ADCs; e.g., TF‑targeting ADCs)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Enveda",
@@ -1990,9 +1990,9 @@
     "Therapeutic Modality": "Plant‑produced weaponized antibody therapeutics (ATBody® from ATBioFarm platform)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "TRex Bio",
@@ -2005,9 +2005,9 @@
     "Therapeutic Modality": "Biologic TNFR2‑selective agonist antibody (TRB‑061)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Metsera",
@@ -2020,9 +2020,9 @@
     "Therapeutic Modality": "Incretin and non‑incretin therapies (oral & injectable GLP‑1, combinations, amylin analog)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Alentis Therapeutics",
@@ -2035,9 +2035,9 @@
     "Therapeutic Modality": "Anti‑CLDN1 antibody‑drug conjugates and antibodies (e.g., ALE.P02)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Trace Medicine",
@@ -2050,9 +2050,9 @@
     "Therapeutic Modality": "Antisense oligonucleotide (ASO) therapy targeting UNC13A mRNA",
     "Lead Clinical Stage": "Preclinical (IND‑enabling)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Evommune",
@@ -2065,9 +2065,9 @@
     "Therapeutic Modality": "Oral small‑molecule MRGPRX2 antagonist (EVO756)",
     "Lead Clinical Stage": "Clinical Phase 2b",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Axonis Therapeutics",
@@ -2080,9 +2080,9 @@
     "Therapeutic Modality": "Oral small‑molecule KCC2 potentiator (AXN‑027)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Blue Earth Therapeutics",
@@ -2095,9 +2095,9 @@
     "Therapeutic Modality": "PSMA‑targeted radioligand / radiopharmaceutical therapies",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Pathos AI",
@@ -2111,8 +2111,8 @@
     "Lead Clinical Stage": "Clinical Phase 1 (partnered asset) / Platform Preclinical",
     "Small molecule modality?": "No",
     "HQ City": "AI",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Kivu Bioscience",
@@ -2125,9 +2125,9 @@
     "Therapeutic Modality": "Next‑generation antibody‑drug conjugates (ADCs; e.g., KIVU‑107)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Agomab Therapeutics",
@@ -2140,9 +2140,9 @@
     "Therapeutic Modality": "Oral small‑molecule ALK5 (TGFβR1) inhibitor, gut‑restricted (ontunisertib / AGMB‑129)",
     "Lead Clinical Stage": "Clinical Phase 2a (advancing to Phase 2b)",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Alpha-9 Oncology",
@@ -2155,9 +2155,9 @@
     "Therapeutic Modality": "Targeted radiopharmaceutical therapies",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Genespire",
@@ -2170,9 +2170,9 @@
     "Therapeutic Modality": "Gene therapy (immune‑shielded lentiviral vectors for in vivo liver delivery and ex vivo gene editing)",
     "Lead Clinical Stage": "Preclinical (first program targeting clinic ~2026)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Vicebio",
@@ -2185,9 +2185,9 @@
     "Therapeutic Modality": "Bivalent viral vaccine (VXB‑241 RSV/hMPV, Molecular Clamp technology)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "GC Therapeutics",
@@ -2200,9 +2200,9 @@
     "Therapeutic Modality": "Programmable iPSC‑derived cell therapies (TFome™ cell‑programming platform)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Superluminal Medicines",
@@ -2216,8 +2216,8 @@
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
     "HQ City": "Boston",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "OrsoBio",
@@ -2230,9 +2230,9 @@
     "Therapeutic Modality": "Oral small‑molecule mitochondrial protonophore (liver‑targeted TLC‑6740)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "ArsenalBio",
@@ -2245,9 +2245,9 @@
     "Therapeutic Modality": "Autologous programmable CAR‑T / engineered T‑cell therapies",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Circle Pharma",
@@ -2260,9 +2260,9 @@
     "Therapeutic Modality": "Oral macrocyclic small‑molecule Cyclin A/B‑RxL inhibitor (CID‑078)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Navigator Medicines",
@@ -2275,9 +2275,9 @@
     "Therapeutic Modality": "Bispecific antibody targeting OX40L and TNFα (NAV‑240)",
     "Lead Clinical Stage": "Clinical Phase 1b/2a",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Borealis Biosciences",
@@ -2290,9 +2290,9 @@
     "Therapeutic Modality": "xRNA‑based RNA therapeutics (Novartis xRNA platform)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Pathalys Pharma",
@@ -2305,9 +2305,9 @@
     "Therapeutic Modality": "Small‑molecule calcimimetic (upacicalcet / PLS240)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Red Queen Therapeutics",
@@ -2320,9 +2320,9 @@
     "Therapeutic Modality": "Stapled lipopeptide antiviral (intranasal fusion‑blocking peptide)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "MBX Biosciences",
@@ -2335,9 +2335,9 @@
     "Therapeutic Modality": "Precision peptide therapies (PEPs) for hormone and metabolic diseases",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Outpace Bio",
@@ -2350,14 +2350,14 @@
     "Therapeutic Modality": "Engineered T‑cell therapies enhanced by AI‑designed proteins (e.g., OutSmart™ IL‑2/15)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Jade Biosciences",
     "Funding date": "2024-08-01",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$80M",
     "Investors": "Led by Fairmount and Venrock Healthcare Capital Partners with participation by Deep Track Capital, Driehaus Capital Management, Franklin Templeton, RTW Investments and Braidwell LP.",
     "Description": "Autoimmune biotech Jade's $80 million financing will be used to support plans to develop targeted therapies. ",
@@ -2365,9 +2365,9 @@
     "Therapeutic Modality": "Monoclonal antibodies targeting APRIL and BAFF‑R (e.g., JADE101, JADE201)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "AIRNA",
@@ -2380,9 +2380,9 @@
     "Therapeutic Modality": "RNA editing therapy (AIR‑001; ADAR‑mediated RNA‑editing therapeutic)",
     "Lead Clinical Stage": "Clinical Phase 1/2 (entering first‑in‑human)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Confo Therapeutics",
@@ -2395,9 +2395,9 @@
     "Therapeutic Modality": "Small‑molecule GPCR modulators",
     "Lead Clinical Stage": "Clinical Phase 1 (GPCR programs entering early trials)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Autobahn Therapeutics",
@@ -2411,8 +2411,8 @@
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
     "HQ City": "San Diego",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Brenig Therapeutics",
@@ -2425,9 +2425,9 @@
     "Therapeutic Modality": "Oral small‑molecule LRRK2 inhibitor (BT‑267)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "GRO Biosciences",
@@ -2440,9 +2440,9 @@
     "Therapeutic Modality": "Engineered protein therapeutic incorporating non‑standard amino acids (ProGly‑Uricase)",
     "Lead Clinical Stage": "Preclinical (advancing to first‑in‑human)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "NGM Bio",
@@ -2455,9 +2455,9 @@
     "Therapeutic Modality": "Monoclonal antibody checkpoint inhibitor (NGM707) and FGF19 analog (aldafermin)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Cardurion Pharmaceuticals",
@@ -2470,9 +2470,9 @@
     "Therapeutic Modality": "Oral small‑molecule PDE9 inhibitor (CRD‑750 / tovinontrine)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Scorpion Therapeutics",
@@ -2486,8 +2486,8 @@
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "Yes",
     "HQ City": "Boston",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "CatalYm",
@@ -2500,9 +2500,9 @@
     "Therapeutic Modality": "Monoclonal antibody neutralizing GDF‑15 (visugromab / CTL‑002)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Asceneuron",
@@ -2515,9 +2515,9 @@
     "Therapeutic Modality": "Oral small‑molecule O‑GlcNAcase (OGA) inhibitor (ASN51)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "SciRhom GmbH",
@@ -2531,8 +2531,8 @@
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
     "HQ City": "Munich",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Myricx Bio",
@@ -2545,9 +2545,9 @@
     "Therapeutic Modality": "Antibody‑drug conjugates (ADCs) with novel N‑myristoyltransferase inhibitor (NMTi) payloads",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Beacon Therapeutics",
@@ -2561,8 +2561,8 @@
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
     "HQ City": "London",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Formation Bio",
@@ -2576,8 +2576,8 @@
     "Lead Clinical Stage": "Clinical (Phase 1/2 across portfolio)",
     "Small molecule modality?": "No",
     "HQ City": "AI",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Exsilio Therapeutics",
@@ -2590,9 +2590,9 @@
     "Therapeutic Modality": "Redosable genomic medicines using naturally occurring programmable genetic elements via mRNA intermediates",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "iOnctura",
@@ -2605,9 +2605,9 @@
     "Therapeutic Modality": "Oral small‑molecule allosteric PI3Kδ modulator (roginolisib / IOA‑244)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Marea Therapeutics",
@@ -2620,14 +2620,14 @@
     "Therapeutic Modality": "Monoclonal antibody ANGPTL4 inhibitor (MAR001)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "CinRx Pharma",
     "Funding date": "2024-05-30",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$73M",
     "Investors": "Previous unnamed investors",
     "Description": "Hub-and-spoke biotech CinRx Pharma closed a $73 million financing. ",
@@ -2635,9 +2635,9 @@
     "Therapeutic Modality": "Small‑molecule therapies advanced via hub‑and‑spoke clinical subsidiaries",
     "Lead Clinical Stage": "Clinical (Phase 2/3 across portfolio)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Grey Wolf Therapeutics",
@@ -2651,8 +2651,8 @@
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
     "HQ City": "Australian",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "AltruBio",
@@ -2665,9 +2665,9 @@
     "Therapeutic Modality": "Monoclonal PSGL‑1 agonist antibody immune checkpoint enhancer (ALTB‑268)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Endeavor BioMedicines",
@@ -2680,9 +2680,9 @@
     "Therapeutic Modality": "Small-molecule Hedgehog pathway inhibitor",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "SynOx Therapeutics",
@@ -2695,9 +2695,9 @@
     "Therapeutic Modality": "Monoclonal antibody (CSF1R inhibitor – emactuzumab)",
     "Lead Clinical Stage": "Clinical Phase 3",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Seaport Therapeutics",
@@ -2710,9 +2710,9 @@
     "Therapeutic Modality": "Oral neurosteroid prodrug",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Alterome Therapeutics",
@@ -2726,13 +2726,13 @@
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
     "HQ City": "California",
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Neurosterix",
     "Funding date": "2024-04-03",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$63M",
     "Investors": "Perceptive Xontogeny Venture Fund II, Perceptive Life Sciences Fund and Acorn Bioventures.",
     "Description": "Neurosterix will develop allosteric modulators to treat underserved neurological disorders. ",
@@ -2740,14 +2740,14 @@
     "Therapeutic Modality": "Allosteric modulator small molecules",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Diagonal Therapeutics",
     "Funding date": "2024-04-03",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$128M",
     "Investors": "BVF Partners, Atlas Venture, Lightspeed Venture Partners, RA Capital Management, Frazier Life Sciences, Viking Global Investors, Velosity Capital and Checkpoint Capital.",
     "Description": "Diagonal raised $128 million to advance its antibody agonist-building platform. ",
@@ -2755,9 +2755,9 @@
     "Therapeutic Modality": "Multispecific clustering antibodies",
     "Lead Clinical Stage": "Preclinical (entering Phase 1)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Obsidian Therapeutics",
@@ -2770,9 +2770,9 @@
     "Therapeutic Modality": "Engineered TIL cell therapy (mbIL15-enabled)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "BlossomHill Therapeutics",
@@ -2785,9 +2785,9 @@
     "Therapeutic Modality": "Small-molecule targeted therapies",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Kenai Therapeutics",
@@ -2800,9 +2800,9 @@
     "Therapeutic Modality": "Allogeneic iPSC-derived neuron replacement cell therapy",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Curve Therapeutics",
@@ -2815,9 +2815,9 @@
     "Therapeutic Modality": "Microcycle intracellular peptide macrocycles",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Frontier Medicines",
@@ -2830,9 +2830,9 @@
     "Therapeutic Modality": "Covalent small-molecule inhibitors (chemoproteomics-driven)",
     "Lead Clinical Stage": "Preclinical / Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Eyconis",
@@ -2860,9 +2860,9 @@
     "Therapeutic Modality": "Mutant-selective PI3Kα inhibitors",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Calluna Pharma",
@@ -2875,9 +2875,9 @@
     "Therapeutic Modality": "Innate-immune modulators",
     "Lead Clinical Stage": "Preclinical / Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Lykos Therapeutics",
@@ -2890,9 +2890,9 @@
     "Therapeutic Modality": "MDMA-assisted therapy",
     "Lead Clinical Stage": "Post-Phase 3 (NDA not approved)",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Claris Bio",
@@ -2905,9 +2905,9 @@
     "Therapeutic Modality": "Topical biologic dHGF",
     "Lead Clinical Stage": "Preclinical / entering Phase 1",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Moonwalk Biosciences",
@@ -2920,9 +2920,9 @@
     "Therapeutic Modality": "Epigenetic editing therapeutics / siRNA",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "No",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Sudo Biosciences",
@@ -2935,9 +2935,9 @@
     "Therapeutic Modality": "Oral allosteric TYK2 inhibitor",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Kimia Therapeutics",
@@ -2950,9 +2950,9 @@
     "Therapeutic Modality": "AI/ML-driven small-molecule platform",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Lassen Therapeutics",
@@ -2965,9 +2965,9 @@
     "Therapeutic Modality": "IL-11 receptor monoclonal antibody",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Totus Medicines",
@@ -2980,14 +2980,14 @@
     "Therapeutic Modality": "Covalent small‑molecule KRAS inhibitors",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "EvolveImmune Therapeutics",
     "Funding date": "2023-12-13",
-    "Funding round": NaN,
+    "Funding round": Null,
     "Funding amount": "$37M",
     "Investors": "Pfizer Ventures, Solasta Ventures, and Takeda Ventures, Inc., and Bristol Myers Squibb.",
     "Description": "EvolveImmune has secured $37 million with support from the venture arms of several Big Pharmas. The Connecticut-based biotech plans to use the new funds to continue building out its platform and pipeline, which includes EV-104, EvolveImmune's lead multi-functional T-cell engager program.",
@@ -2995,9 +2995,9 @@
     "Therapeutic Modality": "T‑cell engager antibodies (TARGETED T‑cell activation)",
     "Lead Clinical Stage": "Preclinical / IND‑enabling",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Tome Biosciences",
@@ -3010,9 +3010,9 @@
     "Therapeutic Modality": "CRISPR‑based gene integration (PIPED editing)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Bicara Therapeutics",
@@ -3025,9 +3025,9 @@
     "Therapeutic Modality": "Bifunctional biologics (e.g., EGFR x TGFβ inhibitors)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Shinobi Therapeutics",
@@ -3040,9 +3040,9 @@
     "Therapeutic Modality": "Engineered stealth CAR‑T cell therapies",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Freya Biosciences",
@@ -3055,9 +3055,9 @@
     "Therapeutic Modality": "Live biotherapeutics (microbiome‑based therapeutics)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
+    "HQ City": Null,
     "HQ State/Region": "Danish",
-    "HQ Country": NaN
+    "HQ Country": Null
   },
   {
     "Company": "ARTBIO",
@@ -3070,9 +3070,9 @@
     "Therapeutic Modality": "Alpha‑radioligand therapies (α‑RLT) using Pb‑212",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Odyssey Therapeutics",
@@ -3085,9 +3085,9 @@
     "Therapeutic Modality": "Small‑molecule precision inhibitors (covalent & allosteric)",
     "Lead Clinical Stage": "Preclinical / early clinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Eligo Bioscience",
@@ -3100,9 +3100,9 @@
     "Therapeutic Modality": "CRISPR‑based in vivo gene editing for bacterial genomes",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Seismic Therapeutic",
@@ -3115,9 +3115,9 @@
     "Therapeutic Modality": "AI‑designed biologics (machine‑learning optimized antibodies)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Arrivo BioVentures",
@@ -3130,9 +3130,9 @@
     "Therapeutic Modality": "Small‑molecule and biologic in‑licensed programs",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Aro Biotherapeutics",
@@ -3145,9 +3145,9 @@
     "Therapeutic Modality": "Centyrin‑siRNA conjugates (targeted RNA therapies)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Vivodyne",
@@ -3160,9 +3160,9 @@
     "Therapeutic Modality": "AI‑driven large‑scale human tissue models for drug development",
     "Lead Clinical Stage": "Preclinical (discovery platform)",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Alto Neuroscience",
@@ -3175,9 +3175,9 @@
     "Therapeutic Modality": "Precision psychiatry small molecules",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "NMD Pharma",
@@ -3190,9 +3190,9 @@
     "Therapeutic Modality": "Small‑molecule ClC‑1 inhibitors / muscle excitability modulators",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Forward Therapeutics",
@@ -3205,9 +3205,9 @@
     "Therapeutic Modality": "Anti‑TL1A monoclonal antibodies",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Kynexis",
@@ -3220,9 +3220,9 @@
     "Therapeutic Modality": "Small‑molecule PDE10A inhibitor (KYN‑5356)",
     "Lead Clinical Stage": "Clinical Phase 1/2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Terremoto Biosciences",
@@ -3235,9 +3235,9 @@
     "Therapeutic Modality": "Covalent small‑molecule inhibitors (chemoproteomics platform)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Gate Bioscience",
@@ -3250,9 +3250,9 @@
     "Therapeutic Modality": "Molecular degraders targeting membrane proteins",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "MapLight Therapeutics",
@@ -3265,9 +3265,9 @@
     "Therapeutic Modality": "Small‑molecule neurocircuit‑specific modulators",
     "Lead Clinical Stage": "Preclinical / Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Triveni Bio",
@@ -3280,9 +3280,9 @@
     "Therapeutic Modality": "Monoclonal antibody against KLK7 (TRIV‑509)",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Rome Therapeutics",
@@ -3295,9 +3295,9 @@
     "Therapeutic Modality": "Small‑molecule therapies targeting the viral ‘dark genome’",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Arialys Therapeutics",
@@ -3310,9 +3310,9 @@
     "Therapeutic Modality": "Monoclonal antibodies targeting pathogenic autoantibodies",
     "Lead Clinical Stage": "Preclinical / IND‑enabling",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Mariana Oncology",
@@ -3325,9 +3325,9 @@
     "Therapeutic Modality": "Radiopharmaceuticals / Targeted radioligand therapies",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "FORE Biotherapeutics",
@@ -3340,9 +3340,9 @@
     "Therapeutic Modality": "FGFR inhibitor small molecule (FORE8394)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Renibus Therapeutics",
@@ -3355,9 +3355,9 @@
     "Therapeutic Modality": "Stabilized stannous prodrug (RBT‑1)",
     "Lead Clinical Stage": "Clinical Phase 2/3",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Bitterroot Bio",
@@ -3370,9 +3370,9 @@
     "Therapeutic Modality": "Anti‑NET biologics / immunomodulatory biologics",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "DiogenX",
@@ -3385,9 +3385,9 @@
     "Therapeutic Modality": "Pancreatic β‑cell regeneration small molecule (DGX‑001)",
     "Lead Clinical Stage": "Preclinical",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
+    "HQ City": Null,
     "HQ State/Region": "French",
-    "HQ Country": NaN
+    "HQ Country": Null
   },
   {
     "Company": "Cullgen",
@@ -3400,9 +3400,9 @@
     "Therapeutic Modality": "Targeted protein degraders (TPD) via uSMITE platform",
     "Lead Clinical Stage": "Clinical Phase 1",
     "Small molecule modality?": "Yes",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "Flare Therapeutics",
@@ -3417,7 +3417,7 @@
     "Small molecule modality?": "Yes",
     "HQ City": "The Cambridge",
     "HQ State/Region": "Massachusetts",
-    "HQ Country": NaN
+    "HQ Country": Null
   },
   {
     "Company": "Transcend Therapeutics",
@@ -3430,9 +3430,9 @@
     "Therapeutic Modality": "Non-hallucinogenic MDMA‑analog small molecule (TSND‑201)",
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
-    "HQ City": NaN,
-    "HQ State/Region": NaN,
-    "HQ Country": NaN
+    "HQ City": Null,
+    "HQ State/Region": Null,
+    "HQ Country": Null
   },
   {
     "Company": "HighTide Therapeutics",
@@ -3446,7 +3446,7 @@
     "Lead Clinical Stage": "Clinical Phase 2",
     "Small molecule modality?": "Unclear",
     "HQ City": "Shenzhen",
-    "HQ State/Region": NaN,
+    "HQ State/Region": Null,
     "HQ Country": "China"
   }
 ]
