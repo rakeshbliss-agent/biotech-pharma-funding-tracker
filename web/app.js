@@ -158,6 +158,12 @@ FILTERS.therapeutic_area = selected.join(",");
   FILTERS.segment = document.getElementById("fSegment").value.trim();
   FILTERS.min_amount = document.getElementById("fMinAmt").value.trim();
   FILTERS.max_amount = document.getElementById("fMaxAmt").value.trim();
+  const minM = parseInt(document.getElementById("minAmt").value, 10);
+const maxM = parseInt(document.getElementById("maxAmt").value, 10);
+
+// store as USD
+FILTERS.min_amount = String(minM * 1_000_000);
+FILTERS.max_amount = String(maxM * 1_000_000);
 }
 function wireEnterToApply() {
   const ids = ["fKeyword","fModality","fTA","fSegment","fMinAmt","fMaxAmt"];
@@ -174,6 +180,29 @@ function wireEnterToApply() {
     });
   });
 }
+
+function wireAmountSliders() {
+  const minEl = document.getElementById("minAmt");
+  const maxEl = document.getElementById("maxAmt");
+  const minLab = document.getElementById("minAmtLabel");
+  const maxLab = document.getElementById("maxAmtLabel");
+
+  function sync() {
+    let minV = parseInt(minEl.value, 10);
+    let maxV = parseInt(maxEl.value, 10);
+    if (minV > maxV) {
+      // keep them consistent
+      maxV = minV;
+      maxEl.value = String(maxV);
+    }
+    minLab.textContent = String(minV);
+    maxLab.textContent = String(maxV);
+  }
+
+  minEl.addEventListener("input", sync);
+  maxEl.addEventListener("input", sync);
+  sync();
+}
 function clearDrawer() {
   ["fKeyword","fGeo","fModality","fTA","fSegment","fMinAmt","fMaxAmt"].forEach(id=>{
     const el = document.getElementById(id);
@@ -187,6 +216,12 @@ function clearDrawer() {
   FILTERS.segment = "";
   FILTERS.min_amount = "";
   FILTERS.max_amount = "";
+  document.getElementById("minAmt").value = "0";
+document.getElementById("maxAmt").value = "1000";
+document.getElementById("minAmtLabel").textContent = "0";
+document.getElementById("maxAmtLabel").textContent = "1000";
+FILTERS.min_amount = "";
+FILTERS.max_amount = "";
 }
 
 function setActiveTab(mode) {
@@ -203,6 +238,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     btn.addEventListener("click", async () => {
       setActiveTab(btn.dataset.mode);
       wireEnterToApply();
+      wireAmountSliders();
       await refresh();
     });
   });
