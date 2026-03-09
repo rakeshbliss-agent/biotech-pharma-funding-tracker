@@ -174,12 +174,18 @@ def _extract_amount_from_query_text(q: str) -> Optional[float]:
 
 def _split_terms(keyword: str) -> List[str]:
     """
-    Split a query like "oncology + eli lilly + 500k" into AND terms.
+    AND terms only when user uses '+' or 'and' explicitly.
+    Otherwise treat it as a normal phrase search.
     """
     if not keyword:
         return []
-    parts = re.split(r"[+,]|(?:\s+and\s+)", keyword, flags=re.I)
-    return [p.strip().lower() for p in parts if p.strip()]
+
+    if "+" in keyword or re.search(r"\s+and\s+", keyword, flags=re.I):
+        parts = re.split(r"\+|(?:\s+and\s+)", keyword, flags=re.I)
+        return [p.strip().lower() for p in parts if p.strip()]
+
+    # Normal search: just one term (the whole cleaned keyword)
+    return [keyword.strip().lower()]
 
 
 def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
@@ -276,7 +282,26 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["min_amount"] = str(amt)
 
     # keyword: keep the raw query
-    filters["keyword"] = query
+    # keyword: only set keyword if user provided meaningful search terms
+# If user is asking a generic "which companies received funding..." question,
+# we should NOT force the full sentence as keyword (it kills results).
+generic_phrases = [
+    "which companies", "received funding", "who received funding",
+    "who raised", "who got funding", "raised funding",
+    "since last month", "last month", "past month", "past 30 days",
+    "since last week", "last week", "past week", "past 7 days", "last 7 days",
+    "today", "this week", "current week"
+]
+
+# Remove generic phrases before deciding keyword
+cleaned = q
+for gp in generic_phrases:
+    cleaned = cleaned.replace(gp, " ")
+cleaned = re.sub(r"\s+", " ", cleaned).strip()
+
+# If anything meaningful remains (e.g., "oncology", "eli lilly"), use it as keyword
+if cleaned:
+    filters["keyword"] = cleaned
 
     apply_date_preset(filters)
     return {"query": query, "mode": mode, "filters": filters, "action": action}
