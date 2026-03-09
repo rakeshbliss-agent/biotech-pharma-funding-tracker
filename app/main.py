@@ -5,7 +5,7 @@ import math
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -27,7 +27,7 @@ DEALS_FILE = APP_DIR / "deals_data.json"
 
 WEB_DIR = REPO_ROOT / "web"
 
-app = FastAPI(title="Biotech/Pharma Funding + Deals Tracker", version="1.1.0")
+app = FastAPI(title="Biotech/Pharma Funding + Deals Tracker", version="1.2.0")
 
 
 def _clean_json(obj: Any) -> Any:
@@ -52,6 +52,7 @@ def _load_list(path: Path) -> List[Dict[str, Any]]:
 
 
 def _sort_by_date(rows: List[Dict[str, Any]], date_key: str) -> List[Dict[str, Any]]:
+    # Works only if date is ISO "YYYY-MM-DD". If missing -> "" pushes to bottom.
     return sorted(rows, key=lambda r: (r.get(date_key) or ""), reverse=True)
 
 
@@ -69,8 +70,9 @@ def _build_filters(
     therapeutic_area: Optional[str] = None,
     min_amount: Optional[float] = None,
     max_amount: Optional[float] = None,
-):
+) -> Dict[str, Any]:
     filters: Dict[str, Any] = {}
+
     if date_preset:
         filters["date_preset"] = date_preset
     if q:
@@ -144,6 +146,7 @@ def api_both(
 ):
     funding = _sort_by_date(_load_list(FUNDING_FILE), "Funding date")
     deals = _sort_by_date(_load_list(DEALS_FILE), "Deal date")
+
     filters = _build_filters(date_preset, q, geo, modality, segment, therapeutic_area, min_amount, max_amount)
 
     f_rows = filter_rows_funding(funding, filters)
@@ -191,7 +194,7 @@ def chat(req: ChatRequest):
     }
 
 
-# Serve the front-end
+# Serve front-end
 app.mount("/", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
 
 
