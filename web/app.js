@@ -1,5 +1,12 @@
 // web/app.js
 
+function el(sel) { return document.querySelector(sel); }
+function els(sel) { return Array.from(document.querySelectorAll(sel)); }
+
+function getMode() {
+  return (el("#mode")?.value || "funding").toLowerCase();
+}
+
 function getEndpointForMode(mode) {
   if (mode === "deals") return "/api/deals";
   if (mode === "both") return "/api/both";
@@ -15,81 +22,116 @@ function fmtUSD(x) {
   return `$${n}`;
 }
 
-function el(sel) {
-  return document.querySelector(sel);
-}
-
 function syncAmountLabels() {
   const minSlider = el("#minAmount");
   const maxSlider = el("#maxAmount");
   const minLabel = el("#minAmountLabel");
   const maxLabel = el("#maxAmountLabel");
-
   if (!minSlider || !maxSlider || !minLabel || !maxLabel) return;
-
   minLabel.textContent = fmtUSD(minSlider.value);
   maxLabel.textContent = fmtUSD(maxSlider.value);
 }
 
+function openDrawer() {
+  el("#drawer")?.classList.remove("hidden");
+  el("#drawerBackdrop")?.classList.remove("hidden");
+}
+function closeDrawer() {
+  el("#drawer")?.classList.add("hidden");
+  el("#drawerBackdrop")?.classList.add("hidden");
+}
+
+function buildParams() {
+  const params = new URLSearchParams();
+  params.set("limit", "50000");
+
+  // date preset
+  const preset = el("#datePreset")?.value || "all";
+  if (preset && preset !== "all") params.set("date_preset", preset);
+
+  // BASIC query (always visible)
+  const q = (el("#q")?.value || "").trim();
+
+  // Drawer keyword (optional override/add)
+  const qDrawer = (el("#qDrawer")?.value || "").trim();
+
+  // Combine basic + drawer keyword if both exist
+  const combinedQ = [q, qDrawer].filter(Boolean).join(" + ");
+  if (combinedQ) params.set("q", combinedQ);
+
+  // Drawer fields
+  const geo = (el("#geo")?.value || "").trim();
+  if (geo) params.set("geo", geo);
+
+  const modality = (el("#modality")?.value || "").trim();
+  if (modality) params.set("modality", modality);
+
+  const segment = (el("#segment")?.value || "").trim();
+  if (segment) params.set("segment", segment);
+
+  const therapeuticArea = (el("#therapeuticArea")?.value || "").trim();
+  if (therapeuticArea) params.set("therapeutic_area", therapeuticArea);
+
+  const minAmount = el("#minAmount")?.value;
+  const maxAmount = el("#maxAmount")?.value;
+  if (minAmount !== undefined && String(minAmount).trim() !== "") params.set("min_amount", String(minAmount));
+  if (maxAmount !== undefined && String(maxAmount).trim() !== "") params.set("max_amount", String(maxAmount));
+
+  return params;
+}
+
 function renderTable(rows) {
-  const body = el("#resultsTableBody");
+  const thead = el("#thead");
+  const tbody = el("#resultsTableBody");
   const countEl = el("#resultCount");
-  if (countEl) countEl.textContent = `${rows.length}`;
 
-  if (!body) return;
-  body.innerHTML = "";
+  if (countEl) countEl.textContent = String(rows?.length || 0);
+  if (!thead || !tbody) return;
 
-  const keys = rows.length ? Object.keys(rows[0]) : [];
+  tbody.innerHTML = "";
+  thead.innerHTML = "";
+
+  if (!rows || rows.length === 0) {
+    thead.innerHTML = "<tr><th>No results</th></tr>";
+    return;
+  }
+
+  const keys = Object.keys(rows[0]);
+
+  // Header
+  const hr = document.createElement("tr");
+  keys.forEach((k) => {
+    const th = document.createElement("th");
+    th.textContent = k;
+    hr.appendChild(th);
+  });
+  thead.appendChild(hr);
+
+  // Body
   rows.forEach((r) => {
     const tr = document.createElement("tr");
     keys.forEach((k) => {
       const td = document.createElement("td");
-      td.textContent = (r[k] === null || r[k] === undefined) ? "" : String(r[k]);
+      const v = r[k];
+      td.textContent = (v === null || v === undefined) ? "" : String(v);
       tr.appendChild(td);
     });
-    body.appendChild(tr);
+    tbody.appendChild(tr);
   });
 }
 
 async function applyFilters() {
-  const mode = (el("#mode")?.value || "funding").toLowerCase();
+  syncAmountLabels();
+
+  const mode = getMode();
   const endpoint = getEndpointForMode(mode);
+  const params = buildParams();
 
-  const params = new URLSearchParams();
-  params.set("limit", "50000");
-
-  const preset = el("#datePreset")?.value || "all";
-  if (preset && preset !== "all") params.set("date_preset", preset);
-
-  const q = (el("#q")?.value || "").trim();
-  if (q) params.set("q", q);
-
-  const geo = el("#geo")?.value || "all";
-  if (geo && geo !== "all") params.set("geo", geo);
-
-  const modality = el("#modality")?.value || "all";
-  if (modality && modality !== "all") params.set("modality", modality);
-
-  const segment = el("#segment")?.value || "all";
-  if (segment && segment !== "all") params.set("segment", segment);
-
-  const therapeuticArea = el("#therapeuticArea")?.value || "";
-  if (therapeuticArea.trim()) params.set("therapeutic_area", therapeuticArea.trim());
-
-  const minAmount = el("#minAmount")?.value;
-  const maxAmount = el("#maxAmount")?.value;
-  if (minAmount !== undefined && minAmount !== null && String(minAmount).trim() !== "") {
-    params.set("min_amount", String(minAmount));
-  }
-  if (maxAmount !== undefined && maxAmount !== null && String(maxAmount).trim() !== "") {
-    params.set("max_amount", String(maxAmount));
-  }
-
-  // Fetch and render
   const url = `${endpoint}?${params.toString()}`;
   const res = await fetch(url);
+
   if (!res.ok) {
-    console.error("Fetch failed:", res.status, await res.text());
+    console.error("API failed:", res.status, await res.text());
     renderTable([]);
     return;
   }
@@ -97,14 +139,49 @@ async function applyFilters() {
   renderTable(data.rows || []);
 }
 
+function clearFilters() {
+  // basic search
+  if (el("#q")) el("#q").value = "";
+  // drawer fields
+  if (el("#qDrawer")) el("#qDrawer").value = "";
+  if (el("#geo")) el("#geo").value = "";
+  if (el("#modality")) el("#modality").value = "";
+  if (el("#segment")) el("#segment").value = "";
+  if (el("#therapeuticArea")) el("#therapeuticArea").value = "";
+
+  // sliders reset
+  if (el("#minAmount")) el("#minAmount").value = "0";
+  if (el("#maxAmount")) el("#maxAmount").value = "2000000000";
+  syncAmountLabels();
+
+  applyFilters();
+}
+
 function wireEvents() {
-  // Apply button
+  // Drawer open/close
+  el("#openFilters")?.addEventListener("click", openDrawer);
+  el("#closeFilters")?.addEventListener("click", closeDrawer);
+  el("#drawerBackdrop")?.addEventListener("click", closeDrawer);
+
+  // Apply/Clear
   el("#applyBtn")?.addEventListener("click", (e) => {
     e.preventDefault();
     applyFilters();
+    closeDrawer();
+  });
+  el("#clearFilters")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    clearFilters();
   });
 
-  // Enter key triggers apply (for inputs/selects)
+  // Mode + datePreset should refetch
+  el("#mode")?.addEventListener("change", applyFilters);
+  el("#datePreset")?.addEventListener("change", applyFilters);
+
+  // Refresh button
+  el("#refreshBtn")?.addEventListener("click", applyFilters);
+
+  // Enter triggers apply
   document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const active = document.activeElement;
@@ -115,23 +192,9 @@ function wireEvents() {
     }
   });
 
-  // Mode/preset/filters change triggers apply
-  ["#mode", "#datePreset", "#geo", "#modality", "#segment"].forEach((sel) => {
-    el(sel)?.addEventListener("change", applyFilters);
-  });
-
-  // Query typing: optional "live" behavior (comment out if you want manual only)
-  // el("#q")?.addEventListener("input", debounce(applyFilters, 400));
-
-  // Sliders update labels live + reapply on change
-  el("#minAmount")?.addEventListener("input", () => {
-    syncAmountLabels();
-  });
-  el("#maxAmount")?.addEventListener("input", () => {
-    syncAmountLabels();
-  });
-
-  // If you want changing slider to automatically apply:
+  // Slider labels live
+  el("#minAmount")?.addEventListener("input", syncAmountLabels);
+  el("#maxAmount")?.addEventListener("input", syncAmountLabels);
   el("#minAmount")?.addEventListener("change", applyFilters);
   el("#maxAmount")?.addEventListener("change", applyFilters);
 
@@ -140,5 +203,5 @@ function wireEvents() {
 
 document.addEventListener("DOMContentLoaded", () => {
   wireEvents();
-  applyFilters(); // initial load
+  applyFilters();
 });
