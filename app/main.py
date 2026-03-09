@@ -5,17 +5,18 @@ import math
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from .nlp import (
-    interpret_query,
-    filter_rows_funding,
+    apply_date_preset,
     filter_rows_deals,
-    summarize_answer,
+    filter_rows_funding,
+    interpret_query,
     merge_rows_for_chat,
+    summarize_answer,
 )
 
 APP_DIR = Path(__file__).resolve().parent
@@ -23,13 +24,13 @@ REPO_ROOT = APP_DIR.parent
 
 FUNDING_FILE = APP_DIR / "funding_data.json"
 DEALS_FILE = APP_DIR / "deals_data.json"
+
 WEB_DIR = REPO_ROOT / "web"
 
-app = FastAPI(title="Biotech/Pharma Tracker", version="2.0.0")
+app = FastAPI(title="Biotech/Pharma Funding + Deals Tracker", version="1.1.0")
 
 
 def _clean_json(obj: Any) -> Any:
-    """Convert NaN/Inf floats to None (JSON null) recursively."""
     if isinstance(obj, float):
         if math.isnan(obj) or math.isinf(obj):
             return None
@@ -41,155 +42,156 @@ def _clean_json(obj: Any) -> Any:
     return obj
 
 
-def _load_json_array(path: Path) -> List[Dict[str, Any]]:
+def _load_list(path: Path) -> List[Dict[str, Any]]:
     if not path.exists():
         return []
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except json.JSONDecodeError as e:
-        raise RuntimeError(
-            f"Invalid JSON in {path.name} at line {e.lineno}, col {e.colno}: {e.msg}"
-        ) from e
-
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
     data = _clean_json(data)
     return data if isinstance(data, list) else []
 
 
-def load_funding() -> List[Dict[str, Any]]:
-    return _load_json_array(FUNDING_FILE)
-
-
-def load_deals() -> List[Dict[str, Any]]:
-    return _load_json_array(DEALS_FILE)
-
-
-def sort_by_date(rows: List[Dict[str, Any]], date_key: str) -> List[Dict[str, Any]]:
+def _sort_by_date(rows: List[Dict[str, Any]], date_key: str) -> List[Dict[str, Any]]:
     return sorted(rows, key=lambda r: (r.get(date_key) or ""), reverse=True)
 
 
 @app.get("/api/health")
 def health():
-    return {"ok": True, "funding_rows": len(load_funding()), "deals_rows": len(load_deals())}
+    return {"ok": True}
+
+
+def _build_filters(
+    date_preset: Optional[str] = None,
+    q: Optional[str] = None,
+    geo: Optional[str] = None,
+    modality: Optional[str] = None,
+    segment: Optional[str] = None,
+    therapeutic_area: Optional[str] = None,
+    min_amount: Optional[float] = None,
+    max_amount: Optional[float] = None,
+):
+    filters: Dict[str, Any] = {}
+    if date_preset:
+        filters["date_preset"] = date_preset
+    if q:
+        filters["keyword"] = q
+    if geo:
+        filters["geo"] = geo
+    if modality:
+        filters["modality"] = modality
+    if segment:
+        filters["segment"] = segment
+    if therapeutic_area:
+        filters["therapeutic_area"] = therapeutic_area
+    if min_amount is not None:
+        filters["min_amount"] = min_amount
+    if max_amount is not None:
+        filters["max_amount"] = max_amount
+
+    apply_date_preset(filters)
+    return filters
 
 
 @app.get("/api/funding")
-def get_funding(
-    # common filters
-    date_preset: Optional[str] = None,  # this_week|last_7|last_30|ytd|all
-    from_date: Optional[str] = None,
-    to_date: Optional[str] = None,
-    keyword: Optional[str] = None,
-    geo: Optional[str] = None,  # US|Europe|APAC|ROW
+def api_funding(
+    date_preset: Optional[str] = None,
+    q: Optional[str] = None,
+    geo: Optional[str] = None,
     modality: Optional[str] = None,
-    therapeutic_area: Optional[str] = None,
     segment: Optional[str] = None,
-    min_amount: Optional[float] = None,  # in USD
-    max_amount: Optional[float] = None,  # in USD
-    # funding-specific
-    company: Optional[str] = None,
-    round: Optional[str] = None,
-    small_molecule: Optional[str] = None,  # yes|no
+    therapeutic_area: Optional[str] = None,
+    min_amount: Optional[float] = None,
+    max_amount: Optional[float] = None,
     limit: int = 50000,
 ):
-    rows = sort_by_date(load_funding(), "Funding date")
-    filters = {
-        "date_preset": date_preset,
-        "from_date": from_date,
-        "to_date": to_date,
-        "keyword": keyword,
-        "geo": geo,
-        "modality": modality,
-        "therapeutic_area": therapeutic_area,
-        "segment": segment,
-        "min_amount": min_amount,
-        "max_amount": max_amount,
-        "company": company,
-        "round": round,
-        "small_molecule": small_molecule,
-    }
+    rows = _sort_by_date(_load_list(FUNDING_FILE), "Funding date")
+    filters = _build_filters(date_preset, q, geo, modality, segment, therapeutic_area, min_amount, max_amount)
     filtered = filter_rows_funding(rows, filters)
-    result = {"count": len(filtered), "rows": filtered[: max(1, min(limit, 50000))]}
-    return _clean_json(result)
+    lim = max(1, min(int(limit), 50000))
+    return {"count": len(filtered), "rows": filtered[:lim]}
 
 
 @app.get("/api/deals")
-def get_deals(
-    # common filters
-    date_preset: Optional[str] = None,  # this_week|last_7|last_30|ytd|all
-    from_date: Optional[str] = None,
-    to_date: Optional[str] = None,
-    keyword: Optional[str] = None,
-    geo: Optional[str] = None,  # US|Europe|APAC|ROW (target geo)
+def api_deals(
+    date_preset: Optional[str] = None,
+    q: Optional[str] = None,
+    geo: Optional[str] = None,
     modality: Optional[str] = None,
-    therapeutic_area: Optional[str] = None,
     segment: Optional[str] = None,
-    min_amount: Optional[float] = None,  # in USD (upfront)
-    max_amount: Optional[float] = None,  # in USD (upfront)
-    # deals-specific
-    acquirer: Optional[str] = None,
-    target: Optional[str] = None,
-    deal_type: Optional[str] = None,
+    therapeutic_area: Optional[str] = None,
+    min_amount: Optional[float] = None,
+    max_amount: Optional[float] = None,
     limit: int = 50000,
 ):
-    rows = sort_by_date(load_deals(), "Deal date")
-    filters = {
-        "date_preset": date_preset,
-        "from_date": from_date,
-        "to_date": to_date,
-        "keyword": keyword,
-        "geo": geo,
-        "modality": modality,
-        "therapeutic_area": therapeutic_area,
-        "segment": segment,
-        "min_amount": min_amount,
-        "max_amount": max_amount,
-        "acquirer": acquirer,
-        "target": target,
-        "deal_type": deal_type,
-    }
+    rows = _sort_by_date(_load_list(DEALS_FILE), "Deal date")
+    filters = _build_filters(date_preset, q, geo, modality, segment, therapeutic_area, min_amount, max_amount)
     filtered = filter_rows_deals(rows, filters)
-    result = {"count": len(filtered), "rows": filtered[: max(1, min(limit, 50000))]}
-    return _clean_json(result)
+    lim = max(1, min(int(limit), 50000))
+    return {"count": len(filtered), "rows": filtered[:lim]}
+
+
+@app.get("/api/both")
+def api_both(
+    date_preset: Optional[str] = None,
+    q: Optional[str] = None,
+    geo: Optional[str] = None,
+    modality: Optional[str] = None,
+    segment: Optional[str] = None,
+    therapeutic_area: Optional[str] = None,
+    min_amount: Optional[float] = None,
+    max_amount: Optional[float] = None,
+    limit: int = 50000,
+):
+    funding = _sort_by_date(_load_list(FUNDING_FILE), "Funding date")
+    deals = _sort_by_date(_load_list(DEALS_FILE), "Deal date")
+    filters = _build_filters(date_preset, q, geo, modality, segment, therapeutic_area, min_amount, max_amount)
+
+    f_rows = filter_rows_funding(funding, filters)
+    d_rows = filter_rows_deals(deals, filters)
+
+    merged = merge_rows_for_chat(f_rows + d_rows, "both")
+    lim = max(1, min(int(limit), 50000))
+    return {"count": len(merged), "rows": merged[:lim]}
 
 
 class ChatRequest(BaseModel):
     query: str
-    mode: str = "funding"  # funding|deals|both
+    mode: str = "funding"  # funding | deals | both
 
 
 @app.post("/api/chat")
 def chat(req: ChatRequest):
-    mode = (req.mode or "funding").strip().lower()
+    mode = (req.mode or "funding").lower()
     plan = interpret_query(req.query, mode=mode)
 
-    funding_rows = sort_by_date(load_funding(), "Funding date")
-    deals_rows = sort_by_date(load_deals(), "Deal date")
+    funding_rows = _sort_by_date(_load_list(FUNDING_FILE), "Funding date")
+    deals_rows = _sort_by_date(_load_list(DEALS_FILE), "Deal date")
 
-    out_rows: List[Dict[str, Any]] = []
+    filters = plan.get("filters", {}) or {}
+    apply_date_preset(filters)
 
-    if mode in {"funding", "both"}:
-        out_rows.extend(filter_rows_funding(funding_rows, plan.get("filters", {})))
+    if mode == "deals":
+        filtered = filter_rows_deals(deals_rows, filters)
+    elif mode == "both":
+        f = filter_rows_funding(funding_rows, filters)
+        d = filter_rows_deals(deals_rows, filters)
+        filtered = merge_rows_for_chat(f + d, "both")
+    else:
+        filtered = filter_rows_funding(funding_rows, filters)
 
-    if mode in {"deals", "both"}:
-        out_rows.extend(filter_rows_deals(deals_rows, plan.get("filters", {})))
+    answer = summarize_answer(req.query, plan, filtered)
 
-    # For "both", normalize for display/summary
-    merged = merge_rows_for_chat(out_rows, mode=mode)
-    answer = summarize_answer(req.query, plan, merged)
-
-    result = {
+    return {
         "query": req.query,
         "mode": mode,
         "plan": plan,
         "answer": answer,
-        "count": len(merged),
-        "rows": merged[:500],
+        "count": len(filtered),
+        "rows": filtered[:500],
     }
-    return _clean_json(result)
 
 
-# Serve front-end
+# Serve the front-end
 app.mount("/", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
 
 
