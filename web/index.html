@@ -19,15 +19,13 @@
     </div>
 
     <div class="container tabs-row">
-     
-        <div class="tabs">
-  <select id="mode" class="select">
-    <option value="funding">Funding</option>
-    <option value="deals">Deals (M&amp;A)</option>
-    <option value="both">Both</option>
-  </select>
-</div>
-      
+      <div class="tabs">
+        <select id="mode" class="select">
+          <option value="funding">Funding</option>
+          <option value="deals">Deals (M&amp;A)</option>
+          <option value="both">Both</option>
+        </select>
+      </div>
 
       <div class="quick-filters">
         <select id="datePreset" class="select">
@@ -47,13 +45,10 @@
       <div class="panel-title">Ask the tracker</div>
       <div class="chat">
         <div class="chat-row">
-          <input id="chatInput" class="chat-input" placeholder="e.g., Which companies received funding this week? / Biggest deals last 30 days?" />
+          <input id="chatInput" class="chat-input" placeholder="e.g., funding in last week / acquisitions this month / oncology + eli lilly + 500k" />
           <button id="chatSend" class="btn primary">Ask</button>
         </div>
         <div id="chatAnswer" class="chat-answer"></div>
-        <div class="hint">
-          Tips: “this week”, “last 7 days”, “Feb 2026”, “largest rounds”, “acquisitions this month”.
-        </div>
       </div>
     </section>
 
@@ -70,13 +65,12 @@
       <div class="table-wrap">
         <table id="dataTable">
           <thead id="thead"></thead>
-         <tbody id="resultsTableBody"></tbody>
+          <tbody id="resultsTableBody"></tbody>
         </table>
       </div>
     </section>
   </main>
 
-  <!-- Filter Drawer -->
   <div id="drawerBackdrop" class="backdrop hidden"></div>
   <aside id="drawer" class="drawer hidden">
     <div class="drawer-head">
@@ -107,10 +101,9 @@
       </label>
 
       <label class="field">
-  <span>Therapeutic area (comma-separated)</span>
-  <input id="therapeuticArea" class="input" placeholder="e.g., Oncology, Immunology (comma-separated)" />
-<div class="hint">Use commas for multiple areas</div>
-</label>
+        <span>Therapeutic area (comma-separated)</span>
+        <input id="therapeuticArea" class="input" placeholder="e.g., Oncology, Immunology" />
+      </label>
 
       <label class="field">
         <span>Segment</span>
@@ -118,19 +111,18 @@
       </label>
 
       <label class="field" style="grid-column: 1 / -1;">
-  <span>Amount range (USD)</span>
-  <div class="range-row">
-    <div class="filter-row">
-  <label for="minAmount">Min Amount (USD): <span id="minAmountLabel"></span></label>
-  <input id="minAmount" type="range" min="0" max="2000000000" step="100000" value="0">
-</div>
+        <span>Amount range (USD)</span>
 
-<div class="filter-row">
-  <label for="maxAmount">Max Amount (USD): <span id="maxAmountLabel"></span></label>
-  <input id="maxAmount" type="range" min="0" max="2000000000" step="100000" value="2000000000">
-</div>
-  </div>
-</label>
+        <div class="filter-row">
+          <label for="minAmount">Min Amount: <span id="minAmountLabel"></span></label>
+          <input id="minAmount" type="range" min="0" max="2000000000" step="100000" value="0">
+        </div>
+
+        <div class="filter-row">
+          <label for="maxAmount">Max Amount: <span id="maxAmountLabel"></span></label>
+          <input id="maxAmount" type="range" min="0" max="2000000000" step="100000" value="2000000000">
+        </div>
+      </label>
     </div>
 
     <div class="drawer-actions">
@@ -138,13 +130,6 @@
       <button id="clearFilters" class="btn">Clear</button>
     </div>
   </aside>
-
-  <footer class="footer">
-    <div class="container footer-row">
-      <div>API: <span class="mono">/api/funding</span> • <span class="mono">/api/deals</span> • <span class="mono">/api/chat</span></div>
-      <div class="mono">Render deploy ready</div>
-    </div>
-  </footer>
 
   <script src="/app.js"></script>
 </body>
