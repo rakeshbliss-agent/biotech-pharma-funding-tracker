@@ -19,19 +19,23 @@
     </div>
 
     <div class="container tabs-row">
-      <div class="tabs">
-        <button class="tab active" data-mode="funding">Funding</button>
-        <button class="tab" data-mode="deals">Deals (M&amp;A)</button>
-        <button class="tab" data-mode="both">Both</button>
-      </div>
+     
+        <div class="tabs">
+  <select id="mode" class="select">
+    <option value="funding">Funding</option>
+    <option value="deals">Deals (M&amp;A)</option>
+    <option value="both">Both</option>
+  </select>
+</div>
+      
 
       <div class="quick-filters">
         <select id="datePreset" class="select">
-          <option value="this_week">This week</option>
+          <option value="all">All</option>
+          <option value="today">Today</option>
           <option value="last_7">Last 7 days</option>
           <option value="last_30">Last 30 days</option>
           <option value="ytd">YTD</option>
-          <option value="all">All time</option>
         </select>
         <button id="openFilters" class="btn">Advanced filters</button>
       </div>
@@ -57,7 +61,7 @@
       <div class="panel-head">
         <div class="panel-title" id="tableTitle">Funding</div>
         <div class="meta">
-          <span id="countLabel">—</span>
+          <span id="resultCount">0</span>
           <span class="dot">•</span>
           <span id="updatedLabel">—</span>
         </div>
@@ -66,7 +70,7 @@
       <div class="table-wrap">
         <table id="dataTable">
           <thead id="thead"></thead>
-          <tbody id="tbody"></tbody>
+         <tbody id="resultsTableBody"></tbody>
         </table>
       </div>
     </section>
@@ -83,12 +87,12 @@
     <div class="drawer-grid">
       <label class="field">
         <span>Keyword</span>
-        <input id="fKeyword" class="input" placeholder="Company, investor, acquirer, etc." />
+        <input id="q" class="input" placeholder="Company, investor, acquirer, etc." />
       </label>
 
       <label class="field">
         <span>Geo</span>
-        <select id="fGeo" class="select">
+        <select id="geo" class="select">
           <option value="">Any</option>
           <option value="US">US</option>
           <option value="Europe">Europe</option>
@@ -99,48 +103,38 @@
 
       <label class="field">
         <span>Modality</span>
-        <input id="fModality" class="input" placeholder="Small molecule, mAb, gene therapy, RNA, ADC..." />
+        <input id="modality" class="input" placeholder="Small molecule, mAb, gene therapy, RNA, ADC..." />
       </label>
 
       <label class="field">
-  <span>Therapeutic area (multi-select)</span>
-  <select id="fTA" class="select" multiple size="6">
-    <option value="Oncology">Oncology</option>
-    <option value="Immunology">Immunology</option>
-    <option value="Neurology">Neurology</option>
-    <option value="Metabolic">Metabolic</option>
-    <option value="Cardiovascular">Cardiovascular</option>
-    <option value="Infectious">Infectious</option>
-    <option value="Ophthalmology">Ophthalmology</option>
-    <option value="Rare">Rare</option>
-    <option value="Respiratory">Respiratory</option>
-    <option value="Hematology">Hematology</option>
-  </select>
-  <div class="hint">Hold Ctrl/Cmd to select multiple</div>
+  <span>Therapeutic area (comma-separated)</span>
+  <input id="therapeuticArea" class="input" placeholder="e.g., Oncology, Immunology (comma-separated)" />
+<div class="hint">Use commas for multiple areas</div>
 </label>
 
       <label class="field">
         <span>Segment</span>
-        <input id="fSegment" class="input" placeholder="ADMET/PK, SBDD, Drug Repurposing, GenChem..." />
+        <input id="segment" class="input" placeholder="ADMET/PK, SBDD, Drug Repurposing, GenChem..." />
       </label>
 
       <label class="field" style="grid-column: 1 / -1;">
   <span>Amount range (USD, $M)</span>
   <div class="range-row">
-    <div class="range-col">
-      <div class="range-label">Min: <span id="minAmtLabel">0</span>M</div>
-      <input id="minAmt" type="range" min="0" max="1000" value="0" step="10" />
-    </div>
-    <div class="range-col">
-      <div class="range-label">Max: <span id="maxAmtLabel">1000</span>M</div>
-      <input id="maxAmt" type="range" min="0" max="1000" value="1000" step="10" />
-    </div>
+    <div class="filter-row">
+  <label for="minAmount">Min Amount (USD): <span id="minAmountLabel"></span></label>
+  <input id="minAmount" type="range" min="0" max="2000000000" step="100000" value="0">
+</div>
+
+<div class="filter-row">
+  <label for="maxAmount">Max Amount (USD): <span id="maxAmountLabel"></span></label>
+  <input id="maxAmount" type="range" min="0" max="2000000000" step="100000" value="2000000000">
+</div>
   </div>
 </label>
     </div>
 
     <div class="drawer-actions">
-      <button id="applyFilters" class="btn primary">Apply</button>
+      <button id="applyBtn" class="btn primary">Apply</button>
       <button id="clearFilters" class="btn">Clear</button>
     </div>
   </aside>
