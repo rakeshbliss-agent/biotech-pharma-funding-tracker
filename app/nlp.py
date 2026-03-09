@@ -50,14 +50,12 @@ def _amount_to_number(amount: str) -> Optional[float]:
         return None
     s = str(amount).replace(",", "").strip()
 
-    # common: $60M / 2.5B / 73.9M
     m = re.search(r"(\d+(?:\.\d+)?)\s*([MB])\b", s, re.I)
     if m:
         val = float(m.group(1))
         unit = m.group(2).upper()
         return val * (1e9 if unit == "B" else 1e6)
 
-    # "million" / "billion"
     m2 = re.search(r"(\d+(?:\.\d+)?)\s*(million|billion)\b", s, re.I)
     if m2:
         val = float(m2.group(1))
@@ -92,12 +90,12 @@ def _geo_bucket(country: Optional[str]) -> Optional[str]:
 
 def _apply_date_preset(filters: Dict[str, Any]) -> None:
     preset = (filters.get("date_preset") or "").strip().lower()
-    if preset in {"", "all", None}:
+    if preset in {"", "all", "none"}:
         return
 
     to_d = _today()
     if preset == "this_week":
-        from_d = to_d - timedelta(days=to_d.weekday())  # Monday -> today
+        from_d = to_d - timedelta(days=to_d.weekday())
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
         return
@@ -120,15 +118,11 @@ def _apply_date_preset(filters: Dict[str, Any]) -> None:
 
 
 def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
-    """
-    Light rules-based interpretation. Produces filters usable for funding/deals/both.
-    """
     q = (query or "").strip().lower()
     filters: Dict[str, Any] = {}
     action: Dict[str, Any] = {"type": "filter"}
     mode = (mode or "funding").strip().lower()
 
-    # current week / this week
     if any(x in q for x in ["current week", "this week"]):
         filters["date_preset"] = "this_week"
 
@@ -154,7 +148,6 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
 
-    # Month + year
     m = re.search(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\s+(20\d{2})\b", q, re.I)
     if m:
         mon = MONTH_MAP[m.group(1).lower()]
@@ -164,7 +157,6 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
 
-    # modality
     if "small molecule" in q:
         filters["modality"] = "small molecule"
     if any(x in q for x in ["biologic", "antibody", "mab"]):
@@ -176,7 +168,6 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     if "adc" in q:
         filters["modality"] = "adc"
 
-    # geo buckets
     if any(x in q for x in ["us", "usa", "united states"]):
         filters["geo"] = "US"
     if "europe" in q or "uk" in q:
@@ -184,31 +175,24 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     if any(x in q for x in ["apac", "asia", "china", "japan", "korea", "australia"]):
         filters["geo"] = "APAC"
 
-    # segments (optional keyword tagging)
     for seg in DEFAULT_SEGMENTS:
         if seg.lower() in q:
             filters["segment"] = seg
 
-    # funding round hints
     m = re.search(r"\b(seed|pre-seed|series\s*[a-z]|series\s*\d)\b", q, re.I)
     if m:
         filters["round"] = m.group(0).strip()
 
-    # deal type hints
     if any(x in q for x in ["acquisition", "acquire", "buyout", "merger", "m&a"]):
         filters["deal_type"] = "Acquisition/Merger"
 
-    # "largest/top"
     m = re.search(r"top\s+(\d+)", q)
     if m and any(x in q for x in ["largest", "biggest", "amount", "$"]):
         action = {"type": "top_by_amount", "n": int(m.group(1))}
     elif any(x in q for x in ["largest", "biggest"]):
         action = {"type": "top_by_amount", "n": 10}
 
-    # If user asks broadly "who raised" keep keyword empty; otherwise pass full query as keyword
-    if any(x in q for x in ["who", "which companies", "received funding", "raised", "acquired", "acquisition"]):
-        pass
-    else:
+    if not any(x in q for x in ["who", "which companies", "received funding", "raised", "acquired", "acquisition"]):
         filters["keyword"] = query
 
     _apply_date_preset(filters)
@@ -228,6 +212,18 @@ def _date_in_range(d_str: Optional[str], from_d: Optional[date], to_d: Optional[
     return True
 
 
+def _parse_amount_filter(x: Any) -> Optional[float]:
+    if x is None:
+        return None
+    s = str(x).strip()
+    if s == "" or s.lower() in {"null", "none"}:
+        return None
+    try:
+        return float(s)
+    except Exception:
+        return None
+
+
 def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> List[Dict[str, Any]]:
     from_d = _parse_iso(filters.get("from_date"))
     to_d = _parse_iso(filters.get("to_date"))
@@ -237,8 +233,8 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
     modality = filters.get("modality")
     therapeutic_area = filters.get("therapeutic_area")
     segment = filters.get("segment")
-    min_amount = filters.get("min_amount")
-    max_amount = filters.get("max_amount")
+    min_amount_f = _parse_amount_filter(filters.get("min_amount"))
+    max_amount_f = _parse_amount_filter(filters.get("max_amount"))
 
     company = filters.get("company")
     round_q = filters.get("round")
@@ -249,7 +245,6 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
         if not _date_in_range(r.get("Funding date"), from_d, to_d):
             continue
 
-        # keyword across common fields
         if keyword:
             blob = " | ".join([
                 str(r.get("Company", "")),
@@ -259,7 +254,7 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
                 str(r.get("Therapeutic Modality", "")),
                 str(r.get("Funding round", "")),
             ])
-            if keyword.lower() not in blob.lower():
+            if str(keyword).lower() not in blob.lower():
                 continue
 
         if company and not _text_in(company, str(r.get("Company", ""))):
@@ -269,55 +264,49 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
 
         if modality:
             if not _text_in(modality, str(r.get("Therapeutic Modality", ""))):
-                # also allow small-molecule flag matching
                 sm_flag = str(r.get("Small molecule modality?", "")).lower()
                 if modality.lower().startswith("small") and sm_flag in {"yes", "y", "true"}:
                     pass
                 else:
                     continue
 
-        # Therapeutic area (supports comma-separated multi-select)
         if therapeutic_area:
             ta_field = str(r.get("Therapeutic Area", ""))
             tas = [x.strip() for x in str(therapeutic_area).split(",") if x.strip()]
             if tas and not any(_text_in(t, ta_field) for t in tas):
                 continue
 
-      # Segment: match Segment field OR fall back to searching other text
-if segment:
-    segq = str(segment).strip().lower()
-    # normalize common short forms
-    if segq == "admet":
-        segq = "admet/pk"
-
-    blob = " | ".join([
-        str(r.get("Segment", "")),
-        str(r.get("Description", "")),
-        str(r.get("Therapeutic Modality", "")),
-        str(r.get("Therapeutic Area", "")),
-        str(r.get("Investors", "")),
-        str(r.get("Company", "")),
-    ]).lower()
-
-    if segq not in blob:
-        continue
+        if segment:
+            segq = str(segment).strip().lower()
+            if segq == "admet":
+                segq = "admet/pk"
+            blob = " | ".join([
+                str(r.get("Segment", "")),
+                str(r.get("Description", "")),
+                str(r.get("Therapeutic Modality", "")),
+                str(r.get("Therapeutic Area", "")),
+                str(r.get("Investors", "")),
+                str(r.get("Company", "")),
+            ]).lower()
+            if segq not in blob:
+                continue
 
         if geo:
             bucket = _geo_bucket(r.get("HQ Country"))
-            if not bucket or bucket.lower() != geo.strip().lower():
+            if not bucket or bucket.lower() != str(geo).strip().lower():
                 continue
 
         if small_molecule:
             sm = str(r.get("Small molecule modality?", "")).strip().lower()
-            if small_molecule.lower().startswith("y") and sm not in {"yes", "y", "true"}:
+            if str(small_molecule).lower().startswith("y") and sm not in {"yes", "y", "true"}:
                 continue
-            if small_molecule.lower().startswith("n") and sm in {"yes", "y", "true"}:
+            if str(small_molecule).lower().startswith("n") and sm in {"yes", "y", "true"}:
                 continue
 
         amt = _amount_to_number(str(r.get("Funding amount", "")))
-        if min_amount is not None and amt is not None and amt < float(min_amount):
+        if min_amount_f is not None and (amt is None or amt < min_amount_f):
             continue
-        if max_amount is not None and amt is not None and amt > float(max_amount):
+        if max_amount_f is not None and (amt is None or amt > max_amount_f):
             continue
 
         out.append(r)
@@ -334,8 +323,8 @@ def filter_rows_deals(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> Li
     modality = filters.get("modality")
     therapeutic_area = filters.get("therapeutic_area")
     segment = filters.get("segment")
-    min_amount = filters.get("min_amount")
-    max_amount = filters.get("max_amount")
+    min_amount_f = _parse_amount_filter(filters.get("min_amount"))
+    max_amount_f = _parse_amount_filter(filters.get("max_amount"))
 
     acquirer = filters.get("acquirer")
     target = filters.get("target")
@@ -356,7 +345,7 @@ def filter_rows_deals(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> Li
                 str(r.get("Deal type", "")),
                 str(r.get("Source", "")),
             ])
-            if keyword.lower() not in blob.lower():
+            if str(keyword).lower() not in blob.lower():
                 continue
 
         if acquirer and not _text_in(acquirer, str(r.get("Acquirer", ""))):
@@ -368,24 +357,37 @@ def filter_rows_deals(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> Li
 
         if modality and not _text_in(modality, str(r.get("Modality", ""))):
             continue
-       # Therapeutic area (supports comma-separated multi-select)
+
         if therapeutic_area:
             ta_field = str(r.get("Therapeutic Area", ""))
             tas = [x.strip() for x in str(therapeutic_area).split(",") if x.strip()]
             if tas and not any(_text_in(t, ta_field) for t in tas):
                 continue
-        if segment and not _text_in(segment, str(r.get("Segment", ""))):
-            continue
+
+        if segment:
+            segq = str(segment).strip().lower()
+            if segq == "admet":
+                segq = "admet/pk"
+            blob = " | ".join([
+                str(r.get("Segment", "")),
+                str(r.get("Description", "")),
+                str(r.get("Modality", "")),
+                str(r.get("Therapeutic Area", "")),
+                str(r.get("Acquirer", "")),
+                str(r.get("Target", "")),
+            ]).lower()
+            if segq not in blob:
+                continue
 
         if geo:
             bucket = _geo_bucket(r.get("Target HQ Country"))
-            if not bucket or bucket.lower() != geo.strip().lower():
+            if not bucket or bucket.lower() != str(geo).strip().lower():
                 continue
 
         upfront = _amount_to_number(str(r.get("Upfront", "")))
-        if min_amount is not None and upfront is not None and upfront < float(min_amount):
+        if min_amount_f is not None and (upfront is None or upfront < min_amount_f):
             continue
-        if max_amount is not None and upfront is not None and upfront > float(max_amount):
+        if max_amount_f is not None and (upfront is None or upfront > max_amount_f):
             continue
 
         out.append(r)
@@ -394,9 +396,6 @@ def filter_rows_deals(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> Li
 
 
 def merge_rows_for_chat(rows: List[Dict[str, Any]], mode: str) -> List[Dict[str, Any]]:
-    """
-    Normalize mixed rows into a single display schema for the UI table when mode=both.
-    """
     mode = (mode or "funding").lower()
     if mode != "both":
         return rows
@@ -439,7 +438,6 @@ def summarize_answer(user_query: str, plan: Dict[str, Any], rows: List[Dict[str,
     if action == "top_by_amount":
         n = int((plan.get("action") or {}).get("n", 10))
 
-        # choose amount key for mixed
         def amt_of(r: Dict[str, Any]) -> float:
             a = r.get("Funding amount") or r.get("Upfront") or r.get("Amount") or ""
             return _amount_to_number(str(a)) or 0.0
@@ -450,12 +448,20 @@ def summarize_answer(user_query: str, plan: Dict[str, Any], rows: List[Dict[str,
         bullets = []
         for r in top:
             if "Funding date" in r:
-                bullets.append(f"- {r.get('Company','')} — {r.get('Funding amount','')} ({r.get('Funding round','')}, {r.get('Funding date','')})")
+                bullets.append(
+                    f"- {r.get('Company','')} — {r.get('Funding amount','')} ({r.get('Funding round','')}, {r.get('Funding date','')})"
+                )
             elif "Deal date" in r:
-                bullets.append(f"- {r.get('Target','')} — {r.get('Upfront','')} ({r.get('Acquirer','')}, {r.get('Deal date','')})")
+                bullets.append(
+                    f"- {r.get('Target','')} — {r.get('Upfront','')} ({r.get('Acquirer','')}, {r.get('Deal date','')})"
+                )
             else:
-                bullets.append(f"- {r.get('Company/Target','')} — {r.get('Amount','')} ({r.get('Round/Deal','')}, {r.get('Date','')})")
-        return "Here are the largest items in the selected set:\n" + "\n".join(bullets)
+                bullets.append(
+                    f"- {r.get('Company/Target','')} — {r.get('Amount','')} ({r.get('Round/Deal','')}, {r.get('Date','')})"
+                )
+        return "Here are the largest items in the selected set:
+" + "
+".join(bullets)
 
     if not rows:
         return "No matching results found."
@@ -470,5 +476,8 @@ def summarize_answer(user_query: str, plan: Dict[str, Any], rows: List[Dict[str,
         else:
             bullets.append(f"- {r.get('Company/Target','')} — {r.get('Amount','')} ({r.get('Round/Deal','')}, {r.get('Date','')})")
 
-    more = "" if len(rows) <= 10 else f"\n… and {len(rows)-10} more."
-    return f"Found {len(rows)} results. Showing the latest {min(10, len(rows))}:\n" + "\n".join(bullets) + more
+    more = "" if len(rows) <= 10 else f"
+… and {len(rows)-10} more."
+    return f"Found {len(rows)} results. Showing the latest {min(10, len(rows))}:
+" + "
+".join(bullets) + more
