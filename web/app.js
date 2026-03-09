@@ -156,6 +156,21 @@ function applyDrawerToFilters() {
   FILTERS.min_amount = document.getElementById("fMinAmt").value.trim();
   FILTERS.max_amount = document.getElementById("fMaxAmt").value.trim();
 }
+function wireEnterToApply() {
+  const ids = ["fKeyword","fModality","fTA","fSegment","fMinAmt","fMaxAmt"];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        applyDrawerToFilters();
+        closeDrawer();
+        await refresh();
+      }
+    });
+  });
+}
 function clearDrawer() {
   ["fKeyword","fGeo","fModality","fTA","fSegment","fMinAmt","fMaxAmt"].forEach(id=>{
     const el = document.getElementById(id);
@@ -184,6 +199,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   document.querySelectorAll(".tab").forEach(btn => {
     btn.addEventListener("click", async () => {
       setActiveTab(btn.dataset.mode);
+      wireEnterToApply();
       await refresh();
     });
   });
