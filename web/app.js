@@ -1,74 +1,80 @@
-// web/app.js
+// web/app.js (matches your index.html IDs exactly)
 
-function el(sel) { return document.querySelector(sel); }
+function $(id) { return document.getElementById(id); }
 
 function getMode() {
-  return (el("#mode")?.value || "funding").toLowerCase();
+  const m = $("mode");
+  return (m ? m.value : "funding").toLowerCase();
 }
 
-function getEndpointForMode(mode) {
+function endpointForMode(mode) {
   if (mode === "deals") return "/api/deals";
   if (mode === "both") return "/api/both";
   return "/api/funding";
 }
 
-function fmtUSD(x) {
-  const n = Number(x || 0);
-  if (Number.isNaN(n)) return "";
-  if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`;
-  if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
-  if (n >= 1e3) return `$${(n / 1e3).toFixed(0)}K`;
-  return `$${n}`;
+function fmtUSD(n) {
+  const x = Number(n);
+  if (Number.isNaN(x)) return "";
+  if (x >= 1e9) return `$${(x / 1e9).toFixed(1)}B`;
+  if (x >= 1e6) return `$${(x / 1e6).toFixed(1)}M`;
+  if (x >= 1e3) return `$${(x / 1e3).toFixed(0)}K`;
+  return `$${x}`;
 }
 
 function syncAmountLabels() {
-  const minSlider = el("#minAmount");
-  const maxSlider = el("#maxAmount");
-  const minLabel = el("#minAmountLabel");
-  const maxLabel = el("#maxAmountLabel");
-  if (!minSlider || !maxSlider || !minLabel || !maxLabel) return;
-  minLabel.textContent = fmtUSD(minSlider.value);
-  maxLabel.textContent = fmtUSD(maxSlider.value);
+  const min = $("minAmount");
+  const max = $("maxAmount");
+  const minLabel = $("minAmountLabel");
+  const maxLabel = $("maxAmountLabel");
+  if (!min || !max || !minLabel || !maxLabel) return;
+
+  // Ensure min <= max (optional UX safeguard)
+  if (Number(min.value) > Number(max.value)) {
+    // push max up to min
+    max.value = min.value;
+  }
+
+  minLabel.textContent = fmtUSD(min.value);
+  maxLabel.textContent = fmtUSD(max.value);
 }
 
 function openDrawer() {
-  el("#drawer")?.classList.remove("hidden");
-  el("#drawerBackdrop")?.classList.remove("hidden");
+  $("drawer")?.classList.remove("hidden");
+  $("drawerBackdrop")?.classList.remove("hidden");
 }
 function closeDrawer() {
-  el("#drawer")?.classList.add("hidden");
-  el("#drawerBackdrop")?.classList.add("hidden");
+  $("drawer")?.classList.add("hidden");
+  $("drawerBackdrop")?.classList.add("hidden");
 }
 
-function buildParams() {
+function buildQueryParams() {
   const params = new URLSearchParams();
   params.set("limit", "50000");
 
-  // date preset
-  const preset = el("#datePreset")?.value || "all";
-  if (preset && preset !== "all") params.set("date_preset", preset);
+  const datePreset = $("datePreset")?.value || "all";
+  if (datePreset && datePreset !== "all") {
+    params.set("date_preset", datePreset);
+  }
 
-  // keyword (table search)
-  const q = (el("#q")?.value || "").trim();
-  const qDrawer = (el("#qDrawer")?.value || "").trim();
-  const combinedQ = [q, qDrawer].filter(Boolean).join(" + ");
-  if (combinedQ) params.set("q", combinedQ);
+  // Advanced filters
+  const qDrawer = ($("qDrawer")?.value || "").trim();
+  if (qDrawer) params.set("q", qDrawer);
 
-  // drawer fields
-  const geo = (el("#geo")?.value || "").trim();
+  const geo = ($("geo")?.value || "").trim();
   if (geo) params.set("geo", geo);
 
-  const modality = (el("#modality")?.value || "").trim();
+  const modality = ($("modality")?.value || "").trim();
   if (modality) params.set("modality", modality);
 
-  const segment = (el("#segment")?.value || "").trim();
+  const segment = ($("segment")?.value || "").trim();
   if (segment) params.set("segment", segment);
 
-  const therapeuticArea = (el("#therapeuticArea")?.value || "").trim();
-  if (therapeuticArea) params.set("therapeutic_area", therapeuticArea);
+  const ta = ($("therapeuticArea")?.value || "").trim();
+  if (ta) params.set("therapeutic_area", ta);
 
-  const minAmount = el("#minAmount")?.value;
-  const maxAmount = el("#maxAmount")?.value;
+  const minAmount = $("minAmount")?.value;
+  const maxAmount = $("maxAmount")?.value;
   if (minAmount !== undefined && String(minAmount).trim() !== "") params.set("min_amount", String(minAmount));
   if (maxAmount !== undefined && String(maxAmount).trim() !== "") params.set("max_amount", String(maxAmount));
 
@@ -76,23 +82,23 @@ function buildParams() {
 }
 
 function renderTable(rows) {
-  const thead = el("#thead");
-  const tbody = el("#resultsTableBody");
-  const countEl = el("#resultCount");
+  const thead = $("thead");
+  const tbody = $("resultsTableBody");
+  const resultCount = $("resultCount");
 
-  if (countEl) countEl.textContent = String(rows?.length || 0);
+  if (resultCount) resultCount.textContent = String(rows?.length || 0);
+
   if (!thead || !tbody) return;
 
-  tbody.innerHTML = "";
   thead.innerHTML = "";
+  tbody.innerHTML = "";
 
   if (!rows || rows.length === 0) {
     thead.innerHTML = "<tr><th>No results</th></tr>";
     return;
   }
 
-  const keys = Object.keys(rows[0]);
-
+  const keys = Object.keys(rows[0] || {});
   const hr = document.createElement("tr");
   keys.forEach((k) => {
     const th = document.createElement("th");
@@ -113,43 +119,43 @@ function renderTable(rows) {
   });
 }
 
-async function applyFilters() {
+async function fetchAndRender() {
   syncAmountLabels();
 
   const mode = getMode();
-  const endpoint = getEndpointForMode(mode);
-  const params = buildParams();
+  const endpoint = endpointForMode(mode);
+  const params = buildQueryParams();
+
+  // Update title
+  const title = $("tableTitle");
+  if (title) title.textContent = (mode === "deals" ? "Deals (M&A)" : mode === "both" ? "Funding + Deals" : "Funding");
+
   const url = `${endpoint}?${params.toString()}`;
 
-  const res = await fetch(url);
-  if (!res.ok) {
-    console.error("API failed:", res.status, await res.text());
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error("API error:", res.status, await res.text());
+      renderTable([]);
+      return;
+    }
+    const data = await res.json();
+    renderTable(data.rows || []);
+
+    const updatedLabel = $("updatedLabel");
+    if (updatedLabel) {
+      const now = new Date();
+      updatedLabel.textContent = `Updated ${now.toLocaleString()}`;
+    }
+  } catch (e) {
+    console.error("Fetch failed:", e);
     renderTable([]);
-    return;
   }
-  const data = await res.json();
-  renderTable(data.rows || []);
-}
-
-function clearFilters() {
-  if (el("#q")) el("#q").value = "";
-  if (el("#qDrawer")) el("#qDrawer").value = "";
-  if (el("#geo")) el("#geo").value = "";
-  if (el("#modality")) el("#modality").value = "";
-  if (el("#segment")) el("#segment").value = "";
-  if (el("#therapeuticArea")) el("#therapeuticArea").value = "";
-
-  if (el("#minAmount")) el("#minAmount").value = "0";
-  if (el("#maxAmount")) el("#maxAmount").value = "2000000000";
-  syncAmountLabels();
-
-  applyFilters();
 }
 
 async function sendChat() {
-  const input = el("#chatInput");
-  const out = el("#chatAnswer");
-  const mode = getMode();
+  const input = $("chatInput");
+  const out = $("chatAnswer");
 
   if (!input || !out) return;
 
@@ -165,95 +171,112 @@ async function sendChat() {
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      // backend expects: { "query": "..." }
-      body: JSON.stringify({ query: q, mode })
+      body: JSON.stringify({ query: q, mode: getMode() })
     });
 
     if (!res.ok) {
-      out.textContent = `Chat API failed (${res.status}).`;
-      console.error(await res.text());
+      console.error("Chat API error:", res.status, await res.text());
+      out.textContent = `Chat failed (${res.status}).`;
       return;
     }
 
     const data = await res.json();
-
-    // show answer
     out.textContent = data.answer || "(No answer)";
 
-    // also update table with returned rows if present
+    // Update table with chat rows
     if (Array.isArray(data.rows)) {
       renderTable(data.rows);
-      const countEl = el("#resultCount");
-      if (countEl && typeof data.count === "number") countEl.textContent = String(data.count);
+      if ($("resultCount") && typeof data.count === "number") {
+        $("resultCount").textContent = String(data.count);
+      }
+      const title = $("tableTitle");
+      if (title) title.textContent = (data.mode === "deals" ? "Deals (M&A)" : data.mode === "both" ? "Funding + Deals" : "Funding");
     }
   } catch (e) {
-    console.error(e);
+    console.error("Chat failed:", e);
     out.textContent = "Chat failed. Check console logs.";
   }
 }
 
+function clearFilters() {
+  if ($("qDrawer")) $("qDrawer").value = "";
+  if ($("geo")) $("geo").value = "";
+  if ($("modality")) $("modality").value = "";
+  if ($("segment")) $("segment").value = "";
+  if ($("therapeuticArea")) $("therapeuticArea").value = "";
+
+  if ($("minAmount")) $("minAmount").value = "0";
+  if ($("maxAmount")) $("maxAmount").value = "2000000000";
+  syncAmountLabels();
+
+  fetchAndRender();
+}
+
 function wireEvents() {
-  // Drawer open/close
-  el("#openFilters")?.addEventListener("click", openDrawer);
-  el("#closeFilters")?.addEventListener("click", closeDrawer);
-  el("#drawerBackdrop")?.addEventListener("click", closeDrawer);
+  // Drawer
+  $("openFilters")?.addEventListener("click", openDrawer);
+  $("closeFilters")?.addEventListener("click", closeDrawer);
+  $("drawerBackdrop")?.addEventListener("click", closeDrawer);
 
   // Apply/Clear
-  el("#applyBtn")?.addEventListener("click", (e) => {
+  $("applyBtn")?.addEventListener("click", (e) => {
     e.preventDefault();
-    applyFilters();
+    fetchAndRender();
     closeDrawer();
   });
-  el("#clearFilters")?.addEventListener("click", (e) => {
+  $("clearFilters")?.addEventListener("click", (e) => {
     e.preventDefault();
     clearFilters();
   });
 
-  // Mode + datePreset refetch
-  el("#mode")?.addEventListener("change", applyFilters);
-  el("#datePreset")?.addEventListener("change", applyFilters);
+  // Mode + date preset auto refresh
+  $("mode")?.addEventListener("change", fetchAndRender);
+  $("datePreset")?.addEventListener("change", fetchAndRender);
 
   // Refresh button
-  el("#refreshBtn")?.addEventListener("click", (e) => {
+  $("refreshBtn")?.addEventListener("click", (e) => {
     e.preventDefault();
-    applyFilters();
+    // Reload home and refetch. (Reload is optional; refetch is enough.)
+    fetchAndRender();
   });
 
-  // Chat button
-  el("#chatSend")?.addEventListener("click", (e) => {
+  // Chat Ask button
+  $("chatSend")?.addEventListener("click", (e) => {
     e.preventDefault();
     sendChat();
   });
 
-  // Enter key: if focus is chat box -> chat; else -> apply filters
+  // Enter key behavior:
+  // - Enter in chat input => chat
+  // - Enter in any filter input => apply filters
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
 
     const active = document.activeElement;
     if (!active) return;
 
-    // If user is typing in the chat input, Enter should send chat
     if (active.id === "chatInput") {
       e.preventDefault();
       sendChat();
       return;
     }
 
-    // If user is typing anywhere else in filters/search, Enter applies filters
-    if (["INPUT", "SELECT", "TEXTAREA"].includes(active.tagName)) {
+    // If cursor is in drawer inputs, apply filters
+    if (["qDrawer", "modality", "segment", "therapeuticArea"].includes(active.id)) {
       e.preventDefault();
-      applyFilters();
+      fetchAndRender();
+      return;
     }
   });
 
-  // Slider labels live
-  el("#minAmount")?.addEventListener("input", syncAmountLabels);
-  el("#maxAmount")?.addEventListener("input", syncAmountLabels);
+  // Slider label live update
+  $("minAmount")?.addEventListener("input", syncAmountLabels);
+  $("maxAmount")?.addEventListener("input", syncAmountLabels);
 
   syncAmountLabels();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   wireEvents();
-  applyFilters();
+  fetchAndRender();
 });
