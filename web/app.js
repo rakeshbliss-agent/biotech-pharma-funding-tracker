@@ -148,6 +148,9 @@ function closeDrawer() {
   document.getElementById("drawer").classList.add("hidden");
 }
 function applyDrawerToFilters() {
+ const taSelect = document.getElementById("fTA");
+const selected = [...taSelect.selectedOptions].map(o => o.value);
+FILTERS.therapeutic_area = selected.join(",");
   FILTERS.keyword = document.getElementById("fKeyword").value.trim();
   FILTERS.geo = document.getElementById("fGeo").value.trim();
   FILTERS.modality = document.getElementById("fModality").value.trim();
