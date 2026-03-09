@@ -163,8 +163,28 @@ class ChatRequest(BaseModel):
 
 
 @app.post("/api/chat")
+from .nlp import (
+    apply_date_preset,
+    filter_rows_deals,
+    filter_rows_funding,
+    infer_mode_from_query,   # <-- ADD THIS IMPORT
+    interpret_query,
+    merge_rows_for_chat,
+    summarize_answer,
+)
+
+# ...
+
+@app.post("/api/chat")
 def chat(req: ChatRequest):
+    # UI-selected mode
     mode = (req.mode or "funding").lower()
+
+    # ✅ Auto-switch mode for M&A queries if user is in Funding tab
+    inferred = infer_mode_from_query(req.query)
+    if inferred == "deals" and mode == "funding":
+        mode = "deals"
+
     plan = interpret_query(req.query, mode=mode)
 
     funding_rows = _sort_by_date(_load_list(FUNDING_FILE), "Funding date")
@@ -192,7 +212,6 @@ def chat(req: ChatRequest):
         "count": len(filtered),
         "rows": filtered[:500],
     }
-
 
 # Serve front-end
 app.mount("/", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
