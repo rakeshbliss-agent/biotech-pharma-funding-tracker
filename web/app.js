@@ -236,6 +236,8 @@ function wireEvents() {
   // Refresh button
   $("refreshBtn")?.addEventListener("click", (e) => {
     e.preventDefault();
+    if ($("chatInput")) $("chatInput").value = "";
+  if ($("chatAnswer")) $("chatAnswer").textContent = "";
     // Reload home and refetch. (Reload is optional; refetch is enough.)
     fetchAndRender();
   });
