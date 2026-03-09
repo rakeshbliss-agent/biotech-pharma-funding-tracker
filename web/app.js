@@ -1,7 +1,6 @@
 // web/app.js
 
 function el(sel) { return document.querySelector(sel); }
-function els(sel) { return Array.from(document.querySelectorAll(sel)); }
 
 function getMode() {
   return (el("#mode")?.value || "funding").toLowerCase();
@@ -49,17 +48,13 @@ function buildParams() {
   const preset = el("#datePreset")?.value || "all";
   if (preset && preset !== "all") params.set("date_preset", preset);
 
-  // BASIC query (always visible)
+  // keyword (table search)
   const q = (el("#q")?.value || "").trim();
-
-  // Drawer keyword (optional override/add)
   const qDrawer = (el("#qDrawer")?.value || "").trim();
-
-  // Combine basic + drawer keyword if both exist
   const combinedQ = [q, qDrawer].filter(Boolean).join(" + ");
   if (combinedQ) params.set("q", combinedQ);
 
-  // Drawer fields
+  // drawer fields
   const geo = (el("#geo")?.value || "").trim();
   if (geo) params.set("geo", geo);
 
@@ -98,7 +93,6 @@ function renderTable(rows) {
 
   const keys = Object.keys(rows[0]);
 
-  // Header
   const hr = document.createElement("tr");
   keys.forEach((k) => {
     const th = document.createElement("th");
@@ -107,7 +101,6 @@ function renderTable(rows) {
   });
   thead.appendChild(hr);
 
-  // Body
   rows.forEach((r) => {
     const tr = document.createElement("tr");
     keys.forEach((k) => {
@@ -126,10 +119,9 @@ async function applyFilters() {
   const mode = getMode();
   const endpoint = getEndpointForMode(mode);
   const params = buildParams();
-
   const url = `${endpoint}?${params.toString()}`;
-  const res = await fetch(url);
 
+  const res = await fetch(url);
   if (!res.ok) {
     console.error("API failed:", res.status, await res.text());
     renderTable([]);
@@ -140,21 +132,64 @@ async function applyFilters() {
 }
 
 function clearFilters() {
-  // basic search
   if (el("#q")) el("#q").value = "";
-  // drawer fields
   if (el("#qDrawer")) el("#qDrawer").value = "";
   if (el("#geo")) el("#geo").value = "";
   if (el("#modality")) el("#modality").value = "";
   if (el("#segment")) el("#segment").value = "";
   if (el("#therapeuticArea")) el("#therapeuticArea").value = "";
 
-  // sliders reset
   if (el("#minAmount")) el("#minAmount").value = "0";
   if (el("#maxAmount")) el("#maxAmount").value = "2000000000";
   syncAmountLabels();
 
   applyFilters();
+}
+
+async function sendChat() {
+  const input = el("#chatInput");
+  const out = el("#chatAnswer");
+  const mode = getMode();
+
+  if (!input || !out) return;
+
+  const q = (input.value || "").trim();
+  if (!q) {
+    out.textContent = "Type a question first.";
+    return;
+  }
+
+  out.textContent = "Thinking…";
+
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      // backend expects: { "query": "..." }
+      body: JSON.stringify({ query: q, mode })
+    });
+
+    if (!res.ok) {
+      out.textContent = `Chat API failed (${res.status}).`;
+      console.error(await res.text());
+      return;
+    }
+
+    const data = await res.json();
+
+    // show answer
+    out.textContent = data.answer || "(No answer)";
+
+    // also update table with returned rows if present
+    if (Array.isArray(data.rows)) {
+      renderTable(data.rows);
+      const countEl = el("#resultCount");
+      if (countEl && typeof data.count === "number") countEl.textContent = String(data.count);
+    }
+  } catch (e) {
+    console.error(e);
+    out.textContent = "Chat failed. Check console logs.";
+  }
 }
 
 function wireEvents() {
@@ -174,29 +209,46 @@ function wireEvents() {
     clearFilters();
   });
 
-  // Mode + datePreset should refetch
+  // Mode + datePreset refetch
   el("#mode")?.addEventListener("change", applyFilters);
   el("#datePreset")?.addEventListener("change", applyFilters);
 
   // Refresh button
-  el("#refreshBtn")?.addEventListener("click", applyFilters);
+  el("#refreshBtn")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    applyFilters();
+  });
 
-  // Enter triggers apply
+  // Chat button
+  el("#chatSend")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    sendChat();
+  });
+
+  // Enter key: if focus is chat box -> chat; else -> apply filters
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const active = document.activeElement;
-      if (active && ["INPUT", "SELECT", "TEXTAREA"].includes(active.tagName)) {
-        e.preventDefault();
-        applyFilters();
-      }
+    if (e.key !== "Enter") return;
+
+    const active = document.activeElement;
+    if (!active) return;
+
+    // If user is typing in the chat input, Enter should send chat
+    if (active.id === "chatInput") {
+      e.preventDefault();
+      sendChat();
+      return;
+    }
+
+    // If user is typing anywhere else in filters/search, Enter applies filters
+    if (["INPUT", "SELECT", "TEXTAREA"].includes(active.tagName)) {
+      e.preventDefault();
+      applyFilters();
     }
   });
 
   // Slider labels live
   el("#minAmount")?.addEventListener("input", syncAmountLabels);
   el("#maxAmount")?.addEventListener("input", syncAmountLabels);
-  el("#minAmount")?.addEventListener("change", applyFilters);
-  el("#maxAmount")?.addEventListener("change", applyFilters);
 
   syncAmountLabels();
 }
