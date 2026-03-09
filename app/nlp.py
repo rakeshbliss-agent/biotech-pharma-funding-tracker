@@ -435,6 +435,7 @@ def merge_rows_for_chat(rows: List[Dict[str, Any]], mode: str) -> List[Dict[str,
 
 def summarize_answer(user_query: str, plan: Dict[str, Any], rows: List[Dict[str, Any]]) -> str:
     action = (plan.get("action") or {}).get("type")
+
     if action == "top_by_amount":
         n = int((plan.get("action") or {}).get("n", 10))
 
@@ -445,39 +446,52 @@ def summarize_answer(user_query: str, plan: Dict[str, Any], rows: List[Dict[str,
         top = sorted(rows, key=amt_of, reverse=True)[:n]
         if not top:
             return "No matching results found."
-        bullets = []
+
+        bullets: List[str] = []
         for r in top:
             if "Funding date" in r:
                 bullets.append(
-                    f"- {r.get('Company','')} — {r.get('Funding amount','')} ({r.get('Funding round','')}, {r.get('Funding date','')})"
+                    f"- {r.get('Company','')} — {r.get('Funding amount','')} "
+                    f"({r.get('Funding round','')}, {r.get('Funding date','')})"
                 )
             elif "Deal date" in r:
                 bullets.append(
-                    f"- {r.get('Target','')} — {r.get('Upfront','')} ({r.get('Acquirer','')}, {r.get('Deal date','')})"
+                    f"- {r.get('Target','')} — {r.get('Upfront','')} "
+                    f"({r.get('Acquirer','')}, {r.get('Deal date','')})"
                 )
             else:
                 bullets.append(
-                    f"- {r.get('Company/Target','')} — {r.get('Amount','')} ({r.get('Round/Deal','')}, {r.get('Date','')})"
+                    f"- {r.get('Company/Target','')} — {r.get('Amount','')} "
+                    f"({r.get('Round/Deal','')}, {r.get('Date','')})"
                 )
+
         return "Here are the largest items in the selected set:\n" + "\n".join(bullets)
-" + "
-".join(bullets)
 
     if not rows:
         return "No matching results found."
 
     show = rows[:10]
-    bullets = []
+    bullets: List[str] = []
     for r in show:
         if "Funding date" in r:
-            bullets.append(f"- {r.get('Company','')} — {r.get('Funding amount','')} ({r.get('Funding round','')}, {r.get('Funding date','')})")
+            bullets.append(
+                f"- {r.get('Company','')} — {r.get('Funding amount','')} "
+                f"({r.get('Funding round','')}, {r.get('Funding date','')})"
+            )
         elif "Deal date" in r:
-            bullets.append(f"- {r.get('Target','')} — {r.get('Upfront','')} ({r.get('Acquirer','')}, {r.get('Deal date','')})")
+            bullets.append(
+                f"- {r.get('Target','')} — {r.get('Upfront','')} "
+                f"({r.get('Acquirer','')}, {r.get('Deal date','')})"
+            )
         else:
-            bullets.append(f"- {r.get('Company/Target','')} — {r.get('Amount','')} ({r.get('Round/Deal','')}, {r.get('Date','')})")
+            bullets.append(
+                f"- {r.get('Company/Target','')} — {r.get('Amount','')} "
+                f"({r.get('Round/Deal','')}, {r.get('Date','')})"
+            )
 
-    more = "" if len(rows) <= 10 else f"
-… and {len(rows)-10} more."
-    return f"Found {len(rows)} results. Showing the latest {min(10, len(rows))}:
-" + "
-".join(bullets) + more
+    more = "" if len(rows) <= 10 else f"\n… and {len(rows) - 10} more."
+    return (
+        f"Found {len(rows)} results. Showing the latest {min(10, len(rows))}:\n"
+        + "\n".join(bullets)
+        + more
+    )
