@@ -1,284 +1,300 @@
-// web/app.js (matches your index.html IDs exactly)
+// web/app.js
+(() => {
+  // ---- helpers ----
+  const $ = (id) => document.getElementById(id);
 
-function $(id) { return document.getElementById(id); }
-
-function getMode() {
-  const m = $("mode");
-  return (m ? m.value : "funding").toLowerCase();
-}
-
-function endpointForMode(mode) {
-  if (mode === "deals") return "/api/deals";
-  if (mode === "both") return "/api/both";
-  return "/api/funding";
-}
-
-function fmtUSD(n) {
-  const x = Number(n);
-  if (Number.isNaN(x)) return "";
-  if (x >= 1e9) return `$${(x / 1e9).toFixed(1)}B`;
-  if (x >= 1e6) return `$${(x / 1e6).toFixed(1)}M`;
-  if (x >= 1e3) return `$${(x / 1e3).toFixed(0)}K`;
-  return `$${x}`;
-}
-
-function syncAmountLabels() {
-  const min = $("minAmount");
-  const max = $("maxAmount");
-  const minLabel = $("minAmountLabel");
-  const maxLabel = $("maxAmountLabel");
-  if (!min || !max || !minLabel || !maxLabel) return;
-
-  // Ensure min <= max (optional UX safeguard)
-  if (Number(min.value) > Number(max.value)) {
-    // push max up to min
-    max.value = min.value;
-  }
-
-  minLabel.textContent = fmtUSD(min.value);
-  maxLabel.textContent = fmtUSD(max.value);
-}
-
-function openDrawer() {
-  $("drawer")?.classList.remove("hidden");
-  $("drawerBackdrop")?.classList.remove("hidden");
-}
-function closeDrawer() {
-  $("drawer")?.classList.add("hidden");
-  $("drawerBackdrop")?.classList.add("hidden");
-}
-
-function buildQueryParams() {
-  const params = new URLSearchParams();
-  params.set("limit", "50000");
-
-  const datePreset = $("datePreset")?.value || "all";
-  if (datePreset && datePreset !== "all") {
-    params.set("date_preset", datePreset);
-  }
-
-  // Advanced filters
-  const qDrawer = ($("qDrawer")?.value || "").trim();
-  if (qDrawer) params.set("q", qDrawer);
-
-  const geo = ($("geo")?.value || "").trim();
-  if (geo) params.set("geo", geo);
-
-  const modality = ($("modality")?.value || "").trim();
-  if (modality) params.set("modality", modality);
-
-  const segment = ($("segment")?.value || "").trim();
-  if (segment) params.set("segment", segment);
-
-  const ta = ($("therapeuticArea")?.value || "").trim();
-  if (ta) params.set("therapeutic_area", ta);
-
-  const minAmount = $("minAmount")?.value;
-  const maxAmount = $("maxAmount")?.value;
-  if (minAmount !== undefined && String(minAmount).trim() !== "") params.set("min_amount", String(minAmount));
-  if (maxAmount !== undefined && String(maxAmount).trim() !== "") params.set("max_amount", String(maxAmount));
-
-  return params;
-}
-
-function renderTable(rows) {
-  const thead = $("thead");
-  const tbody = $("resultsTableBody");
-  const resultCount = $("resultCount");
-
-  if (resultCount) resultCount.textContent = String(rows?.length || 0);
-
-  if (!thead || !tbody) return;
-
-  thead.innerHTML = "";
-  tbody.innerHTML = "";
-
-  if (!rows || rows.length === 0) {
-    thead.innerHTML = "<tr><th>No results</th></tr>";
-    return;
-  }
-
-  const keys = Object.keys(rows[0] || {});
-  const hr = document.createElement("tr");
-  keys.forEach((k) => {
-    const th = document.createElement("th");
-    th.textContent = k;
-    hr.appendChild(th);
-  });
-  thead.appendChild(hr);
-
-  rows.forEach((r) => {
-    const tr = document.createElement("tr");
-    keys.forEach((k) => {
-      const td = document.createElement("td");
-      const v = r[k];
-      td.textContent = (v === null || v === undefined) ? "" : String(v);
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
-  });
-}
-
-async function fetchAndRender() {
-  syncAmountLabels();
-
-  const mode = getMode();
-  const endpoint = endpointForMode(mode);
-  const params = buildQueryParams();
-
-  // Update title
-  const title = $("tableTitle");
-  if (title) title.textContent = (mode === "deals" ? "Deals (M&A)" : mode === "both" ? "Funding + Deals" : "Funding");
-
-  const url = `${endpoint}?${params.toString()}`;
-
-  try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error("API error:", res.status, await res.text());
-      renderTable([]);
-      return;
+  const state = {
+    mode: "funding",          // funding | deals | both
+    date_preset: "all",       // all | today | last_7 | last_30 | ytd | mtd
+    filters: {
+      q: "",
+      geo: "",
+      modality: "",
+      segment: "",
+      therapeutic_area: "",
+      min_amount: null,
+      max_amount: null,
     }
-    const data = await res.json();
+  };
+
+  function formatUSD(n) {
+    if (n === null || n === undefined || Number.isNaN(n)) return "";
+    const num = Number(n);
+    if (num >= 1e9) return (num / 1e9).toFixed(2).replace(/\.00$/, "") + "B";
+    if (num >= 1e6) return (num / 1e6).toFixed(2).replace(/\.00$/, "") + "M";
+    if (num >= 1e3) return (num / 1e3).toFixed(0) + "K";
+    return String(num);
+  }
+
+  function buildApiUrl() {
+    let base = "/api/funding";
+    if (state.mode === "deals") base = "/api/deals";
+    if (state.mode === "both") base = "/api/both";
+
+    const params = new URLSearchParams();
+
+    // IMPORTANT: snake_case keys expected by FastAPI
+    if (state.date_preset && state.date_preset !== "all") {
+      params.set("date_preset", state.date_preset);
+    }
+
+    const f = state.filters;
+
+    if (f.q) params.set("q", f.q);
+    if (f.geo) params.set("geo", f.geo);
+    if (f.modality) params.set("modality", f.modality);
+    if (f.segment) params.set("segment", f.segment);
+    if (f.therapeutic_area) params.set("therapeutic_area", f.therapeutic_area);
+
+    if (f.min_amount !== null && f.min_amount !== undefined) params.set("min_amount", String(f.min_amount));
+    if (f.max_amount !== null && f.max_amount !== undefined) params.set("max_amount", String(f.max_amount));
+
+    params.set("limit", "50000");
+    return `${base}?${params.toString()}`;
+  }
+
+  async function fetchJson(url, opts) {
+    const res = await fetch(url, opts);
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      throw new Error(`HTTP ${res.status}: ${text}`);
+    }
+    return res.json();
+  }
+
+  // ---- table rendering ----
+  function setTitle() {
+    const title = state.mode === "funding" ? "Funding"
+      : state.mode === "deals" ? "Deals (M&A)"
+      : "Funding + Deals";
+    $("tableTitle").textContent = title;
+  }
+
+  function renderTable(rows) {
+    const thead = $("thead");
+    const tbody = $("resultsTableBody");
+
+    thead.innerHTML = "";
+    tbody.innerHTML = "";
+
+    if (!rows || rows.length === 0) return;
+
+    // columns vary by mode
+    const cols = Object.keys(rows[0]);
+
+    const trh = document.createElement("tr");
+    cols.forEach((c) => {
+      const th = document.createElement("th");
+      th.textContent = c;
+      trh.appendChild(th);
+    });
+    thead.appendChild(trh);
+
+    rows.slice(0, 500).forEach((r) => {
+      const tr = document.createElement("tr");
+      cols.forEach((c) => {
+        const td = document.createElement("td");
+        const v = r[c];
+        td.textContent = (v === null || v === undefined) ? "" : String(v);
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  async function loadTable() {
+    setTitle();
+    const url = buildApiUrl();
+    const data = await fetchJson(url);
+    $("resultCount").textContent = String(data.count ?? 0);
+    $("updatedLabel").textContent = `Loaded ${new Date().toLocaleString()}`;
     renderTable(data.rows || []);
+  }
 
-    const updatedLabel = $("updatedLabel");
-    if (updatedLabel) {
-      const now = new Date();
-      updatedLabel.textContent = `Updated ${now.toLocaleString()}`;
+  // ---- drawer (advanced filters) ----
+  function openDrawer() {
+    $("drawer").classList.remove("hidden");
+    $("drawerBackdrop").classList.remove("hidden");
+    $("qDrawer").focus();
+  }
+
+  function closeDrawer() {
+    $("drawer").classList.add("hidden");
+    $("drawerBackdrop").classList.add("hidden");
+  }
+
+  function readDrawerIntoState() {
+    state.filters.q = $("qDrawer").value.trim();
+    state.filters.geo = $("geo").value.trim();
+    state.filters.modality = $("modality").value.trim();
+    state.filters.segment = $("segment").value.trim();
+    state.filters.therapeutic_area = $("therapeuticArea").value.trim();
+
+    // sliders are numeric
+    const minA = Number($("minAmount").value);
+    const maxA = Number($("maxAmount").value);
+
+    // ensure min <= max
+    const minVal = Math.min(minA, maxA);
+    const maxVal = Math.max(minA, maxA);
+
+    state.filters.min_amount = minVal > 0 ? minVal : null;
+    state.filters.max_amount = maxVal < 2000000000 ? maxVal : null;
+  }
+
+  function clearDrawer() {
+    $("qDrawer").value = "";
+    $("geo").value = "";
+    $("modality").value = "";
+    $("segment").value = "";
+    $("therapeuticArea").value = "";
+
+    $("minAmount").value = "0";
+    $("maxAmount").value = "2000000000";
+    updateSliderLabels();
+
+    state.filters = {
+      q: "",
+      geo: "",
+      modality: "",
+      segment: "",
+      therapeutic_area: "",
+      min_amount: null,
+      max_amount: null
+    };
+  }
+
+  function updateSliderLabels() {
+    const minA = Number($("minAmount").value);
+    const maxA = Number($("maxAmount").value);
+    $("minAmountLabel").textContent = formatUSD(minA);
+    $("maxAmountLabel").textContent = formatUSD(maxA);
+  }
+
+  // ---- chat ----
+  async function runChat() {
+    const text = $("chatInput").value.trim();
+    if (!text) return;
+
+    $("chatAnswer").textContent = "Thinking…";
+
+    const payload = {
+      query: text,
+      mode: state.mode
+    };
+
+    try {
+      const data = await fetchJson("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      $("chatAnswer").textContent = data.answer || "(no answer)";
+      $("resultCount").textContent = String(data.count ?? 0);
+      $("updatedLabel").textContent = `Chat results ${new Date().toLocaleString()}`;
+
+      // Render rows returned by chat in the table (best UX)
+      renderTable(data.rows || []);
+    } catch (e) {
+      $("chatAnswer").textContent = `Error: ${e.message}`;
     }
-  } catch (e) {
-    console.error("Fetch failed:", e);
-    renderTable([]);
-  }
-}
-
-async function sendChat() {
-  const input = $("chatInput");
-  const out = $("chatAnswer");
-
-  if (!input || !out) return;
-
-  const q = (input.value || "").trim();
-  if (!q) {
-    out.textContent = "Type a question first.";
-    return;
   }
 
-  out.textContent = "Thinking…";
+  // ---- refresh ----
+  async function doRefresh() {
+    // reset state + UI
+    state.mode = "funding";
+    state.date_preset = "all";
+    $("mode").value = "funding";
+    $("datePreset").value = "all";
 
-  try {
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query: q, mode: getMode() })
+    // clear chat UI
+    $("chatInput").value = "";
+    $("chatAnswer").textContent = "";
+
+    // clear drawer UI + state
+    clearDrawer();
+    closeDrawer();
+
+    await loadTable();
+  }
+
+  // ---- wire events (IMPORTANT: only once) ----
+  function wireEvents() {
+    // Mode selector
+    $("mode").addEventListener("change", async (e) => {
+      state.mode = e.target.value;
+      // keep current filters, reload
+      await loadTable();
     });
 
-    if (!res.ok) {
-      console.error("Chat API error:", res.status, await res.text());
-      out.textContent = `Chat failed (${res.status}).`;
-      return;
-    }
+    // Date preset selector
+    $("datePreset").addEventListener("change", async (e) => {
+      state.date_preset = e.target.value; // today | last_7 | last_30 | ytd | all
+      await loadTable();
+    });
 
-    const data = await res.json();
-    out.textContent = data.answer || "(No answer)";
+    // Drawer open/close
+    $("openFilters").addEventListener("click", openDrawer);
+    $("closeFilters").addEventListener("click", closeDrawer);
+    $("drawerBackdrop").addEventListener("click", closeDrawer);
 
-    // Update table with chat rows
-    if (Array.isArray(data.rows)) {
-      renderTable(data.rows);
-      if ($("resultCount") && typeof data.count === "number") {
-        $("resultCount").textContent = String(data.count);
+    // Apply / Clear
+    $("applyBtn").addEventListener("click", async () => {
+      readDrawerIntoState();
+      closeDrawer();
+      await loadTable();
+    });
+
+    $("clearFilters").addEventListener("click", async () => {
+      clearDrawer();
+      await loadTable();
+    });
+
+    // Enter in drawer should apply
+    $("drawer").addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        readDrawerIntoState();
+        closeDrawer();
+        await loadTable();
       }
-      const title = $("tableTitle");
-      if (title) title.textContent = (data.mode === "deals" ? "Deals (M&A)" : data.mode === "both" ? "Funding + Deals" : "Funding");
-    }
-  } catch (e) {
-    console.error("Chat failed:", e);
-    out.textContent = "Chat failed. Check console logs.";
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeDrawer();
+      }
+    });
+
+    // Sliders update label live
+    $("minAmount").addEventListener("input", updateSliderLabels);
+    $("maxAmount").addEventListener("input", updateSliderLabels);
+
+    // Chat ask button
+    $("chatSend").addEventListener("click", async () => {
+      await runChat();
+    });
+
+    // Chat enter key always works
+    $("chatInput").addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        await runChat();
+      }
+    });
+
+    // Refresh
+    $("refreshBtn").addEventListener("click", async () => {
+      await doRefresh();
+    });
   }
-}
 
-function clearFilters() {
-  if ($("qDrawer")) $("qDrawer").value = "";
-  if ($("geo")) $("geo").value = "";
-  if ($("modality")) $("modality").value = "";
-  if ($("segment")) $("segment").value = "";
-  if ($("therapeuticArea")) $("therapeuticArea").value = "";
+  // ---- init ----
+  async function init() {
+    updateSliderLabels();
+    wireEvents();
+    await loadTable();
+  }
 
-  if ($("minAmount")) $("minAmount").value = "0";
-  if ($("maxAmount")) $("maxAmount").value = "2000000000";
-  syncAmountLabels();
-
-  fetchAndRender();
-}
-
-function wireEvents() {
-  // Drawer
-  $("openFilters")?.addEventListener("click", openDrawer);
-  $("closeFilters")?.addEventListener("click", closeDrawer);
-  $("drawerBackdrop")?.addEventListener("click", closeDrawer);
-
-  // Apply/Clear
-  $("applyBtn")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    fetchAndRender();
-    closeDrawer();
-  });
-  $("clearFilters")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    clearFilters();
-  });
-
-  // Mode + date preset auto refresh
-  $("mode")?.addEventListener("change", fetchAndRender);
-  $("datePreset")?.addEventListener("change", fetchAndRender);
-
-  // Refresh button
-  $("refreshBtn")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    if ($("chatInput")) $("chatInput").value = "";
-  if ($("chatAnswer")) $("chatAnswer").textContent = "";
-    // Reload home and refetch. (Reload is optional; refetch is enough.)
-    fetchAndRender();
-  });
-
-  // Chat Ask button
-  $("chatSend")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    sendChat();
-  });
-
-  // Enter key behavior:
-  // - Enter in chat input => chat
-  // - Enter in any filter input => apply filters
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter") return;
-
-    const active = document.activeElement;
-    if (!active) return;
-
-    if (active.id === "chatInput") {
-      e.preventDefault();
-      sendChat();
-      return;
-    }
-
-    // If cursor is in drawer inputs, apply filters
-    if (["qDrawer", "modality", "segment", "therapeuticArea"].includes(active.id)) {
-      e.preventDefault();
-      fetchAndRender();
-      return;
-    }
-  });
-
-  // Slider label live update
-  $("minAmount")?.addEventListener("input", syncAmountLabels);
-  $("maxAmount")?.addEventListener("input", syncAmountLabels);
-
-  syncAmountLabels();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  wireEvents();
-  fetchAndRender();
-});
+  window.addEventListener("DOMContentLoaded", init);
+})();
