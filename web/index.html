@@ -103,9 +103,21 @@
       </label>
 
       <label class="field">
-        <span>Therapeutic area</span>
-        <input id="fTA" class="input" placeholder="Oncology, Immunology, Neuro, Metabolic..." />
-      </label>
+  <span>Therapeutic area (multi-select)</span>
+  <select id="fTA" class="select" multiple size="6">
+    <option value="Oncology">Oncology</option>
+    <option value="Immunology">Immunology</option>
+    <option value="Neurology">Neurology</option>
+    <option value="Metabolic">Metabolic</option>
+    <option value="Cardiovascular">Cardiovascular</option>
+    <option value="Infectious">Infectious</option>
+    <option value="Ophthalmology">Ophthalmology</option>
+    <option value="Rare">Rare</option>
+    <option value="Respiratory">Respiratory</option>
+    <option value="Hematology">Hematology</option>
+  </select>
+  <div class="hint">Hold Ctrl/Cmd to select multiple</div>
+</label>
 
       <label class="field">
         <span>Segment</span>
