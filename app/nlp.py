@@ -279,8 +279,24 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
         if therapeutic_area and not _text_in(therapeutic_area, str(r.get("Therapeutic Area", ""))):
             continue
 
-       if segment and not _text_in(segment, str(r.get("Segment", ""))):
-    continue
+      # Segment: match Segment field OR fall back to searching other text
+if segment:
+    segq = str(segment).strip().lower()
+    # normalize common short forms
+    if segq == "admet":
+        segq = "admet/pk"
+
+    blob = " | ".join([
+        str(r.get("Segment", "")),
+        str(r.get("Description", "")),
+        str(r.get("Therapeutic Modality", "")),
+        str(r.get("Therapeutic Area", "")),
+        str(r.get("Investors", "")),
+        str(r.get("Company", "")),
+    ]).lower()
+
+    if segq not in blob:
+        continue
 
         if geo:
             bucket = _geo_bucket(r.get("HQ Country"))
