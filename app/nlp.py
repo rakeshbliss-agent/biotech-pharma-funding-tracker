@@ -192,13 +192,13 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     action: Dict[str, Any] = {"type": "filter"}
     mode = (mode or "funding").strip().lower()
 
-    if any(x in q for x in ["today"]):
+    if any(x in q for x in ["today","since yesterday"]):
         filters["date_preset"] = "today"
     elif any(x in q for x in ["current week", "this week"]):
         filters["date_preset"] = "this_week"
-    elif any(x in q for x in ["last week", "past week", "past 7 days", "last 7 days"]):
+    elif any(x in q for x in ["last week", "past week", "past 7 days", "last 7 days","since last week"]):
         filters["date_preset"] = "last_7"
-    elif any(x in q for x in ["last month", "past month", "past 30 days"]):
+    elif any(x in q for x in ["last month", "past month", "past 30 days","since last month"]):
         filters["date_preset"] = "last_30"
 
     m = re.search(r"last\s+(\d+)\s+days", q)
