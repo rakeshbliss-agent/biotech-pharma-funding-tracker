@@ -19,7 +19,7 @@ body{
 }
 .container{width:min(1200px, 92vw); margin:0 auto;}
 .header{
-  padding: 28px 0 14px;
+  padding: 22px 0 14px;
   border-bottom: 1px solid var(--border);
   background: rgba(0,0,0,.18);
   backdrop-filter: blur(10px);
@@ -30,6 +30,27 @@ body{
 .header-row{display:flex; gap:18px; align-items:flex-end; justify-content:space-between;}
 h1{margin:0; font-size:24px;}
 .sub{margin:6px 0 0; color:var(--muted); font-size:13px;}
+.header-actions{display:flex; gap:10px; align-items:center;}
+
+.tabs-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  margin-top:12px;
+}
+.tabs{display:flex; gap:10px; flex-wrap:wrap;}
+.tab{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor:pointer;
+}
+.tab.active{background: rgba(124,58,237,.30); border-color: rgba(124,58,237,.55);}
+.quick-filters{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+
 .btn{
   border:1px solid var(--border);
   background: rgba(255,255,255,.06);
@@ -42,6 +63,18 @@ h1{margin:0; font-size:24px;}
 .btn:hover{background: rgba(255,255,255,.10)}
 .btn.primary{background: rgba(124,58,237,.30); border-color: rgba(124,58,237,.55);}
 .btn.primary:hover{background: rgba(124,58,237,.38)}
+
+.select, .input{
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.25);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  outline:none;
+}
+.select{cursor:pointer;}
+.input::placeholder{color: rgba(255,255,255,.45)}
+
 .panel{
   margin: 18px 0;
   padding: 16px;
@@ -54,6 +87,7 @@ h1{margin:0; font-size:24px;}
 .panel-title{font-weight:650;}
 .meta{color:var(--muted2); font-size:13px; display:flex; align-items:center; gap:8px;}
 .dot{opacity:.6}
+
 .chat-row{display:flex; gap:10px; align-items:center;}
 .chat-input{
   flex:1;
@@ -64,7 +98,6 @@ h1{margin:0; font-size:24px;}
   border-radius: 12px;
   outline:none;
 }
-.chat-input::placeholder{color: rgba(255,255,255,.45)}
 .chat-answer{
   margin-top: 12px;
   padding: 12px;
@@ -75,6 +108,7 @@ h1{margin:0; font-size:24px;}
   min-height: 44px;
 }
 .hint{margin-top:10px; color:var(--muted2); font-size:12px;}
+
 .table-wrap{
   overflow:auto;
   border-radius: 14px;
@@ -91,6 +125,7 @@ thead th{
   text-align:left;
   font-size: 12px;
   color: var(--muted);
+  white-space: nowrap;
 }
 tbody td{
   border-bottom: 1px solid rgba(255,255,255,.06);
@@ -100,5 +135,34 @@ tbody td{
 }
 tbody tr:hover{background: rgba(255,255,255,.04)}
 .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+
 .footer{padding:24px 0 28px; color:var(--muted2);}
 .footer-row{display:flex; justify-content:space-between; gap:12px; border-top:1px solid var(--border); padding-top:14px;}
+
+/* Drawer */
+.backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 50;
+}
+.drawer{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(520px, 92vw);
+  background: rgba(14, 18, 30, .96);
+  border-left: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  z-index: 60;
+  padding: 16px;
+  overflow: auto;
+}
+.drawer-head{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px;}
+.drawer-title{font-weight:700;}
+.drawer-grid{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+.field{display:flex; flex-direction:column; gap:6px;}
+.field span{font-size:12px; color:var(--muted);}
+.drawer-actions{display:flex; gap:10px; margin-top:14px;}
+.hidden{display:none;}
