@@ -174,39 +174,43 @@ def _extract_amount_from_query_text(q: str) -> Optional[float]:
 
 def _split_terms(keyword: str) -> List[str]:
     """
-    AND terms only when user uses '+' or 'and' explicitly.
-    Otherwise treat it as a normal phrase search.
+    Split on explicit AND separators: + , comma, or 'and'.
+    If no separator is used, keep the whole keyword as one phrase.
     """
     if not keyword:
         return []
 
-    if "+" in keyword or re.search(r"\s+and\s+", keyword, flags=re.I):
-        parts = re.split(r"\+|(?:\s+and\s+)", keyword, flags=re.I)
+    if ("+" in keyword) or ("," in keyword) or re.search(r"\s+and\s+", keyword, flags=re.I):
+        parts = re.split(r"\+|,|(?:\s+and\s+)", keyword, flags=re.I)
         return [p.strip().lower() for p in parts if p.strip()]
 
-    # Normal search: just one term (the whole cleaned keyword)
     return [keyword.strip().lower()]
 
 
 def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     """
     Light rules-based interpretation (used for /api/chat).
-    For the normal UI filters, main.py passes filters directly.
+    IMPORTANT: Do NOT force full natural-language questions as keyword,
+    otherwise filtering will return 0 results.
     """
-    q = (query or "").strip().lower()
+    q_raw = (query or "").strip()
+    q = q_raw.lower()
+
     filters: Dict[str, Any] = {}
     action: Dict[str, Any] = {"type": "filter"}
     mode = (mode or "funding").strip().lower()
 
-    if any(x in q for x in ["today","since yesterday"]):
+    # ---- date preset phrases ----
+    if any(x in q for x in ["today", "since yesterday"]):
         filters["date_preset"] = "today"
     elif any(x in q for x in ["current week", "this week"]):
         filters["date_preset"] = "this_week"
-    elif any(x in q for x in ["last week", "past week", "past 7 days", "last 7 days","since last week"]):
+    elif any(x in q for x in ["last week", "past week", "past 7 days", "last 7 days", "since last week"]):
         filters["date_preset"] = "last_7"
-    elif any(x in q for x in ["last month", "past month", "past 30 days","since last month"]):
+    elif any(x in q for x in ["last month", "past month", "past 30 days", "since last month"]):
         filters["date_preset"] = "last_30"
 
+    # explicit last N days
     m = re.search(r"last\s+(\d+)\s+days", q)
     if m:
         n = int(m.group(1))
@@ -215,6 +219,7 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
 
+    # past N months
     m = re.search(r"past\s+(\d+)\s+months", q)
     if m:
         n = int(m.group(1))
@@ -223,6 +228,7 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
 
+    # Month + year
     m = re.search(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\s+(20\d{2})\b", q, re.I)
     if m:
         mon = MONTH_MAP[m.group(1).lower()]
@@ -232,76 +238,72 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
 
-    # modality hints
+    # ---- modality hints ----
     if "small molecule" in q:
         filters["modality"] = "small molecule"
-    if any(x in q for x in ["biologic", "antibody", "mab"]):
+    elif any(x in q for x in ["biologic", "antibody", "mab"]):
         filters["modality"] = "biologic"
-    if any(x in q for x in ["gene therapy", "cell therapy", "car-t", "crispr"]):
+    elif any(x in q for x in ["gene therapy", "cell therapy", "car-t", "crispr"]):
         filters["modality"] = "cell/gene"
-    if any(x in q for x in ["rna", "sirna", "mrna"]):
+    elif any(x in q for x in ["rna", "sirna", "mrna"]):
         filters["modality"] = "rna"
-    if "adc" in q:
+    elif "adc" in q:
         filters["modality"] = "adc"
 
-    # geo hints
+    # ---- geo hints ----
     if any(x in q for x in ["us", "usa", "united states"]):
         filters["geo"] = "US"
-    if "europe" in q or "uk" in q:
+    elif "europe" in q or "uk" in q:
         filters["geo"] = "Europe"
-    if any(x in q for x in ["apac", "asia", "china", "japan", "korea", "australia"]):
+    elif any(x in q for x in ["apac", "asia", "china", "japan", "korea", "australia"]):
         filters["geo"] = "APAC"
 
-    # segment hints
+    # ---- segment hints ----
     if "admet" in q:
         filters["segment"] = "ADMET/PK"
     else:
         for seg in DEFAULT_SEGMENTS:
             if seg.lower() in q:
                 filters["segment"] = seg
+                break
 
-    # funding round hints
+    # ---- funding round hints ----
     m = re.search(r"\b(seed|pre-seed|series\s*[a-z]|series\s*\d)\b", q, re.I)
     if m:
         filters["round"] = m.group(0).strip()
 
-    # deal type hints
+    # ---- deal type hints ----
     if any(x in q for x in ["acquisition", "acquire", "buyout", "merger", "m&a"]):
         filters["deal_type"] = "Acquisition/Merger"
 
-    # top/large
+    # ---- top/large ----
     m = re.search(r"top\s+(\d+)", q)
     if m and any(x in q for x in ["largest", "biggest", "amount", "$"]):
         action = {"type": "top_by_amount", "n": int(m.group(1))}
     elif any(x in q for x in ["largest", "biggest"]):
         action = {"type": "top_by_amount", "n": 10}
 
-    # amount hint from query
+    # ---- extract amount like 500k / 2m / 1.2b ----
     amt = _extract_amount_from_query_text(q)
     if amt is not None:
         filters["min_amount"] = str(amt)
 
-    # keyword: keep the raw query
-    # keyword: only set keyword if user provided meaningful search terms
-# If user is asking a generic "which companies received funding..." question,
-# we should NOT force the full sentence as keyword (it kills results).
-generic_phrases = [
-    "which companies", "received funding", "who received funding",
-    "who raised", "who got funding", "raised funding",
-    "since last month", "last month", "past month", "past 30 days",
-    "since last week", "last week", "past week", "past 7 days", "last 7 days",
-    "today", "this week", "current week"
-]
+    # ---- keyword handling (CRITICAL FIX) ----
+    # If the query is a generic question, don't treat the whole sentence as keyword.
+    generic_markers = [
+        "which companies", "who", "received funding", "raised", "raise", "funding",
+        "deals", "acquisitions", "acquired", "since", "past", "last", "today", "ytd",
+        "this week", "current week", "last week", "last month", "past 7 days", "past 30 days"
+    ]
 
-# Remove generic phrases before deciding keyword
-cleaned = q
-for gp in generic_phrases:
-    cleaned = cleaned.replace(gp, " ")
-cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    cleaned = q
+    for gm in generic_markers:
+        cleaned = cleaned.replace(gm, " ")
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
 
-# If anything meaningful remains (e.g., "oncology", "eli lilly"), use it as keyword
-if cleaned:
-    filters["keyword"] = cleaned
+    # Only apply keyword if something meaningful remains (e.g., "oncology eli lilly")
+    if cleaned:
+        filters["keyword"] = cleaned
 
     apply_date_preset(filters)
     return {"query": query, "mode": mode, "filters": filters, "action": action}
