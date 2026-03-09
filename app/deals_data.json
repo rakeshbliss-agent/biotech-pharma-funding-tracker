@@ -1,0 +1,53 @@
+[
+  {
+    "Deal date": "2026-03-06",
+    "Acquirer": "Servier",
+    "Target": "Day One Biopharmaceuticals",
+    "Deal type": "Acquisition",
+    "Upfront": "$2.5B",
+    "Total value": "$2.5B",
+    "Cash/Stock": "All-cash",
+    "Therapeutic Area": "Oncology (rare/pediatric cancers)",
+    "Modality": "Small molecule / targeted therapy",
+    "Segment": "",
+    "Target HQ City": "Brisbane",
+    "Target HQ State/Region": "CA",
+    "Target HQ Country": "USA",
+    "Source": "https://www.biopharmadive.com/news/day-one-servier-acquisition-deal-cancer-drug-research-biotech/814065/",
+    "Description": "Servier agreed to acquire Day One for $21.50 per share in cash (~$2.5B equity value), expanding Servier’s rare oncology portfolio."
+  },
+  {
+    "Deal date": "2026-03-03",
+    "Acquirer": "Esperion Therapeutics",
+    "Target": "Corstasis Therapeutics",
+    "Deal type": "Acquisition",
+    "Upfront": "$75M",
+    "Total value": "$255M",
+    "Cash/Stock": "Cash upfront + milestones",
+    "Therapeutic Area": "Cardiovascular / Edema",
+    "Modality": "Small molecule (bumetanide nasal spray)",
+    "Segment": "",
+    "Target HQ City": "Henderson",
+    "Target HQ State/Region": "NV",
+    "Target HQ Country": "USA",
+    "Source": "https://www.esperion.com/news-releases/news-release-details/esperion-therapeutics-and-corstasis-therapeutics-announce",
+    "Description": "Esperion to acquire Corstasis for $75M upfront cash plus up to $180M regulatory/commercial milestones; adds FDA-approved Enbumyst (bumetanide nasal spray)."
+  },
+  {
+    "Deal date": "2026-02-21",
+    "Acquirer": "",
+    "Target": "",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Cash/Stock": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ City": "",
+    "Target HQ State/Region": "",
+    "Target HQ Country": "",
+    "Source": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "Description": "Template row — add additional deals from the BioPharma Dive M&A tracker or other sources."
+  }
+]
