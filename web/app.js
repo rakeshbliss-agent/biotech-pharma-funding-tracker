@@ -1,280 +1,144 @@
-let MODE = "funding"; // funding|deals|both
+// web/app.js
 
-let FILTERS = {
-  keyword: "",
-  geo: "",
-  modality: "",
-  therapeutic_area: "",
-  segment: "",
-  min_amount: "",
-  max_amount: "",
-  date_preset: "this_week",
-};
-
-function escapeHtml(s) {
-  if (s === null || s === undefined) return "";
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+function getEndpointForMode(mode) {
+  if (mode === "deals") return "/api/deals";
+  if (mode === "both") return "/api/both";
+  return "/api/funding";
 }
 
-function setMeta(count) {
-  document.getElementById("countLabel").textContent = `${count} rows`;
-  document.getElementById("updatedLabel").textContent = `Updated: ${new Date().toLocaleString()}`;
+function fmtUSD(x) {
+  const n = Number(x || 0);
+  if (Number.isNaN(n)) return "";
+  if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`;
+  if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
+  if (n >= 1e3) return `$${(n / 1e3).toFixed(0)}K`;
+  return `$${n}`;
 }
 
-function setTitle() {
-  const title = MODE === "funding" ? "Funding"
-              : MODE === "deals" ? "Deals (M&A)"
-              : "Funding + Deals";
-  document.getElementById("tableTitle").textContent = title;
+function el(sel) {
+  return document.querySelector(sel);
 }
 
-function getColumnsForMode(mode, rows) {
-  if (mode === "funding") {
-    return ["Company","Funding date","Funding round","Funding amount","Investors","Description","Therapeutic Area","Therapeutic Modality","Lead Clinical Stage","Small molecule modality?","HQ City","HQ State/Region","HQ Country"];
-  }
-  if (mode === "deals") {
-    return ["Deal date","Acquirer","Target","Deal type","Upfront","Total value","Therapeutic Area","Modality","Target HQ Country","Source","Description"];
-  }
-  // both: use normalized schema from backend merge_rows_for_chat()
-  return ["Type","Date","Company/Target","Counterparty","Amount","Round/Deal","Therapeutic Area","Modality","Geo","Description"];
+function syncAmountLabels() {
+  const minSlider = el("#minAmount");
+  const maxSlider = el("#maxAmount");
+  const minLabel = el("#minAmountLabel");
+  const maxLabel = el("#maxAmountLabel");
+
+  if (!minSlider || !maxSlider || !minLabel || !maxLabel) return;
+
+  minLabel.textContent = fmtUSD(minSlider.value);
+  maxLabel.textContent = fmtUSD(maxSlider.value);
 }
 
-function renderTable(mode, rows) {
-  const thead = document.getElementById("thead");
-  const tbody = document.getElementById("tbody");
+function renderTable(rows) {
+  const body = el("#resultsTableBody");
+  const countEl = el("#resultCount");
+  if (countEl) countEl.textContent = `${rows.length}`;
 
-  const cols = getColumnsForMode(mode, rows);
-  thead.innerHTML = `<tr>${cols.map(c => `<th>${escapeHtml(c)}</th>`).join("")}</tr>`;
+  if (!body) return;
+  body.innerHTML = "";
 
-  tbody.innerHTML = "";
-  for (const r of rows) {
+  const keys = rows.length ? Object.keys(rows[0]) : [];
+  rows.forEach((r) => {
     const tr = document.createElement("tr");
-    tr.innerHTML = cols.map(c => `<td>${escapeHtml(r[c])}</td>`).join("");
-    tbody.appendChild(tr);
-  }
+    keys.forEach((k) => {
+      const td = document.createElement("td");
+      td.textContent = (r[k] === null || r[k] === undefined) ? "" : String(r[k]);
+      tr.appendChild(td);
+    });
+    body.appendChild(tr);
+  });
 }
 
-function buildQueryParams(extra = {}) {
+async function applyFilters() {
+  const mode = (el("#mode")?.value || "funding").toLowerCase();
+  const endpoint = getEndpointForMode(mode);
+
   const params = new URLSearchParams();
-
-  // date preset always sent
-  params.set("date_preset", FILTERS.date_preset || "all");
-
-  if (FILTERS.keyword) params.set("keyword", FILTERS.keyword);
-  if (FILTERS.geo) params.set("geo", FILTERS.geo);
-  if (FILTERS.modality) params.set("modality", FILTERS.modality);
-  if (FILTERS.therapeutic_area) params.set("therapeutic_area", FILTERS.therapeutic_area);
-  if (FILTERS.segment) params.set("segment", FILTERS.segment);
-  if (FILTERS.min_amount) params.set("min_amount", FILTERS.min_amount);
-  if (FILTERS.max_amount) params.set("max_amount", FILTERS.max_amount);
-
-  // extra overrides
-  for (const [k, v] of Object.entries(extra)) {
-    if (v !== null && v !== undefined && String(v).length > 0) params.set(k, v);
-  }
-
   params.set("limit", "50000");
-  return params.toString();
-}
 
-async function fetchRows() {
-  setTitle();
+  const preset = el("#datePreset")?.value || "all";
+  if (preset && preset !== "all") params.set("date_preset", preset);
 
-  if (MODE === "funding") {
-    const res = await fetch(`/api/funding?${buildQueryParams()}`);
-    if (!res.ok) throw new Error("Failed to load funding");
-    return await res.json();
+  const q = (el("#q")?.value || "").trim();
+  if (q) params.set("q", q);
+
+  const geo = el("#geo")?.value || "all";
+  if (geo && geo !== "all") params.set("geo", geo);
+
+  const modality = el("#modality")?.value || "all";
+  if (modality && modality !== "all") params.set("modality", modality);
+
+  const segment = el("#segment")?.value || "all";
+  if (segment && segment !== "all") params.set("segment", segment);
+
+  const therapeuticArea = el("#therapeuticArea")?.value || "";
+  if (therapeuticArea.trim()) params.set("therapeutic_area", therapeuticArea.trim());
+
+  const minAmount = el("#minAmount")?.value;
+  const maxAmount = el("#maxAmount")?.value;
+  if (minAmount !== undefined && minAmount !== null && String(minAmount).trim() !== "") {
+    params.set("min_amount", String(minAmount));
+  }
+  if (maxAmount !== undefined && maxAmount !== null && String(maxAmount).trim() !== "") {
+    params.set("max_amount", String(maxAmount));
   }
 
-  if (MODE === "deals") {
-    const res = await fetch(`/api/deals?${buildQueryParams()}`);
-    if (!res.ok) throw new Error("Failed to load deals");
-    return await res.json();
-  }
-
-  // both mode uses chat endpoint for merged results so it has a unified schema
-  const query = FILTERS.keyword ? `keyword: ${FILTERS.keyword}` : "show latest";
-  const res = await fetch(`/api/chat`, {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({query, mode: "both"})
-  });
-  if (!res.ok) throw new Error("Failed to load both");
-  const data = await res.json();
-  return {count: data.count, rows: data.rows};
-}
-
-async function refresh() {
-  document.getElementById("chatAnswer").textContent = "";
-  const data = await fetchRows();
-  renderTable(MODE, data.rows || []);
-  setMeta(data.count || 0);
-}
-
-async function runChat() {
-  const input = document.getElementById("chatInput");
-  const answerEl = document.getElementById("chatAnswer");
-  const q = input.value.trim();
-  if (!q) return;
-
-  answerEl.textContent = "Thinking…";
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({query: q, mode: MODE})
-  });
+  // Fetch and render
+  const url = `${endpoint}?${params.toString()}`;
+  const res = await fetch(url);
   if (!res.ok) {
-    answerEl.textContent = "Error running query.";
+    console.error("Fetch failed:", res.status, await res.text());
+    renderTable([]);
     return;
   }
   const data = await res.json();
-  answerEl.textContent = data.answer || "";
-  renderTable(MODE === "both" ? "both" : MODE, data.rows || []);
-  setMeta(data.count || 0);
+  renderTable(data.rows || []);
 }
 
-/* Drawer */
-function openDrawer() {
-  document.getElementById("drawerBackdrop").classList.remove("hidden");
-  document.getElementById("drawer").classList.remove("hidden");
-}
-function closeDrawer() {
-  document.getElementById("drawerBackdrop").classList.add("hidden");
-  document.getElementById("drawer").classList.add("hidden");
-}
-function applyDrawerToFilters() {
- const taSelect = document.getElementById("fTA");
-const selected = [...taSelect.selectedOptions].map(o => o.value);
-FILTERS.therapeutic_area = selected.join(",");
-  FILTERS.keyword = document.getElementById("fKeyword").value.trim();
-  FILTERS.geo = document.getElementById("fGeo").value.trim();
-  FILTERS.modality = document.getElementById("fModality").value.trim();
-  FILTERS.therapeutic_area = document.getElementById("fTA").value.trim();
-  FILTERS.segment = document.getElementById("fSegment").value.trim();
-  FILTERS.min_amount = document.getElementById("fMinAmt").value.trim();
-  FILTERS.max_amount = document.getElementById("fMaxAmt").value.trim();
-  const minM = parseInt(document.getElementById("minAmt").value, 10);
-const maxM = parseInt(document.getElementById("maxAmt").value, 10);
+function wireEvents() {
+  // Apply button
+  el("#applyBtn")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    applyFilters();
+  });
 
-// store as USD
-FILTERS.min_amount = String(minM * 1_000_000);
-FILTERS.max_amount = String(maxM * 1_000_000);
-}
-function wireEnterToApply() {
-  const ids = ["fKeyword","fModality","fTA","fSegment","fMinAmt","fMaxAmt"];
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener("keydown", async (e) => {
-      if (e.key === "Enter") {
+  // Enter key triggers apply (for inputs/selects)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const active = document.activeElement;
+      if (active && ["INPUT", "SELECT", "TEXTAREA"].includes(active.tagName)) {
         e.preventDefault();
-        applyDrawerToFilters();
-        closeDrawer();
-        await refresh();
+        applyFilters();
       }
-    });
-  });
-}
-
-function wireAmountSliders() {
-  const minEl = document.getElementById("minAmt");
-  const maxEl = document.getElementById("maxAmt");
-  const minLab = document.getElementById("minAmtLabel");
-  const maxLab = document.getElementById("maxAmtLabel");
-
-  function sync() {
-    let minV = parseInt(minEl.value, 10);
-    let maxV = parseInt(maxEl.value, 10);
-    if (minV > maxV) {
-      // keep them consistent
-      maxV = minV;
-      maxEl.value = String(maxV);
     }
-    minLab.textContent = String(minV);
-    maxLab.textContent = String(maxV);
-  }
-
-  minEl.addEventListener("input", sync);
-  maxEl.addEventListener("input", sync);
-  sync();
-}
-function clearDrawer() {
-  ["fKeyword","fGeo","fModality","fTA","fSegment","fMinAmt","fMaxAmt"].forEach(id=>{
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.value = "";
   });
-  FILTERS.keyword = "";
-  FILTERS.geo = "";
-  FILTERS.modality = "";
-  FILTERS.therapeutic_area = "";
-  FILTERS.segment = "";
-  FILTERS.min_amount = "";
-  FILTERS.max_amount = "";
-  document.getElementById("minAmt").value = "0";
-document.getElementById("maxAmt").value = "1000";
-document.getElementById("minAmtLabel").textContent = "0";
-document.getElementById("maxAmtLabel").textContent = "1000";
-FILTERS.min_amount = "";
-FILTERS.max_amount = "";
+
+  // Mode/preset/filters change triggers apply
+  ["#mode", "#datePreset", "#geo", "#modality", "#segment"].forEach((sel) => {
+    el(sel)?.addEventListener("change", applyFilters);
+  });
+
+  // Query typing: optional "live" behavior (comment out if you want manual only)
+  // el("#q")?.addEventListener("input", debounce(applyFilters, 400));
+
+  // Sliders update labels live + reapply on change
+  el("#minAmount")?.addEventListener("input", () => {
+    syncAmountLabels();
+  });
+  el("#maxAmount")?.addEventListener("input", () => {
+    syncAmountLabels();
+  });
+
+  // If you want changing slider to automatically apply:
+  el("#minAmount")?.addEventListener("change", applyFilters);
+  el("#maxAmount")?.addEventListener("change", applyFilters);
+
+  syncAmountLabels();
 }
 
-function setActiveTab(mode) {
-  MODE = mode;
-  document.querySelectorAll(".tab").forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.mode === mode);
-  });
-  setTitle();
-}
-
-window.addEventListener("DOMContentLoaded", async () => {
-  // tabs
-  document.querySelectorAll(".tab").forEach(btn => {
-    btn.addEventListener("click", async () => {
-      setActiveTab(btn.dataset.mode);
-      wireEnterToApply();
-      wireAmountSliders();
-      await refresh();
-    });
-  });
-
-  // date preset
-  document.getElementById("datePreset").addEventListener("change", async (e) => {
-    FILTERS.date_preset = e.target.value;
-    await refresh();
-  });
-
-  // refresh
-  document.getElementById("refreshBtn").addEventListener("click", refresh);
-
-  // chat
-  document.getElementById("chatSend").addEventListener("click", runChat);
-  document.getElementById("chatInput").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") runChat();
-  });
-
-  // drawer
-  document.getElementById("openFilters").addEventListener("click", openDrawer);
-  document.getElementById("closeFilters").addEventListener("click", closeDrawer);
-  document.getElementById("drawerBackdrop").addEventListener("click", closeDrawer);
-
-  document.getElementById("applyFilters").addEventListener("click", async () => {
-    applyDrawerToFilters();
-    closeDrawer();
-    await refresh();
-  });
-
-  document.getElementById("clearFilters").addEventListener("click", async () => {
-    clearDrawer();
-    await refresh();
-  });
-
-  // init preset
-  document.getElementById("datePreset").value = FILTERS.date_preset;
-  await refresh();
+document.addEventListener("DOMContentLoaded", () => {
+  wireEvents();
+  applyFilters(); // initial load
 });
