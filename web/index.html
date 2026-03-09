@@ -3,18 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Biotech/Pharma Funding Tracker</title>
+  <title>Biotech/Pharma Tracker</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <header class="header">
     <div class="container header-row">
       <div>
-        <h1>Biotech/Pharma Funding Tracker</h1>
-        <p class="sub">Each funding round is a separate entry (newest first).</p>
+        <h1>Biotech/Pharma Tracker</h1>
+        <p class="sub">Funding rounds + M&amp;A deals. Use filters or ask in plain English.</p>
       </div>
       <div class="header-actions">
-        <button id="refreshBtn" class="btn">Refresh data</button>
+        <button id="refreshBtn" class="btn">Refresh</button>
+      </div>
+    </div>
+
+    <div class="container tabs-row">
+      <div class="tabs">
+        <button class="tab active" data-mode="funding">Funding</button>
+        <button class="tab" data-mode="deals">Deals (M&amp;A)</button>
+        <button class="tab" data-mode="both">Both</button>
+      </div>
+
+      <div class="quick-filters">
+        <select id="datePreset" class="select">
+          <option value="this_week">This week</option>
+          <option value="last_7">Last 7 days</option>
+          <option value="last_30">Last 30 days</option>
+          <option value="ytd">YTD</option>
+          <option value="all">All time</option>
+        </select>
+        <button id="openFilters" class="btn">Advanced filters</button>
       </div>
     </div>
   </header>
@@ -24,19 +43,19 @@
       <div class="panel-title">Ask the tracker</div>
       <div class="chat">
         <div class="chat-row">
-          <input id="chatInput" class="chat-input" placeholder="e.g., Which companies received funding in the last 1 week?" />
+          <input id="chatInput" class="chat-input" placeholder="e.g., Which companies received funding this week? / Biggest deals last 30 days?" />
           <button id="chatSend" class="btn primary">Ask</button>
         </div>
         <div id="chatAnswer" class="chat-answer"></div>
         <div class="hint">
-          Examples: “last week”, “past 30 days”, “Feb 2026”, “Series A in last 90 days”, “largest rounds”.
+          Tips: “this week”, “last 7 days”, “Feb 2026”, “largest rounds”, “acquisitions this month”.
         </div>
       </div>
     </section>
 
     <section class="panel">
       <div class="panel-head">
-        <div class="panel-title">Funding rounds</div>
+        <div class="panel-title" id="tableTitle">Funding</div>
         <div class="meta">
           <span id="countLabel">—</span>
           <span class="dot">•</span>
@@ -45,33 +64,75 @@
       </div>
 
       <div class="table-wrap">
-        <table id="fundingTable">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Date</th>
-              <th>Round</th>
-              <th>Amount</th>
-              <th>Investors</th>
-              <th>Description</th>
-              <th>Therapeutic Area</th>
-              <th>Modality</th>
-              <th>Stage</th>
-              <th>Small molecule?</th>
-              <th>HQ City</th>
-              <th>HQ State/Region</th>
-            </tr>
-          </thead>
-          <tbody id="fundingTbody"></tbody>
+        <table id="dataTable">
+          <thead id="thead"></thead>
+          <tbody id="tbody"></tbody>
         </table>
       </div>
     </section>
   </main>
 
+  <!-- Filter Drawer -->
+  <div id="drawerBackdrop" class="backdrop hidden"></div>
+  <aside id="drawer" class="drawer hidden">
+    <div class="drawer-head">
+      <div class="drawer-title">Advanced filters</div>
+      <button id="closeFilters" class="btn">Close</button>
+    </div>
+
+    <div class="drawer-grid">
+      <label class="field">
+        <span>Keyword</span>
+        <input id="fKeyword" class="input" placeholder="Company, investor, acquirer, etc." />
+      </label>
+
+      <label class="field">
+        <span>Geo</span>
+        <select id="fGeo" class="select">
+          <option value="">Any</option>
+          <option value="US">US</option>
+          <option value="Europe">Europe</option>
+          <option value="APAC">APAC</option>
+          <option value="ROW">ROW</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Modality</span>
+        <input id="fModality" class="input" placeholder="Small molecule, mAb, gene therapy, RNA, ADC..." />
+      </label>
+
+      <label class="field">
+        <span>Therapeutic area</span>
+        <input id="fTA" class="input" placeholder="Oncology, Immunology, Neuro, Metabolic..." />
+      </label>
+
+      <label class="field">
+        <span>Segment</span>
+        <input id="fSegment" class="input" placeholder="ADMET/PK, SBDD, Drug Repurposing, GenChem..." />
+      </label>
+
+      <label class="field">
+        <span>Min amount (USD)</span>
+        <input id="fMinAmt" class="input" placeholder="e.g., 50000000" />
+      </label>
+
+      <label class="field">
+        <span>Max amount (USD)</span>
+        <input id="fMaxAmt" class="input" placeholder="e.g., 250000000" />
+      </label>
+    </div>
+
+    <div class="drawer-actions">
+      <button id="applyFilters" class="btn primary">Apply</button>
+      <button id="clearFilters" class="btn">Clear</button>
+    </div>
+  </aside>
+
   <footer class="footer">
     <div class="container footer-row">
-      <div>API: <span class="mono">/api/funding</span> • <span class="mono">/api/chat</span></div>
-      <div class="mono">Deploy-ready for Render</div>
+      <div>API: <span class="mono">/api/funding</span> • <span class="mono">/api/deals</span> • <span class="mono">/api/chat</span></div>
+      <div class="mono">Render deploy ready</div>
     </div>
   </footer>
 
