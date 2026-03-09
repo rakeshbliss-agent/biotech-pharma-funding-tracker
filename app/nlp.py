@@ -459,7 +459,7 @@ def summarize_answer(user_query: str, plan: Dict[str, Any], rows: List[Dict[str,
                 bullets.append(
                     f"- {r.get('Company/Target','')} — {r.get('Amount','')} ({r.get('Round/Deal','')}, {r.get('Date','')})"
                 )
-        return "Here are the largest items in the selected set:
+        return "Here are the largest items in the selected set:\n" + "\n".join(bullets)
 " + "
 ".join(bullets)
 
