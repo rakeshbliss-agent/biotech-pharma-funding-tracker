@@ -279,8 +279,8 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
         if therapeutic_area and not _text_in(therapeutic_area, str(r.get("Therapeutic Area", ""))):
             continue
 
-        if segment and not _text_in(segment, str(r.get("Segment", ""))):
-            continue
+       if segment and not _text_in(segment, str(r.get("Segment", ""))):
+    continue
 
         if geo:
             bucket = _geo_bucket(r.get("HQ Country"))
