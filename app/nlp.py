@@ -276,8 +276,11 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
                 else:
                     continue
 
-        if therapeutic_area and not _text_in(therapeutic_area, str(r.get("Therapeutic Area", ""))):
-            continue
+        if therapeutic_area:
+    ta_field = str(r.get("Therapeutic Area", ""))
+    tas = [x.strip() for x in str(therapeutic_area).split(",") if x.strip()]
+    if tas and not any(_text_in(t, ta_field) for t in tas):
+        continue
 
       # Segment: match Segment field OR fall back to searching other text
 if segment:
