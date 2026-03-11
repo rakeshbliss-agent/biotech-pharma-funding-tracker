@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -24,10 +24,9 @@ REPO_ROOT = APP_DIR.parent
 
 FUNDING_FILE = APP_DIR / "funding_data.json"
 DEALS_FILE = APP_DIR / "deals_data.json"
-
 WEB_DIR = REPO_ROOT / "web"
 
-app = FastAPI(title="Biotech/Pharma Funding + Deals Tracker", version="1.2.0")
+app = FastAPI(title="Biotech/Pharma Funding + Deals Tracker", version="1.2.1")
 
 
 def _clean_json(obj: Any) -> Any:
@@ -52,7 +51,6 @@ def _load_list(path: Path) -> List[Dict[str, Any]]:
 
 
 def _sort_by_date(rows: List[Dict[str, Any]], date_key: str) -> List[Dict[str, Any]]:
-    # Works only if date is ISO "YYYY-MM-DD". If missing -> "" pushes to bottom.
     return sorted(rows, key=lambda r: (r.get(date_key) or ""), reverse=True)
 
 
@@ -72,7 +70,6 @@ def _build_filters(
     max_amount: Optional[float] = None,
 ) -> Dict[str, Any]:
     filters: Dict[str, Any] = {}
-
     if date_preset:
         filters["date_preset"] = date_preset
     if q:
@@ -148,7 +145,6 @@ def api_both(
     deals = _sort_by_date(_load_list(DEALS_FILE), "Deal date")
 
     filters = _build_filters(date_preset, q, geo, modality, segment, therapeutic_area, min_amount, max_amount)
-
     f_rows = filter_rows_funding(funding, filters)
     d_rows = filter_rows_deals(deals, filters)
 
@@ -164,14 +160,7 @@ class ChatRequest(BaseModel):
 
 @app.post("/api/chat")
 def chat(req: ChatRequest):
-    # UI-selected mode
     mode = (req.mode or "funding").lower()
-
-    # ✅ Auto-switch mode for M&A queries if user is in Funding tab
-    inferred = infer_mode_from_query(req.query)
-    if inferred == "deals" and mode == "funding":
-        mode = "deals"
-
     plan = interpret_query(req.query, mode=mode)
 
     funding_rows = _sort_by_date(_load_list(FUNDING_FILE), "Funding date")
@@ -200,7 +189,8 @@ def chat(req: ChatRequest):
         "rows": filtered[:500],
     }
 
-# Serve front-end
+
+# Serve the front-end
 app.mount("/", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
 
 
