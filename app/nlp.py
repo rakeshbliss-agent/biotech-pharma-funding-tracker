@@ -7,33 +7,94 @@ from typing import Any, Dict, List, Optional
 from dateutil.relativedelta import relativedelta
 
 MONTH_MAP = {
-    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
-    "jul": 7, "aug": 8, "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dec": 12
+    "jan": 1,
+    "feb": 2,
+    "mar": 3,
+    "apr": 4,
+    "may": 5,
+    "jun": 6,
+    "jul": 7,
+    "aug": 8,
+    "sep": 9,
+    "sept": 9,
+    "oct": 10,
+    "nov": 11,
+    "dec": 12,
 }
 
 REGION_US = {"USA", "US", "UNITED STATES", "UNITED STATES OF AMERICA"}
 REGION_EUROPE_HINTS = {
-    "UK", "UNITED KINGDOM", "ENGLAND", "SCOTLAND", "WALES",
-    "IRELAND", "FRANCE", "GERMANY", "SPAIN", "ITALY", "NETHERLANDS",
-    "SWITZERLAND", "DENMARK", "SWEDEN", "NORWAY", "FINLAND", "BELGIUM",
-    "AUSTRIA", "PORTUGAL", "ICELAND", "LUXEMBOURG", "CZECH", "POLAND"
+    "UK",
+    "UNITED KINGDOM",
+    "ENGLAND",
+    "SCOTLAND",
+    "WALES",
+    "IRELAND",
+    "FRANCE",
+    "GERMANY",
+    "SPAIN",
+    "ITALY",
+    "NETHERLANDS",
+    "SWITZERLAND",
+    "DENMARK",
+    "SWEDEN",
+    "NORWAY",
+    "FINLAND",
+    "BELGIUM",
+    "AUSTRIA",
+    "PORTUGAL",
+    "ICELAND",
+    "LUXEMBOURG",
+    "CZECH",
+    "POLAND",
 }
 REGION_APAC_HINTS = {
-    "CHINA", "JAPAN", "SOUTH KOREA", "KOREA", "INDIA", "SINGAPORE",
-    "HONG KONG", "TAIWAN", "AUSTRALIA", "NEW ZEALAND"
+    "CHINA",
+    "JAPAN",
+    "SOUTH KOREA",
+    "KOREA",
+    "INDIA",
+    "SINGAPORE",
+    "HONG KONG",
+    "TAIWAN",
+    "AUSTRALIA",
+    "NEW ZEALAND",
 }
 
 DEFAULT_SEGMENTS = [
-    "ADMET/PK", "SBDD", "Drug Repurposing", "GenChem",
-    "Knowledge Graph", "Lab Informatics", "Automation"
+    "ADMET/PK",
+    "SBDD",
+    "Drug Repurposing",
+    "GenChem",
+    "Knowledge Graph",
+    "Lab Informatics",
+    "Automation",
 ]
 
-DEAL_HINT_RE = re.compile(
-    r"\b(acquisition|acquisitions|acquire|acquired|buyout|merger|takeover|m\s*&\s*a|m&a)\b",
-    re.I
-)
+DEAL_MODE_HINTS = [
+    "acquisition",
+    "acquisitions",
+    "acquire",
+    "acquired",
+    "merger",
+    "m&a",
+    "buyout",
+    "takeover",
+    "deal",
+    "deals",
+]
 
-AMOUNT_TOKEN_RE = re.compile(r"^\d+(?:\.\d+)?[kmb]$", re.I)
+FUNDING_MODE_HINTS = [
+    "funding",
+    "raised",
+    "raise",
+    "series a",
+    "series b",
+    "series c",
+    "seed",
+    "pre-seed",
+    "financing",
+]
 
 
 def _today() -> date:
@@ -51,21 +112,24 @@ def _parse_iso(d: Optional[str]) -> Optional[date]:
 
 def _amount_to_number(amount: str) -> Optional[float]:
     """
-    Parses strings like "$60M", "€46.6 million", "305M", "$2.5B", "about $52 million", "500k"
-    Returns approx number (no FX conversion; just numeric scaling).
+    Parses strings like:
+    "$60M", "€46.6 million", "305M", "$2.5B", "about $52 million", "$500K"
+    Returns approximate numeric value (no FX conversion).
     """
     if not amount:
         return None
     s = str(amount).replace(",", "").strip()
 
-    # 60M / 2.5B / 500K
+    # 500K / 60M / 2.5B
     m = re.search(r"(\d+(?:\.\d+)?)\s*([KMB])\b", s, re.I)
     if m:
         val = float(m.group(1))
         unit = m.group(2).upper()
         if unit == "K":
             return val * 1e3
-        return val * (1e9 if unit == "B" else 1e6)
+        if unit == "M":
+            return val * 1e6
+        return val * 1e9
 
     # "million" / "billion"
     m2 = re.search(r"(\d+(?:\.\d+)?)\s*(million|billion)\b", s, re.I)
@@ -103,7 +167,7 @@ def _geo_bucket(country: Optional[str]) -> Optional[str]:
 def apply_date_preset(filters: Dict[str, Any]) -> None:
     """
     Public helper (used by main.py) to translate date_preset into from_date/to_date.
-    Supported: today, this_week, last_7, last_30, mtd, ytd, all/none
+    Supported: today, last_7, last_30, ytd, all/none
     """
     preset = (filters.get("date_preset") or "").strip().lower()
     if preset in {"", "all", "none"}:
@@ -129,12 +193,6 @@ def apply_date_preset(filters: Dict[str, Any]) -> None:
 
     if preset == "last_30":
         filters["from_date"] = (to_d - timedelta(days=30)).isoformat()
-        filters["to_date"] = to_d.isoformat()
-        return
-
-    if preset == "mtd":
-        from_d = date(to_d.year, to_d.month, 1)
-        filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
         return
 
@@ -172,7 +230,7 @@ def _parse_amount_filter(x: Any) -> Optional[float]:
 
 def _extract_amount_from_query_text(q: str) -> Optional[float]:
     """
-    Extracts a number like 500k / 2m / 1.2b from a free-text query and returns numeric value.
+    Extracts 500k / 2m / 1.2b from free text and returns numeric value.
     """
     if not q:
         return None
@@ -185,10 +243,19 @@ def _extract_amount_from_query_text(q: str) -> Optional[float]:
     return val * mult
 
 
+def infer_mode_from_query(query: str) -> str:
+    q = (query or "").lower()
+    if any(h in q for h in DEAL_MODE_HINTS):
+        return "deals"
+    if any(h in q for h in FUNDING_MODE_HINTS):
+        return "funding"
+    return "funding"
+
+
 def _split_terms(keyword: str) -> List[str]:
     """
-    AND terms only when user uses '+' or ' and ' explicitly.
-    Otherwise treat it as a phrase (single term).
+    AND terms only when user explicitly uses '+' or 'and'.
+    Otherwise treat it as a normal phrase search (single term).
     """
     if not keyword:
         return []
@@ -198,20 +265,16 @@ def _split_terms(keyword: str) -> List[str]:
     return [keyword.strip().lower()]
 
 
-def infer_mode_from_query(query: str) -> Optional[str]:
-    if not query:
-        return None
-    return "deals" if DEAL_HINT_RE.search(query) else None
-
-
 def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     """
-    Rules-based interpretation for /api/chat.
-    Key: do NOT treat full questions as keyword. Extract only meaningful terms.
+    Rules-based interpretation (used for /api/chat).
+    Critical behavior:
+    - Detect date presets like "since last month", "this month", "last week"
+    - Avoid using the entire NL sentence as keyword (causes 0 matches)
+    - Keep meaningful remaining tokens as keyword
     """
     q_raw = (query or "").strip()
     q = q_raw.lower()
-
     filters: Dict[str, Any] = {}
     action: Dict[str, Any] = {"type": "filter"}
     mode = (mode or "funding").strip().lower()
@@ -223,8 +286,9 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["date_preset"] = "this_week"
     elif any(x in q for x in ["last week", "past week", "past 7 days", "last 7 days", "since last week"]):
         filters["date_preset"] = "last_7"
-    elif any(x in q for x in ["this month", "current month", "month to date", "mtd"]):
-        filters["date_preset"] = "mtd"
+    elif any(x in q for x in ["this month", "in this month"]):
+        # interpret "this month" as last 30 days (simple & consistent)
+        filters["date_preset"] = "last_30"
     elif any(x in q for x in ["last month", "past month", "past 30 days", "since last month"]):
         filters["date_preset"] = "last_30"
     elif "ytd" in q or "year to date" in q:
@@ -235,8 +299,7 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     if m:
         n = int(m.group(1))
         to_d = _today()
-        from_d = to_d - timedelta(days=n)
-        filters["from_date"] = from_d.isoformat()
+        filters["from_date"] = (to_d - timedelta(days=n)).isoformat()
         filters["to_date"] = to_d.isoformat()
 
     # past N months
@@ -244,11 +307,10 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     if m:
         n = int(m.group(1))
         to_d = _today()
-        from_d = to_d - relativedelta(months=n)
-        filters["from_date"] = from_d.isoformat()
+        filters["from_date"] = (to_d - relativedelta(months=n)).isoformat()
         filters["to_date"] = to_d.isoformat()
 
-    # Month + year
+    # Month + year (e.g., "Feb 2026")
     m = re.search(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\s+(20\d{2})\b", q, re.I)
     if m:
         mon = MONTH_MAP[m.group(1).lower()]
@@ -258,7 +320,7 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
         filters["from_date"] = from_d.isoformat()
         filters["to_date"] = to_d.isoformat()
 
-    # modality hints
+    # ---- modality ----
     if "small molecule" in q:
         filters["modality"] = "small molecule"
     elif any(x in q for x in ["biologic", "antibody", "mab"]):
@@ -270,7 +332,7 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     elif "adc" in q:
         filters["modality"] = "adc"
 
-    # geo hints
+    # ---- geo ----
     if any(x in q for x in ["us", "usa", "united states"]):
         filters["geo"] = "US"
     elif "europe" in q or "uk" in q:
@@ -278,7 +340,7 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
     elif any(x in q for x in ["apac", "asia", "china", "japan", "korea", "australia"]):
         filters["geo"] = "APAC"
 
-    # segment hints
+    # ---- segment ----
     if "admet" in q:
         filters["segment"] = "ADMET/PK"
     else:
@@ -287,65 +349,61 @@ def interpret_query(query: str, mode: str = "funding") -> Dict[str, Any]:
                 filters["segment"] = seg
                 break
 
-    # funding round hints
+    # ---- round ----
     m = re.search(r"\b(seed|pre-seed|series\s*[a-z]|series\s*\d)\b", q, re.I)
     if m:
         filters["round"] = m.group(0).strip()
 
-    # deal type hints
-    if DEAL_HINT_RE.search(q_raw):
+    # ---- deal type ----
+    if any(x in q for x in ["acquisition", "acquire", "buyout", "merger", "m&a"]):
         filters["deal_type"] = "Acquisition/Merger"
 
-    # top/large
+    # ---- top/large ----
     m = re.search(r"top\s+(\d+)", q)
     if m and any(x in q for x in ["largest", "biggest", "amount", "$"]):
         action = {"type": "top_by_amount", "n": int(m.group(1))}
     elif any(x in q for x in ["largest", "biggest"]):
         action = {"type": "top_by_amount", "n": 10}
 
-    # amount hint from query (also remove it from keyword later)
+    # ---- extract amount ----
     amt = _extract_amount_from_query_text(q)
     if amt is not None:
         filters["min_amount"] = str(amt)
 
-    # ---- keyword extraction (safe token-based; no substring replace of "in"/"on") ----
-    # Remove common question phrases (multi-word) first.
-    phrase_markers = [
-        "which companies", "which company", "received funding", "receive funding",
-        "funding", "funded", "deals", "deal", "acquisitions", "acquisition", "acquired",
-        "this week", "current week", "last week",
-        "this month", "current month", "month to date",
-        "last month", "past month", "past 7 days", "past 30 days",
-        "since last week", "since last month",
-        "year to date",
+    # ---- keyword handling ----
+    generic_markers = [
+        "which companies",
+        "who",
+        "received funding",
+        "funding",
+        "raised",
+        "raise",
+        "deals",
+        "deal",
+        "acquisitions",
+        "acquisition",
+        "acquired",
+        "since",
+        "past",
+        "last",
+        "today",
+        "ytd",
+        "this week",
+        "current week",
+        "last week",
+        "this month",
+        "last month",
+        "past 7 days",
+        "past 30 days",
+        "in this month",
     ]
+
     cleaned = q
-    for ph in phrase_markers:
-        cleaned = cleaned.replace(ph, " ")
+    for gm in generic_markers:
+        cleaned = cleaned.replace(gm, " ")
+    cleaned = re.sub(r"[^a-z0-9\+\s\-\.]", " ", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
 
-    # Keep '+' for AND queries; normalize punctuation to spaces.
-    cleaned = re.sub(r"[^a-z0-9\s\+]+", " ", cleaned)
-    cleaned = cleaned.replace("+", " + ")
-
-    stopwords = {
-        "who", "which", "companies", "company", "show", "list", "find",
-        "since", "past", "last", "today", "ytd",
-        "in", "on", "of", "the", "to", "for",
-        "week", "month", "days",
-    }
-
-    tokens = []
-    for t in cleaned.split():
-        if not t:
-            continue
-        if t in stopwords:
-            continue
-        # drop amount tokens like 500k / 2m / 1.2b (we already extracted)
-        if AMOUNT_TOKEN_RE.match(t):
-            continue
-        tokens.append(t)
-
-    cleaned = " ".join(tokens).replace(" + ", "+").strip()
     if cleaned:
         filters["keyword"] = cleaned
 
@@ -362,6 +420,7 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
     modality = filters.get("modality")
     therapeutic_area = filters.get("therapeutic_area")
     segment = filters.get("segment")
+
     min_amount_f = _parse_amount_filter(filters.get("min_amount"))
     max_amount_f = _parse_amount_filter(filters.get("max_amount"))
 
@@ -369,7 +428,7 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
     round_q = filters.get("round")
     small_molecule = filters.get("small_molecule")
 
-    # If user typed "500k" inside keyword, treat it as min_amount if not already set
+    # If keyword contains 500k/2m etc and min not set
     if keyword and min_amount_f is None:
         implied = _extract_amount_from_query_text(str(keyword))
         if implied is not None:
@@ -383,17 +442,20 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
             continue
 
         if terms:
-            blob = " | ".join([
-                str(r.get("Company", "")),
-                str(r.get("Investors", "")),
-                str(r.get("Description", "")),
-                str(r.get("Therapeutic Area", "")),
-                str(r.get("Therapeutic Modality", "")),
-                str(r.get("Funding round", "")),
-                str(r.get("HQ City", "")),
-                str(r.get("HQ State/Region", "")),
-                str(r.get("HQ Country", "")),
-            ]).lower()
+            blob = " | ".join(
+                [
+                    str(r.get("Company", "")),
+                    str(r.get("Investors", "")),
+                    str(r.get("Description", "")),
+                    str(r.get("Therapeutic Area", "")),
+                    str(r.get("Therapeutic Modality", "")),
+                    str(r.get("Funding round", "")),
+                    str(r.get("HQ City", "")),
+                    str(r.get("HQ State/Region", "")),
+                    str(r.get("HQ Country", "")),
+                    str(r.get("Segment", "")),
+                ]
+            ).lower()
             if any(t not in blob for t in terms):
                 continue
 
@@ -420,15 +482,17 @@ def filter_rows_funding(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> 
             segq = str(segment).strip().lower()
             if segq == "admet":
                 segq = "admet/pk"
-            blob = " | ".join([
-                str(r.get("Segment", "")),
-                str(r.get("Description", "")),
-                str(r.get("Therapeutic Modality", "")),
-                str(r.get("Therapeutic Area", "")),
-                str(r.get("Investors", "")),
-                str(r.get("Company", "")),
-            ]).lower()
-            if segq not in blob:
+            blob2 = " | ".join(
+                [
+                    str(r.get("Segment", "")),
+                    str(r.get("Description", "")),
+                    str(r.get("Therapeutic Modality", "")),
+                    str(r.get("Therapeutic Area", "")),
+                    str(r.get("Investors", "")),
+                    str(r.get("Company", "")),
+                ]
+            ).lower()
+            if segq not in blob2:
                 continue
 
         if geo:
@@ -463,6 +527,7 @@ def filter_rows_deals(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> Li
     modality = filters.get("modality")
     therapeutic_area = filters.get("therapeutic_area")
     segment = filters.get("segment")
+
     min_amount_f = _parse_amount_filter(filters.get("min_amount"))
     max_amount_f = _parse_amount_filter(filters.get("max_amount"))
 
@@ -483,16 +548,19 @@ def filter_rows_deals(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> Li
             continue
 
         if terms:
-            blob = " | ".join([
-                str(r.get("Acquirer", "")),
-                str(r.get("Target", "")),
-                str(r.get("Description", "")),
-                str(r.get("Therapeutic Area", "")),
-                str(r.get("Modality", "")),
-                str(r.get("Deal type", "")),
-                str(r.get("Source", "")),
-                str(r.get("Target HQ Country", "")),
-            ]).lower()
+            blob = " | ".join(
+                [
+                    str(r.get("Acquirer", "")),
+                    str(r.get("Target", "")),
+                    str(r.get("Description", "")),
+                    str(r.get("Therapeutic Area", "")),
+                    str(r.get("Modality", "")),
+                    str(r.get("Deal type", "")),
+                    str(r.get("Source", "")),
+                    str(r.get("Target HQ Country", "")),
+                    str(r.get("Segment", "")),
+                ]
+            ).lower()
             if any(t not in blob for t in terms):
                 continue
 
@@ -516,15 +584,17 @@ def filter_rows_deals(rows: List[Dict[str, Any]], filters: Dict[str, Any]) -> Li
             segq = str(segment).strip().lower()
             if segq == "admet":
                 segq = "admet/pk"
-            blob = " | ".join([
-                str(r.get("Segment", "")),
-                str(r.get("Description", "")),
-                str(r.get("Modality", "")),
-                str(r.get("Therapeutic Area", "")),
-                str(r.get("Acquirer", "")),
-                str(r.get("Target", "")),
-            ]).lower()
-            if segq not in blob:
+            blob2 = " | ".join(
+                [
+                    str(r.get("Segment", "")),
+                    str(r.get("Description", "")),
+                    str(r.get("Modality", "")),
+                    str(r.get("Therapeutic Area", "")),
+                    str(r.get("Acquirer", "")),
+                    str(r.get("Target", "")),
+                ]
+            ).lower()
+            if segq not in blob2:
                 continue
 
         if geo:
@@ -551,31 +621,35 @@ def merge_rows_for_chat(rows: List[Dict[str, Any]], mode: str) -> List[Dict[str,
     out: List[Dict[str, Any]] = []
     for r in rows:
         if "Funding date" in r:
-            out.append({
-                "Type": "Funding",
-                "Date": r.get("Funding date"),
-                "Company/Target": r.get("Company"),
-                "Counterparty": r.get("Investors"),
-                "Amount": r.get("Funding amount"),
-                "Round/Deal": r.get("Funding round"),
-                "Therapeutic Area": r.get("Therapeutic Area"),
-                "Modality": r.get("Therapeutic Modality"),
-                "Geo": _geo_bucket(r.get("HQ Country")) or "",
-                "Description": r.get("Description"),
-            })
+            out.append(
+                {
+                    "Type": "Funding",
+                    "Date": r.get("Funding date"),
+                    "Company/Target": r.get("Company"),
+                    "Counterparty": r.get("Investors"),
+                    "Amount": r.get("Funding amount"),
+                    "Round/Deal": r.get("Funding round"),
+                    "Therapeutic Area": r.get("Therapeutic Area"),
+                    "Modality": r.get("Therapeutic Modality"),
+                    "Geo": _geo_bucket(r.get("HQ Country")) or "",
+                    "Description": r.get("Description"),
+                }
+            )
         else:
-            out.append({
-                "Type": "Deal",
-                "Date": r.get("Deal date"),
-                "Company/Target": r.get("Target"),
-                "Counterparty": r.get("Acquirer"),
-                "Amount": r.get("Upfront"),
-                "Round/Deal": r.get("Deal type"),
-                "Therapeutic Area": r.get("Therapeutic Area"),
-                "Modality": r.get("Modality"),
-                "Geo": _geo_bucket(r.get("Target HQ Country")) or "",
-                "Description": r.get("Description"),
-            })
+            out.append(
+                {
+                    "Type": "Deal",
+                    "Date": r.get("Deal date"),
+                    "Company/Target": r.get("Target"),
+                    "Counterparty": r.get("Acquirer"),
+                    "Amount": r.get("Upfront"),
+                    "Round/Deal": r.get("Deal type"),
+                    "Therapeutic Area": r.get("Therapeutic Area"),
+                    "Modality": r.get("Modality"),
+                    "Geo": _geo_bucket(r.get("Target HQ Country")) or "",
+                    "Description": r.get("Description"),
+                }
+            )
 
     out.sort(key=lambda x: (x.get("Date") or ""), reverse=True)
     return out
