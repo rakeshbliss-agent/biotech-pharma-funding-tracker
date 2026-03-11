@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -14,6 +14,7 @@ from .nlp import (
     apply_date_preset,
     filter_rows_deals,
     filter_rows_funding,
+    infer_mode_from_query,
     interpret_query,
     merge_rows_for_chat,
     summarize_answer,
@@ -51,6 +52,7 @@ def _load_list(path: Path) -> List[Dict[str, Any]]:
 
 
 def _sort_by_date(rows: List[Dict[str, Any]], date_key: str) -> List[Dict[str, Any]]:
+    # Works only if date is ISO "YYYY-MM-DD". Missing -> "" pushes to bottom.
     return sorted(rows, key=lambda r: (r.get(date_key) or ""), reverse=True)
 
 
@@ -145,6 +147,7 @@ def api_both(
     deals = _sort_by_date(_load_list(DEALS_FILE), "Deal date")
 
     filters = _build_filters(date_preset, q, geo, modality, segment, therapeutic_area, min_amount, max_amount)
+
     f_rows = filter_rows_funding(funding, filters)
     d_rows = filter_rows_deals(deals, filters)
 
@@ -160,13 +163,20 @@ class ChatRequest(BaseModel):
 
 @app.post("/api/chat")
 def chat(req: ChatRequest):
-    mode = (req.mode or "funding").lower()
+    # UI-selected mode
+    mode = (req.mode or "funding").lower().strip()
+
+    # auto-switch for acquisition queries if user is on Funding tab
+    inferred = infer_mode_from_query(req.query)
+    if inferred == "deals" and mode == "funding":
+        mode = "deals"
+
     plan = interpret_query(req.query, mode=mode)
 
     funding_rows = _sort_by_date(_load_list(FUNDING_FILE), "Funding date")
     deals_rows = _sort_by_date(_load_list(DEALS_FILE), "Deal date")
 
-    filters = plan.get("filters", {}) or {}
+    filters = (plan.get("filters") or {}).copy()
     apply_date_preset(filters)
 
     if mode == "deals":
