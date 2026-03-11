@@ -342,5 +342,33 @@
     "Target HQ Country": "USA",
     "Description": "Pfizer entered definitive agreement to acquire Seagen for $229/share in cash (enterprise value ~$43B) to strengthen oncology franchise.",
     "Source": "Pfizer press release"
-  }
+  },
+  {
+  "Deal date": "2026-03-10",
+  "Acquirer": "Eli Lilly",
+  "Target": "Ventyx Biosciences",
+  "Deal type": "Acquisition/Merger",
+  "Upfront": "$1.2B",
+  "Total value": "$1.2B",
+  "Therapeutic Area": "Immunology / Inflammation",
+  "Modality": "Small molecule (NLRP3 / CNS)",
+  "Segment": "Immunology / Small molecule",
+  "Target HQ Country": "USA",
+  "Description": "Eli Lilly completed its ~$1.2B acquisition of Ventyx; Ventyx shares were delisted following deal completion.",
+  "Source": "Company / financial news reports"
+},
+  {
+  "Deal date": "2026-03-07",
+  "Acquirer": "Asahi Kasei",
+  "Target": "Aicuris",
+  "Deal type": "Acquisition/Merger",
+  "Upfront": "€780M",
+  "Total value": "€780M",
+  "Therapeutic Area": "Infectious Disease",
+  "Modality": "Antivirals / anti-infectives",
+  "Segment": "Infectious Disease / Antivirals",
+  "Target HQ Country": "Germany",
+  "Description": "Asahi Kasei agreed to acquire Germany-based Aicuris for €780M to expand its infectious-disease/antiviral footprint.",
+  "Source": "Company / financial news reports"
+}
 ]
