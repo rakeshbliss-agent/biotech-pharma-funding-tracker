@@ -452,7 +452,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "For this database, BioPharma Dive looked only at companies developing human medicines. The mergers and acquisitions included in the database are limited by certain criteria, namely that they must be for an entire company — not for product licensings, options to acquire or for partial equity stakes. Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close.",
+    "Description": "For this database, BioPharma Dive looked only at companies developing human medicines. The mergers and acquisitions included in the database are limited by certain criteria, namely that they must be for an entire company — not for product licensings, options to acquire or for partial equity stakes. Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close.",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -468,7 +468,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close. Only one therapeutic category is counted for each acquired company. For those with multiple focuses, the chosen therapeutic area is based on lead asset or, lacking one that's distinctly identified, the company is classified under \"other.\"",
+    "Description": "Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close. Only one therapeutic category is counted for each acquired company. For those with multiple focuses, the chosen therapeutic area is based on lead asset or, lacking one that's distinctly identified, the company is classified under \"other.\"",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -839,6 +839,38 @@
     "Description": "<a href=\"https://www.fiercebiotech.com/biotech/after-previous-rejection-kevin-tang-and-aurinia-acquire-kezar-50m\" hreflang=\"en\">Kevin Tang uses newfound control of Aurinia to finally take over Kezar</a> Autoimmune specialist Aurinia, which named Kevin Tang as its new CEO last week, is acquiring Kezar after the latter company received promising feedback from the FDA. Tang previously made an unsuccessful attempt in 2024 to acquire Kezar via Concentra Biosciences and its parent company, Tang Capital Partners.",
     "Source": "FierceBiotech - RSS",
     "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the",
+    "Target": "company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included.",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$50 million",
+    "Total value": "$50 million",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Editor's note: If tables or values do not display, please try clearing your browser's cache and reloading the page. For this database, BioPharma Dive looked only at companies developing human medicines. The mergers and acquisitions included in the database are limited by certain criteria, namely that they must be for an entire company — not for product licensings, options to acquire or for partial equity stakes. Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included.",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Foster &amp; Foster",
+    "Target": "Indiana-Based United Actuarial Services, Inc.",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Foster &amp; Foster Acquires Indiana-Based United Actuarial Services, Inc. FORT MYERS, Fla.--(BUSINESS WIRE)--Foster & Foster Acquires Indiana-Based United Actuarial Services; Deal Creates a Taft-Hartley Power House in the Pension and Health & Welfare Arenas",
+    "Source": "Business Wire - Pharma RSS",
+    "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
     "__source_tag": "reputable_news"
   }
 ]
