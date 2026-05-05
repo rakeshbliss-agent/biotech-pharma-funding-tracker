@@ -1544,5 +1544,21 @@
     "Source": "Business Wire - Pharma RSS",
     "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
     "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/ucb-inks-2b-candid-buyout-join-gilead-autoimmune-field\" hreflang=\"en\">UCB inks $2B Candid buyout to join Gilead in autoimmune field</a> UCB has struck a deal",
+    "Target": "Candid Therapeutics",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "2b",
+    "Total value": "2b",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/ucb-inks-2b-candid-buyout-join-gilead-autoimmune-field\" hreflang=\"en\">UCB inks $2B Candid buyout to join Gilead in autoimmune field</a> UCB has struck a deal to acquire Candid Therapeutics for $2 billion upfront, hijacking a planned reverse merger with Rallybio to challenge Gilead for an emerging opportunity for T-cell engagers.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
   }
 ]
