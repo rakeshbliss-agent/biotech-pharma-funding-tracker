@@ -1800,5 +1800,53 @@
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Angelini to buy Catalyst in $4B play for rare neuro drugs By Gwendolyn Wu Roche",
+    "Target": "digital pathology firm PathAI in deal potentially worth over $1B By Elise Reuter About",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$4B",
+    "Total value": "$4B",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Angelini to buy Catalyst in $4B play for rare neuro drugs By Gwendolyn Wu Roche to acquire digital pathology firm PathAI in deal potentially worth over $1B By Elise Reuter About",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Roche",
+    "Target": "digital pathology firm PathAI in deal potentially worth over $1B By Elise Reuter About Editorial Team",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$1B",
+    "Total value": "$1B",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Roche to acquire digital pathology firm PathAI in deal potentially worth over $1B By Elise Reuter About Editorial Team",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "CTI",
+    "Target": "Data Conversion Laboratory, Expanding Platform in Data and Information Management",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "CTI Acquires Data Conversion Laboratory, Expanding Platform in Data and Information Management ROCKVILLE, Md.--(BUSINESS WIRE)--Cartridge Technologies announces the acquisition of Data Conversion Laboratory, a provider of structured data and content transformation services.",
+    "Source": "Business Wire - Pharma RSS",
+    "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
+    "__source_tag": "reputable_news"
   }
 ]
