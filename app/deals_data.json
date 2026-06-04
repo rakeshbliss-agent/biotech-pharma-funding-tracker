@@ -2148,7 +2148,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "A decade of cancer immunotherapy: Keytruda, Opdivo and the drugs that changed oncology Over the past 10 years, PD1-blocking medicines have transformed cancer care. But the steady expansion of their use has slowed and, despite much trying, pharmaceutical companies have largely failed to top the drugs’ successes. Servier buys into muscular dystrophy with potentially $2.7B deal By Jacob Bell",
+    "Description": "According to a new BioPharma Dive analysis, corporate-related funds such as Novo Holdings, Eli Lilly and Sanofi Ventures have been among the most active investors in biotech startups this year. Lilly, Ascidian link up in RNA exon editing pact By Gwendolyn Wu Servier buys into muscular dystrophy with potentially $2.7B deal By Jacob Bell",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -2247,6 +2247,22 @@
     "Description": "Neo4j Acquires GraphAware to Launch Intelligence Analysis Alternative to Palantir Gotham SAN MATEO, Calif.--(BUSINESS WIRE)--Neo4jⓇ, the world’s leading graph intelligence platform, today announced an agreement to acquire GraphAware, an intelligence analysis software company for government agencies. The acquisition will launch a new generation of AI-powered, graph technology solutions based on open standards, as a proven and trusted alternative to Palantir Gotham. This marks a key milestone in Neo4j’s $100 million AI investment roadmap, accelerating the development and delivery of",
     "Source": "Business Wire - Pharma RSS",
     "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Lilly, Ascidian link up in RNA exon editing pact By Gwendolyn Wu Servier",
+    "Target": "into muscular dystrophy with potentially $2.7B deal By Jacob Bell Pfizer, Innovent strike $10B cancer drug deal By Ben Fidler",
+    "Deal type": "Deal",
+    "Upfront": "$2.7B",
+    "Total value": "$2.7B",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Lilly, Ascidian link up in RNA exon editing pact By Gwendolyn Wu Servier buys into muscular dystrophy with potentially $2.7B deal By Jacob Bell Pfizer, Innovent strike $10B cancer drug deal By Ben Fidler",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
   }
 ]
