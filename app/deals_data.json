@@ -2856,5 +2856,53 @@
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "AbbVie",
+    "Target": "Apogee, staking nearly $11B on long-acting autoimmune drugs By Ben Fidler",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$929M",
+    "Total value": "$929M",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Theravance, after clinical setbacks, agrees to $929M buyout By Jonathan Gardner Antares gets $105M from Novartis for new cancer drugs By Gwendolyn Wu AbbVie to acquire Apogee, staking nearly $11B on long-acting autoimmune drugs By Ben Fidler",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "AbbVie",
+    "Target": "Apogee, staking nearly $11B on long-acting autoimmune drugs By Ben Fidler cAMPfield lands $180M to build gut disease drug By Jonathan Gardner About",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$11B",
+    "Total value": "$11B",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "AbbVie to acquire Apogee, staking nearly $11B on long-acting autoimmune drugs By Ben Fidler cAMPfield lands $180M to build gut disease drug By Jonathan Gardner About",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/ipsen-pens-17b-deal-acquire-kartos-potential-jakafi-add-therapy-myelofibrosis\" hreflang=\"en\">Ipsen pens $1.7B deal",
+    "Target": "Kartos",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "17b",
+    "Total value": "17b",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/ipsen-pens-17b-deal-acquire-kartos-potential-jakafi-add-therapy-myelofibrosis\" hreflang=\"en\">Ipsen pens $1.7B deal to acquire Kartos for potential Jakafi add-on therapy for myelofibrosis</a> Ipsen is paying $450 million upfront to buy U.S.-based Kartos Therapeutics for a phase 3-stage blood cancer drug designed to improve Jakafi treatment.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
   }
 ]
