@@ -1588,7 +1588,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "License Editors' picks Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
+    "Description": "Blocking PD-1 and VEGF: The bispecific cancer drugs that could best Keytruda Striking study results last year indicated a new type of medicine may improve on Merck’s immunotherapy, spurring a wave of research practically overnight. Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -3076,7 +3076,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Vertex to acquire Crinetics in $10B foray into endocrine disease drugs By Ben Fidler BridgeBio gets funding for drug launch; United buys into cell therapy By Delilah Alvarado Ipsen to buy Swiss biotech Memo Therapeutics in potential $800M deal By Kristin Jensen",
+    "Description": "Vertex to acquire Crinetics in $10B foray into endocrine disease drugs By Ben Fidler BridgeBio gets funding for drug launch; United buys into cell therapy By BioPharma Dive staff About",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -3111,6 +3111,38 @@
     "Description": "<a href=\"https://www.fiercebiotech.com/pharma/vertex-acquires-endocrine-disease-specialist-crinetics-10b\" hreflang=\"en\">Vertex, in its largest-ever deal, acquires endocrine disease specialist Crinetics for $10B </a> Vertex Pharmaceuticals has struck a $10 billion deal—its largest ever—to&nbsp;acquire endocrine disease specialist Crinetics Pharmaceuticals. The transaction's two focuses, Palsonify and atumelnant, have combined peak sales potential of more than $5 billion, Vertex said.",
     "Source": "FierceBiotech - RSS",
     "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Vertex",
+    "Target": "Crinetics in $10B foray into endocrine disease drugs By Ben Fidler",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$400M",
+    "Total value": "$400M",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "AstraZeneca, GSK intensify China ties with Sino Biopharm deals By Jonathan Gardner Oberland pours up to $400M into MeiraGTx eye gene therapies By Delilah Alvarado Vertex to acquire Crinetics in $10B foray into endocrine disease drugs By Ben Fidler",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "BridgeBio gets funding for drug launch; United",
+    "Target": "into cell therapy By BioPharma Dive staff",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$400M",
+    "Total value": "$400M",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Oberland pours up to $400M into MeiraGTx eye gene therapies By Delilah Alvarado Vertex to acquire Crinetics in $10B foray into endocrine disease drugs By Ben Fidler BridgeBio gets funding for drug launch; United buys into cell therapy By BioPharma Dive staff",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
   }
 ]
