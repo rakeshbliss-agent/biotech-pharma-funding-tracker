@@ -3492,7 +3492,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Argenx to acquire Forte in $2.2B deal for ‘differentiated’ immune drug By Delilah Alvarado",
+    "Description": "Daiichi Sankyo struck gold with ‘ADC’ cancer drugs. Its new CEO has to figure out what’s next. Enhertu, Datroway and other antibody-drug conjugates developed by Daiichi Sankyo have made the company a leader in a competitive field. Hiroyuki Okuzawa is working to keep it that way. Argenx to acquire Forte in $2.2B deal for ‘differentiated’ immune drug By Delilah Alvarado",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -3527,6 +3527,38 @@
     "Description": "Argenx to acquire Forte in $2.2B deal for ‘differentiated’ immune drug By Delilah Alvarado Vertex was sole bidder in high-premium Crinetics acquisition By Jacob Bell Tempus to acquire cancer test maker Personalis for $1.5B By Elise Reuter",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Enhertu, Datroway and other antibody-drug conjugates developed by Daiichi Sankyo have made the company a leader in a competitive field. Hiroyuki Okuzawa is working to keep it that way. Argenx",
+    "Target": "Forte in $2.2B deal",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$2.2B",
+    "Total value": "$2.2B",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Enhertu, Datroway and other antibody-drug conjugates developed by Daiichi Sankyo have made the company a leader in a competitive field. Hiroyuki Okuzawa is working to keep it that way. Argenx to acquire Forte in $2.2B deal for ‘differentiated’ immune drug By Delilah Alvarado Vertex was sole bidder in high-premium Crinetics acquisition By Jacob Bell",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Arkenstone Defense",
+    "Target": "GovPort, the GovCon System of Record, to Bring Subcontractor and Compliance Management Into Its Government Operating Platform",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Arkenstone Defense Acquires GovPort, the GovCon System of Record, to Bring Subcontractor and Compliance Management Into Its Government Operating Platform MENLO PARK, Calif.--(BUSINESS WIRE)--Arkenstone Defense today announced its acquisition of GovPort, the government-contracting system of record built to manage the compliance and coordination burden that primes and their subcontractors carry on every federal program. The acquisition extends Arkenstone Foundation, the company's security and compliance business, into the day-to-day contracting operations that determine whether a program stays compliant and audit-ready. Built by military veterans",
+    "Source": "Business Wire - Pharma RSS",
+    "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
     "__source_tag": "reputable_news"
   }
 ]
