@@ -3380,7 +3380,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Tempus to acquire cancer test maker Personalis for $1.5B By Elise Reuter Jasper gets a lifeline in merger with immune drugmaker Kira By Delilah Alvarado About",
+    "Description": "Tempus to acquire cancer test maker Personalis for $1.5B By Elise Reuter About Editorial Team",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -3444,7 +3444,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Vertex was sole bidder in high-premium Crinetics acquisition By Jacob Bell Tempus to acquire cancer test maker Personalis for $1.5B By Elise Reuter Jasper gets a lifeline in merger with immune drugmaker Kira By Delilah Alvarado",
+    "Description": "Vertex was sole bidder in high-premium Crinetics acquisition By Jacob Bell Tempus to acquire cancer test maker Personalis for $1.5B By Elise Reuter About",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -3492,7 +3492,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Daiichi Sankyo struck gold with ‘ADC’ cancer drugs. Its new CEO has to figure out what’s next. Enhertu, Datroway and other antibody-drug conjugates developed by Daiichi Sankyo have made the company a leader in a competitive field. Hiroyuki Okuzawa is working to keep it that way. Argenx to acquire Forte in $2.2B deal for ‘differentiated’ immune drug By Delilah Alvarado",
+    "Description": "Striking study results last year indicated a new type of medicine may improve on Merck’s immunotherapy, spurring a wave of research practically overnight. AbCellera, Vertex partner on next-gen T-cell engagers By Delilah Alvarado Argenx to acquire Forte in $2.2B deal for ‘differentiated’ immune drug By Delilah Alvarado",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -3559,6 +3559,38 @@
     "Description": "Arkenstone Defense Acquires GovPort, the GovCon System of Record, to Bring Subcontractor and Compliance Management Into Its Government Operating Platform MENLO PARK, Calif.--(BUSINESS WIRE)--Arkenstone Defense today announced its acquisition of GovPort, the government-contracting system of record built to manage the compliance and coordination burden that primes and their subcontractors carry on every federal program. The acquisition extends Arkenstone Foundation, the company's security and compliance business, into the day-to-day contracting operations that determine whether a program stays compliant and audit-ready. Built by military veterans",
     "Source": "Business Wire - Pharma RSS",
     "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "AbCellera, Vertex partner on next-gen T-cell engagers By Delilah Alvarado Argenx",
+    "Target": "Forte in $2.2B deal",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$2.2B",
+    "Total value": "$2.2B",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "AbCellera, Vertex partner on next-gen T-cell engagers By Delilah Alvarado Argenx to acquire Forte in $2.2B deal for ‘differentiated’ immune drug By Delilah Alvarado Vertex was sole bidder in high-premium Crinetics acquisition By Jacob Bell",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/processa-acquires-vidya-potential-btk-inhibitor-rival-novartis-rhapsido\" hreflang=\"en\">Processa",
+    "Target": "Vidya",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/processa-acquires-vidya-potential-btk-inhibitor-rival-novartis-rhapsido\" hreflang=\"en\">Processa acquires Vidya for potential BTK inhibitor rival to Novartis’ Rhapsido</a> Processa Pharmaceuticals has made a push into the autoimmune space via the acquisition of Vidya Therapeutics, which delivers a potential rival to Novartis’ Rhapsido.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
     "__source_tag": "reputable_news"
   }
 ]
