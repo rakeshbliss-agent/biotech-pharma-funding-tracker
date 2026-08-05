@@ -3736,5 +3736,37 @@
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/mercks-11b-asset-delivers-1-win-1-loss-midphase-inflammatory-disease-trials\" hreflang=\"en\">Merck’s $11B anti-TL1A bet delivers 1 win, 1 loss in midphase inflammatory disease trials</a> A phase 2 trial of Merck &amp; Co.’s anti-TL1A monoclonal antibody has missed its primary endpoint, closing off one avenue for expansion of an asset",
+    "Target": "in a $10.8 billion takeover. The setback was offset by a midphase win in another indication.",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "11b",
+    "Total value": "11b",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/mercks-11b-asset-delivers-1-win-1-loss-midphase-inflammatory-disease-trials\" hreflang=\"en\">Merck’s $11B anti-TL1A bet delivers 1 win, 1 loss in midphase inflammatory disease trials</a> A phase 2 trial of Merck &amp; Co.’s anti-TL1A monoclonal antibody has missed its primary endpoint, closing off one avenue for expansion of an asset acquired in a $10.8 billion takeover. The setback was offset by a midphase win in another indication.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Convey",
+    "Target": "Selectron, Expanding Its Engagement Operating System With Citizen Engagement, Field Operations and Payments",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Convey Acquires Selectron, Expanding Its Engagement Operating System With Citizen Engagement, Field Operations and Payments DENVER--(BUSINESS WIRE)--Convey, the engagement operating system for utilities and regulated industries, today announced it has acquired Selectron, a provider of citizen engagement, field operations, inspection management and payment solutions serving utilities, state and local governments, municipalities, cooperatives and public safety organizations nationwide. The acquisition brings together two companies with complementary strengths. Convey is the omnichannel communications and engagement op",
+    "Source": "Business Wire - Pharma RSS",
+    "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
+    "__source_tag": "reputable_news"
   }
 ]
