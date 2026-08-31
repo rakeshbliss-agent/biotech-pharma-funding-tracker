@@ -1588,7 +1588,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "License Editors' picks Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
+    "Description": "5 FDA decisions to watch in the fourth quarter of 2025 Against the backdrop of a government shutdown, the agency has a series of critical decisions ahead, among them verdicts on new therapies from Novo Nordisk and Biohaven. Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -4343,6 +4343,38 @@
     "Description": "<a href=\"https://www.fiercebiotech.com/biotech/teva-saddles-stalking-horse-bidder-bankrupt-bioxcels-neuroscience-portfolio\" hreflang=\"en\">Teva saddles up as stalking horse bidder for bankrupt BioXcel’s neuroscience portfolio</a> BioXcel Therapeutics has filed for bankruptcy and lined up a deal for Teva Pharmaceutical to acquire its assets for $57.5 million upfront.",
     "Source": "FierceBiotech - RSS",
     "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get",
+    "Target": "instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Biohaven trades cash",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$795M",
+    "Total value": "$795M",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Biohaven trades cash for ‘upside’ with $795M epilepsy drug deal By Kristin Jensen",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Young biotechs usually get",
+    "Target": "instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Biohaven trades cash",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$795M",
+    "Total value": "$795M",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Biohaven trades cash for ‘upside’ with $795M epilepsy drug deal By Kristin Jensen Roche commits to lean-mass preservation with Hanmi obesity deal By Jonathan Gardner",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
   }
 ]
