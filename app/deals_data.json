@@ -452,7 +452,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "For this database, BioPharma Dive looked only at companies developing human medicines. The mergers and acquisitions included in the database are limited by certain criteria, namely that they must be for an entire company — not for product licensings, options to acquire or for partial equity stakes. Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis, Ajax Therapeutics, Crossbridge Bio, 4E Therapeutics and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close.",
+    "Description": "For this database, BioPharma Dive looked only at companies developing human medicines. The mergers and acquisitions included in the database are limited by certain criteria, namely that they must be for an entire company — not for product licensings, options to acquire or for partial equity stakes. Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis, Ajax Therapeutics, Crossbridge Bio, 4E Therapeutics, Merida Biosciences and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close.",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -468,7 +468,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis, Ajax Therapeutics, Crossbridge Bio, 4E Therapeutics and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close. Only one therapeutic category is counted for each acquired company. For those with multiple focuses, the chosen therapeutic area is based on lead asset or, lacking one that's distinctly identified, the company is classified under \"other.\"",
+    "Description": "Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis, Ajax Therapeutics, Crossbridge Bio, 4E Therapeutics, Merida Biosciences and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included. Premiums were calculated using the acquired company's share price at the previous trading day's close. Only one therapeutic category is counted for each acquired company. For those with multiple focuses, the chosen therapeutic area is based on lead asset or, lacking one that's distinctly identified, the company is classified under \"other.\"",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -4084,7 +4084,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "BioMarin acquires experimental drug for rare bone disorder in $275M deal By Jonathan Gardner AstraZeneca scores in lung cancer; Sandoz inks a China deal By BioPharma Dive staff About",
+    "Description": "BioMarin acquires experimental drug for rare bone disorder in $275M deal By Jonathan Gardner About Editorial Team",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -4276,7 +4276,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Roche commits to lean-mass preservation with Hanmi obesity deal By Jonathan Gardner BioMarin acquires experimental drug for rare bone disorder in $275M deal By Jonathan Gardner AstraZeneca scores in lung cancer; Sandoz inks a China deal By BioPharma Dive staff",
+    "Description": "Roche commits to lean-mass preservation with Hanmi obesity deal By Jonathan Gardner BioMarin acquires experimental drug for rare bone disorder in $275M deal By Jonathan Gardner About",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -4375,6 +4375,38 @@
     "Description": "Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Biohaven trades cash for ‘upside’ with $795M epilepsy drug deal By Kristin Jensen Roche commits to lean-mass preservation with Hanmi obesity deal By Jonathan Gardner",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the",
+    "Target": "company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis, Ajax Therapeutics, Crossbridge Bio, 4E Therapeutics, Merida Biosciences and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included.",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$50 million",
+    "Total value": "$50 million",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Editor's note: If tables or values do not display, please try clearing your browser's cache and reloading the page. For this database, BioPharma Dive looked only at companies developing human medicines. The mergers and acquisitions included in the database are limited by certain criteria, namely that they must be for an entire company — not for product licensings, options to acquire or for partial equity stakes. Additionally, the database is limited to deals valued at a minimum of $50 million upfront. Total consideration can reflect both cash and equity offered upfront in exchange for the acquired company’s shares. Deals in which the upfront payment was less than $50 million or was not specified, like with Eli Lilly's purchase of Versanis, Ajax Therapeutics, Crossbridge Bio, 4E Therapeutics, Merida Biosciences and Orna Therapeutics or Novartis' acquisition of Kate Therapeutics and Excellergy, were not included.",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/eli-lilly-inks-29b-merida-buyout-autoimmune-drugs-against-rogue-antibodies\" hreflang=\"en\">Eli Lilly inks $2.88B Merida buyout for autoimmune drugs against rogue antibodies</a> Eli Lilly has struck a deal",
+    "Target": "Merida Biosciences",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "29b",
+    "Total value": "29b",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/eli-lilly-inks-29b-merida-buyout-autoimmune-drugs-against-rogue-antibodies\" hreflang=\"en\">Eli Lilly inks $2.88B Merida buyout for autoimmune drugs against rogue antibodies</a> Eli Lilly has struck a deal to acquire Merida Biosciences for up to $2.875 billion, establishing a beachhead in efforts to treat disease through the selective degradation of pathogenic autoantibodies.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
     "__source_tag": "reputable_news"
   }
 ]
