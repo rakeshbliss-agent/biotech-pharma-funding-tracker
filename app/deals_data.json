@@ -1588,7 +1588,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "Select user consent: By signing up to receive our newsletter, you agree to our Terms of Use and Privacy Policy . You can unsubscribe at anytime. Company Announcements Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
+    "Description": "Daiichi Sankyo struck gold with ‘ADC’ cancer drugs. Its new CEO has to figure out what’s next. Enhertu, Datroway and other antibody-drug conjugates developed by Daiichi Sankyo have made the company a leader in a competitive field. Hiroyuki Okuzawa is working to keep it that way. Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -4663,6 +4663,38 @@
     "Description": "<a href=\"https://www.fiercebiotech.com/biotech/novartis-pays-sironax-125m-acquire-platform-crossing-blood-brain-barrier\" hreflang=\"en\">Novartis pays Sironax $125M to acquire platform for crossing the blood-brain barrier</a> Novartis is paying Sironax $125 million to take up its option on a brain delivery platform, gaining control of technology for getting large molecules to targets in the central nervous system.<br />",
     "Source": "FierceBiotech - RSS",
     "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get",
+    "Target": "instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Novo partners with Orbis, deepening investment in oral peptide drugs By Jonathan Gardner",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Novo partners with Orbis, deepening investment in oral peptide drugs By Jonathan Gardner",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Young biotechs usually get",
+    "Target": "instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Novo partners with Orbis, deepening investment in oral peptide drugs By Jonathan Gardner Novartis to pay $125M",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$125M",
+    "Total value": "$125M",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Novo partners with Orbis, deepening investment in oral peptide drugs By Jonathan Gardner Novartis to pay $125M for blood-brain barrier crossing platform By Delilah Alvarado",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
   }
 ]
