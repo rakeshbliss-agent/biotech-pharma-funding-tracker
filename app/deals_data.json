@@ -4788,7 +4788,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "BioPharma Dive has refreshed its annual list of the expected patent expirations for the world’s best-selling medicines. Many of the top 10 will lose exclusivity this decade. GE HealthCare to acquire Sofie Biosciences for $945M By Susan Kelly Shionogi pays $2B to acquire a rare disease startup By Jonathan Gardner",
+    "Description": "According to a new BioPharma Dive analysis, corporate-related funds such as Novo Holdings, Eli Lilly and Sanofi Ventures have been among the most active investors in biotech startups this year. GE HealthCare to acquire Sofie Biosciences for $945M By Susan Kelly Shionogi pays $2B to acquire a rare disease startup By Jonathan Gardner",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -4839,6 +4839,22 @@
     "Description": "Hengrui’s $2.6 billion deal with Novo is its sixth with a major U.S. or European drugmaker since the start of 2025, the most of any China-based biopharmaceutical company over that timeframe. GE HealthCare to acquire Sofie Biosciences for $945M By Susan Kelly Shionogi pays $2B to acquire a rare disease startup By Jonathan Gardner",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/argenx-digests-phase-2-celiac-win-22b-drug-preps-pivotal-run\" hreflang=\"en\">Argenx digests phase 2 celiac win for $2.2B drug, preps pivotal run</a> A phase 2 celiac disease trial of argenx’s FB102 has hit its primary endpoint, delivering a boost to a drug candidate that the biotech",
+    "Target": "in its $2.2 billion takeover of Forte Biosciences.",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "22b",
+    "Total value": "22b",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/argenx-digests-phase-2-celiac-win-22b-drug-preps-pivotal-run\" hreflang=\"en\">Argenx digests phase 2 celiac win for $2.2B drug, preps pivotal run</a> A phase 2 celiac disease trial of argenx’s FB102 has hit its primary endpoint, delivering a boost to a drug candidate that the biotech acquired in its $2.2 billion takeover of Forte Biosciences.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
     "__source_tag": "reputable_news"
   }
 ]
