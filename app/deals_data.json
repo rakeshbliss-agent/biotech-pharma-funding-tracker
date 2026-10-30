@@ -1588,7 +1588,7 @@
     "Modality": "",
     "Segment": "",
     "Target HQ Country": "",
-    "Description": "License Editors' picks Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
+    "Description": "Protein degraders: chasing undruggable targets Some two dozen biotech developers of PROTACs, molecular glues and other types of protein-degrading drugs have sprung up over the past two decades. Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
     "__source_tag": "reputable_news"
@@ -5175,6 +5175,54 @@
     "Description": "According to a new BioPharma Dive analysis, corporate-related funds such as Novo Holdings, Eli Lilly and Sanofi Ventures have been among the most active investors in biotech startups this year. Ferring to acquire next-gen IVF startup Gameto for up to $1.4B By Delilah Alvarado Merck KGaA bets on RNAi with $1.3B Silence buyout By Jonathan Gardner",
     "Source": "BioPharmaDive - M&A Tracker",
     "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Some two dozen biotech developers of PROTACs, molecular glues and other types of protein-degrading drugs have sprung up over the past two decades. Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get",
+    "Target": "instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026 Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead.",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Some two dozen biotech developers of PROTACs, molecular glues and other types of protein-degrading drugs have sprung up over the past two decades. Permission granted by Nasdaq, Inc. / Vanja Savic Deep Dive // Emerging biotech Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead. Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. By Gwendolyn Wu • April 28, 2026 Biotech investors gamble on M&A. Some drugmakers are betting on themselves instead.",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "Young biotechs usually get",
+    "Target": "instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Ferring to acquire next-gen IVF startup Gameto",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "$1.4B",
+    "Total value": "$1.4B",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "Young biotechs usually get acquired instead of profitably selling their own medicines. A growing number are proving they can, which could make the sector more broadly appealing to investors, some say. Ferring to acquire next-gen IVF startup Gameto for up to $1.4B By Delilah Alvarado Merck KGaA bets on RNAi with $1.3B Silence buyout By Jonathan Gardner",
+    "Source": "BioPharmaDive - M&A Tracker",
+    "__source_url": "https://www.biopharmadive.com/news/biotech-pharma-deals-merger-acquisitions-tracker/604262/",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/biomarin-inks-475m-deal-expand-challenge-fabry-incumbents\" hreflang=\"en\">BioMarin inks up to $475M deal to challenge Fabry ERT incumbents</a> BioMarin is paying $70 million upfront to license a Fabry disease drug candidate, expanding the franchise it",
+    "Target": "through its $4.8 billion takeover of Amicus Therapeutics.",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "475m",
+    "Total value": "475m",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/biomarin-inks-475m-deal-expand-challenge-fabry-incumbents\" hreflang=\"en\">BioMarin inks up to $475M deal to challenge Fabry ERT incumbents</a> BioMarin is paying $70 million upfront to license a Fabry disease drug candidate, expanding the franchise it acquired through its $4.8 billion takeover of Amicus Therapeutics.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
     "__source_tag": "reputable_news"
   }
 ]
