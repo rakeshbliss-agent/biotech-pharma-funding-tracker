@@ -5288,5 +5288,37 @@
     "Source": "Business Wire - Pharma RSS",
     "__source_url": "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpQWQ==",
     "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/digital-health/oura-acquire-ai-virtual-primary-care-partner-counsel-health-625m\" hreflang=\"en\">Oura",
+    "Target": "AI virtual primary care partner Counsel Health",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "625m",
+    "Total value": "625m",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/digital-health/oura-acquire-ai-virtual-primary-care-partner-counsel-health-625m\" hreflang=\"en\">Oura to acquire AI virtual primary care partner Counsel Health for $625M</a> The companies have worked together since June, and more recently had shared plans to partner on CMS' 10-year ACCESS Model.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
+  },
+  {
+    "Deal date": "",
+    "Acquirer": "<a href=\"https://www.fiercebiotech.com/biotech/astrazeneca-buys-omniose-bacterial-vaccine-technology\" hreflang=\"en\">AstraZeneca",
+    "Target": "partner Omniose",
+    "Deal type": "Acquisition/Merger",
+    "Upfront": "",
+    "Total value": "",
+    "Therapeutic Area": "",
+    "Modality": "",
+    "Segment": "",
+    "Target HQ Country": "",
+    "Description": "<a href=\"https://www.fiercebiotech.com/biotech/astrazeneca-buys-omniose-bacterial-vaccine-technology\" hreflang=\"en\">AstraZeneca buys partner Omniose for bacterial vaccine technology</a> AstraZeneca has acquired vaccine bioconjugation specialist Omniose, securing technology and expertise that could boost its efforts to protect people from bacterial threats.",
+    "Source": "FierceBiotech - RSS",
+    "__source_url": "https://www.fiercebiotech.com/rss/xml",
+    "__source_tag": "reputable_news"
   }
 ]
